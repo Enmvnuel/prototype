@@ -58,8 +58,12 @@ const generateMockRequests = (): RequestData[] => {
     const dateStr = `${currentYear}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`
     const endDateStr = `${currentYear}-${month.toString().padStart(2, '0')}-${(day + 3).toString().padStart(2, '0')}`
 
+    // NEW ID FORMAT: REQ001, REQ002...
+    const idSuffix = (i + 1).toString().padStart(3, '0')
+    const reqId = `REQ${idSuffix}`
+
     requests.push({
-      id: `REQ-EMP-${i + 1}`,
+      id: reqId,
       employeeId,
       employeeName,
       type: types[i % 3], // Rotate types
@@ -92,8 +96,12 @@ const generateMockRequests = (): RequestData[] => {
     const day = Math.floor(Math.random() * 28) + 1
     const dateStr = `2025-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`
 
+    // NEW ID FORMAT FOR MANAGER: REQ101...
+    const idSuffix = (101 + i).toString().padStart(3, '0')
+    const reqId = `REQ${idSuffix}`
+
     requests.push({
-      id: `REQ-MGR-${i + 1}`,
+      id: reqId,
       employeeId: `emp-${100 + i}`,
       employeeName: `${fName} ${lName}`,
       type: types[Math.floor(Math.random() * types.length)],
