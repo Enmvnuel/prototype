@@ -828,124 +828,160 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$no
 ;
 ;
 const AppContext = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["createContext"])(undefined);
-// Mock data with realistic employee request history
-const MOCK_REQUESTS = [
-    {
-        id: "REQ001",
-        employeeId: "emp001",
-        employeeName: "Nombre del Empleado",
-        type: "Vacaciones",
-        startDate: "2025-12-01",
-        endDate: "2025-12-05",
-        totalDays: 5,
-        workSite: "Oficina Principal",
-        status: "PENDIENTE",
-        createdAt: "2025-11-15",
-        observations: ""
-    },
-    {
-        id: "REQ002",
-        employeeId: "emp001",
-        employeeName: "Nombre del Empleado",
-        type: "Licencia por Enfermedad",
-        startDate: "2025-10-25",
-        endDate: "2025-10-26",
-        totalDays: 2,
-        workSite: "Remoto",
-        status: "APROBADO",
-        createdAt: "2025-10-20",
-        observations: ""
-    },
-    {
-        id: "REQ003",
-        employeeId: "emp001",
-        employeeName: "Nombre del Empleado",
-        type: "Vacaciones",
-        startDate: "2025-09-10",
-        endDate: "2025-09-15",
-        totalDays: 5,
-        workSite: "Sucursal A",
-        status: "RECHAZADO",
-        createdAt: "2025-09-01",
-        observations: ""
-    },
-    {
-        id: "REQ004",
-        employeeId: "emp001",
-        employeeName: "Nombre del Empleado",
-        type: "Compensatorio",
-        startDate: "2025-08-10",
-        endDate: "2025-08-10",
-        totalDays: 1,
-        workSite: "Oficina Principal",
-        status: "APROBADO",
-        createdAt: "2025-08-05",
-        observations: ""
+// Helper to generate mock requests
+const generateMockRequests = ()=>{
+    const requests = [];
+    // 1. Employee Requests (Current User - emp001)
+    // Requirement: Max 10 requests, changing year every 2 requests (2020-2025)
+    const employeeId = "emp001";
+    const employeeName = "Empleado Actual";
+    const types = [
+        "Vacaciones",
+        "Licencia por Enfermedad",
+        "Compensatorio"
+    ];
+    const statuses = [
+        "APROBADO",
+        "RECHAZADO",
+        "PENDIENTE"
+    ];
+    let currentYear = 2020;
+    for(let i = 0; i < 10; i++){
+        // Change year every 2 requests
+        if (i > 0 && i % 2 === 0) {
+            if (currentYear < 2025) currentYear++;
+        }
+        const month = Math.floor(Math.random() * 12) + 1;
+        const day = Math.floor(Math.random() * 20) + 1;
+        const dateStr = `${currentYear}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
+        const endDateStr = `${currentYear}-${month.toString().padStart(2, '0')}-${(day + 3).toString().padStart(2, '0')}`;
+        requests.push({
+            id: `REQ-EMP-${i + 1}`,
+            employeeId,
+            employeeName,
+            type: types[i % 3],
+            startDate: dateStr,
+            endDate: endDateStr,
+            totalDays: 3,
+            workSite: "Sede Central",
+            status: i === 9 ? "PENDIENTE" : statuses[i % 3],
+            createdAt: dateStr,
+            observations: `Solicitud generada para el año ${currentYear}`,
+            evidence: i % 2 === 0
+        });
     }
-];
-const MANAGER_REQUESTS = [
-    {
-        id: "REQ001",
-        employeeId: "emp001",
-        employeeName: "Nombre del Empleado 1",
-        type: "Vacaciones",
-        startDate: "2025-12-01",
-        endDate: "2025-12-05",
-        totalDays: 5,
-        workSite: "Logística",
-        status: "PENDIENTE",
-        createdAt: "2025-11-15",
-        observations: ""
-    },
-    {
-        id: "REQ002",
-        employeeId: "emp002",
-        employeeName: "Nombre del Empleado 2",
-        type: "Licencia por Enfermedad",
-        startDate: "2025-11-20",
-        endDate: "2025-11-22",
-        totalDays: 3,
-        workSite: "Operaciones",
-        status: "PENDIENTE",
-        createdAt: "2025-11-15",
-        observations: ""
-    },
-    {
-        id: "REQ003",
-        employeeId: "emp003",
-        employeeName: "Nombre del Empleado 3",
-        type: "Vacaciones",
-        startDate: "2025-10-10",
-        endDate: "2025-10-10",
-        totalDays: 1,
-        workSite: "RRHH",
-        status: "PENDIENTE",
-        createdAt: "2025-10-01",
-        observations: ""
+    // 2. Manager Requests (Other Employees)
+    // Requirement: Many requests, distinct names, realistic simulation
+    const firstNames = [
+        "Juan",
+        "María",
+        "Carlos",
+        "Ana",
+        "Luis",
+        "Elena",
+        "Pedro",
+        "Sofia",
+        "Miguel",
+        "Lucía"
+    ];
+    const lastNames = [
+        "Pérez",
+        "García",
+        "López",
+        "Martínez",
+        "Rodríguez",
+        "González",
+        "Sánchez",
+        "Ramírez",
+        "Torres",
+        "Flores"
+    ];
+    const areas = [
+        "Logística",
+        "Operaciones",
+        "RRHH",
+        "Finanzas",
+        "TI",
+        "Ventas"
+    ];
+    for(let i = 0; i < 50; i++){
+        const fName = firstNames[Math.floor(Math.random() * firstNames.length)];
+        const lName = lastNames[Math.floor(Math.random() * lastNames.length)];
+        const area = areas[Math.floor(Math.random() * areas.length)];
+        // Most should be pending for the manager to act on
+        const status = Math.random() > 0.7 ? Math.random() > 0.5 ? "APROBADO" : "RECHAZADO" : "PENDIENTE";
+        const month = Math.floor(Math.random() * 3) + 10 // Oct-Dec 2025
+        ;
+        const day = Math.floor(Math.random() * 28) + 1;
+        const dateStr = `2025-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
+        requests.push({
+            id: `REQ-MGR-${i + 1}`,
+            employeeId: `emp-${100 + i}`,
+            employeeName: `${fName} ${lName}`,
+            type: types[Math.floor(Math.random() * types.length)],
+            startDate: dateStr,
+            endDate: `2025-${month.toString().padStart(2, '0')}-${(day + 2).toString().padStart(2, '0')}`,
+            totalDays: Math.floor(Math.random() * 5) + 1,
+            workSite: area,
+            status: status,
+            createdAt: dateStr,
+            observations: "Solicitud pendiente de revisión",
+            evidence: Math.random() > 0.3
+        });
     }
-];
+    return requests;
+};
 const AppProvider = ({ children })=>{
-    const [requests, setRequests] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(MOCK_REQUESTS);
+    // Initialize state with lazy initializer to read from localStorage immediately if possible (client-side)
+    // However, for SSR safety in Next.js, we usually start with MOCK and sync in useEffect.
+    // Given "simulation" requirement, useEffect sync is fine.
+    const [requests, setRequests] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])([]);
+    const [isInitialized, setIsInitialized] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
+    // Load from localStorage on mount
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
+        const saved = localStorage.getItem("elm-requests-v1");
+        if (saved) {
+            try {
+                setRequests(JSON.parse(saved));
+            } catch (e) {
+                console.error("Failed to parse requests", e);
+                setRequests(generateMockRequests());
+            }
+        } else {
+            setRequests(generateMockRequests());
+        }
+        setIsInitialized(true);
+    }, []);
+    // Save to localStorage whenever requests change
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
+        if (isInitialized) {
+            localStorage.setItem("elm-requests-v1", JSON.stringify(requests));
+        }
+    }, [
+        requests,
+        isInitialized
+    ]);
     const addRequest = (request)=>{
-        setRequests([
-            ...requests,
-            request
-        ]);
+        setRequests((prev)=>[
+                request,
+                ...prev
+            ]);
     };
     const updateRequest = (id, updates)=>{
-        setRequests(requests.map((req)=>req.id === id ? {
-                ...req,
-                ...updates
-            } : req));
+        setRequests((prev)=>prev.map((req)=>req.id === id ? {
+                    ...req,
+                    ...updates
+                } : req));
     };
     const getEmployeeBalance = (employeeId)=>{
-        // Mock calculation: employee starts with 12 vacation days and 3 compensatory days
-        // This would be calculated based on actual requests in a real system
+        // Fixed mock balance for the simulation
         return {
-            vacation: 12,
-            compensatory: 3
+            vacation: 15,
+            compensatory: 4
         };
     };
+    // Prevent hydration mismatch by rendering children only after init or providing fallback
+    // For this prototype, we'll render immediately but data might pop in.
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(AppContext.Provider, {
         value: {
             requests,
@@ -956,7 +992,7 @@ const AppProvider = ({ children })=>{
         children: children
     }, void 0, false, {
         fileName: "[project]/Documents/prototype/context/app-context.tsx",
-        lineNumber: 153,
+        lineNumber: 161,
         columnNumber: 5
     }, ("TURBOPACK compile-time value", void 0));
 };
@@ -3160,8 +3196,8 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$co
 var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$context$2f$app$2d$context$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/prototype/context/app-context.tsx [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$review$2d$modal$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/prototype/components/review-modal.tsx [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$log$2d$out$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__LogOut$3e$__ = __turbopack_context__.i("[project]/Documents/prototype/node_modules/lucide-react/dist/esm/icons/log-out.js [app-ssr] (ecmascript) <export default as LogOut>");
-var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$eye$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Eye$3e$__ = __turbopack_context__.i("[project]/Documents/prototype/node_modules/lucide-react/dist/esm/icons/eye.js [app-ssr] (ecmascript) <export default as Eye>");
-var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$message$2d$circle$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__MessageCircle$3e$__ = __turbopack_context__.i("[project]/Documents/prototype/node_modules/lucide-react/dist/esm/icons/message-circle.js [app-ssr] (ecmascript) <export default as MessageCircle>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$check$2d$big$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__CheckCircle$3e$__ = __turbopack_context__.i("[project]/Documents/prototype/node_modules/lucide-react/dist/esm/icons/circle-check-big.js [app-ssr] (ecmascript) <export default as CheckCircle>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$x$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__XCircle$3e$__ = __turbopack_context__.i("[project]/Documents/prototype/node_modules/lucide-react/dist/esm/icons/circle-x.js [app-ssr] (ecmascript) <export default as XCircle>");
 "use client";
 ;
 ;
@@ -3183,13 +3219,18 @@ function ManagerPanel({ onLogout, currentView, onViewChange }) {
     const [selectedIds, setSelectedIds] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(new Set());
     const [reviewingId, setReviewingId] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
     const [selectAll, setSelectAll] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
-    // Filter requests
+    // Filter requests - Only show Manager requests (exclude current user's own requests if desired, or all)
+    // Logic: In a real app, managers see their team. Here we just show the mock "MGR" requests.
     const filteredRequests = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useMemo"])(()=>{
         return requests.filter((req)=>{
+            // Basic filtering
             if (filterUnit !== "all" && req.workSite !== filterUnit) return false;
             if (filterStatus !== "all" && req.status !== filterStatus) return false;
             if (startDate && req.createdAt < startDate) return false;
             if (endDate && req.createdAt > endDate) return false;
+            // Only show requests that look like they belong to 'others' (e.g. ID starts with REQ-MGR)
+            // or just filter out the current user 'emp001'
+            if (req.employeeId === "emp001") return false;
             return true;
         });
     }, [
@@ -3219,7 +3260,7 @@ function ManagerPanel({ onLogout, currentView, onViewChange }) {
     };
     const handleBulkAction = (action)=>{
         selectedIds.forEach((id)=>{
-            const newStatus = action === "approve" ? "APROBADO" : action === "reject" ? "RECHAZADO" : "PENDIENTE";
+            const newStatus = action === "approve" ? "APROBADO" : "RECHAZADO";
             updateRequest(id, {
                 status: newStatus
             });
@@ -3228,7 +3269,6 @@ function ManagerPanel({ onLogout, currentView, onViewChange }) {
         setSelectAll(false);
     };
     const handlePrintPermits = ()=>{
-        // This would generate PDF permits for selected requests
         alert(`Generando ${selectedIds.size} papeletas físicas...`);
     };
     const getStatusBadge = (status)=>{
@@ -3255,7 +3295,7 @@ function ManagerPanel({ onLogout, currentView, onViewChange }) {
             children: variant.label
         }, void 0, false, {
             fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-            lineNumber: 82,
+            lineNumber: 88,
             columnNumber: 12
         }, this);
     };
@@ -3283,7 +3323,7 @@ function ManagerPanel({ onLogout, currentView, onViewChange }) {
             }
         }, void 0, false, {
             fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-            lineNumber: 87,
+            lineNumber: 93,
             columnNumber: 7
         }, this);
     }
@@ -3299,24 +3339,24 @@ function ManagerPanel({ onLogout, currentView, onViewChange }) {
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
                                     className: "text-2xl font-bold text-slate-900",
-                                    children: "Panel de Aprobación Gerencial"
+                                    children: "Panel de Acceso Gerencial"
                                 }, void 0, false, {
                                     fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                    lineNumber: 112,
+                                    lineNumber: 118,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                     className: "text-sm text-slate-600 mt-1",
-                                    children: "Bienvenido, Nombre del Gerente"
+                                    children: "Bienvenido, Gerente General"
                                 }, void 0, false, {
                                     fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                    lineNumber: 113,
+                                    lineNumber: 119,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                            lineNumber: 111,
+                            lineNumber: 117,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -3328,25 +3368,25 @@ function ManagerPanel({ onLogout, currentView, onViewChange }) {
                                     className: "w-4 h-4 mr-2"
                                 }, void 0, false, {
                                     fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                    lineNumber: 116,
+                                    lineNumber: 122,
                                     columnNumber: 13
                                 }, this),
                                 "Salir"
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                            lineNumber: 115,
+                            lineNumber: 121,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                    lineNumber: 110,
+                    lineNumber: 116,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                lineNumber: 109,
+                lineNumber: 115,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3359,15 +3399,15 @@ function ManagerPanel({ onLogout, currentView, onViewChange }) {
                                 className: "bg-slate-100 border-b border-slate-200",
                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardTitle"], {
                                     className: "text-lg",
-                                    children: "Barra de Filtros Avanzados"
+                                    children: "Filtros de Búsqueda"
                                 }, void 0, false, {
                                     fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                    lineNumber: 125,
+                                    lineNumber: 131,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                lineNumber: 124,
+                                lineNumber: 130,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -3383,7 +3423,7 @@ function ManagerPanel({ onLogout, currentView, onViewChange }) {
                                                         children: "Unidad Organizacional"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                        lineNumber: 130,
+                                                        lineNumber: 136,
                                                         columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Select"], {
@@ -3394,12 +3434,12 @@ function ManagerPanel({ onLogout, currentView, onViewChange }) {
                                                                 className: "w-full",
                                                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectValue"], {}, void 0, false, {
                                                                     fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                                    lineNumber: 133,
+                                                                    lineNumber: 139,
                                                                     columnNumber: 21
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                                lineNumber: 132,
+                                                                lineNumber: 138,
                                                                 columnNumber: 19
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectContent"], {
@@ -3409,7 +3449,7 @@ function ManagerPanel({ onLogout, currentView, onViewChange }) {
                                                                         children: "Todas las Unidades"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                                        lineNumber: 136,
+                                                                        lineNumber: 142,
                                                                         columnNumber: 21
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectItem"], {
@@ -3417,7 +3457,7 @@ function ManagerPanel({ onLogout, currentView, onViewChange }) {
                                                                         children: "Logística"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                                        lineNumber: 137,
+                                                                        lineNumber: 143,
                                                                         columnNumber: 21
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectItem"], {
@@ -3425,7 +3465,7 @@ function ManagerPanel({ onLogout, currentView, onViewChange }) {
                                                                         children: "Operaciones"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                                        lineNumber: 138,
+                                                                        lineNumber: 144,
                                                                         columnNumber: 21
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectItem"], {
@@ -3433,25 +3473,49 @@ function ManagerPanel({ onLogout, currentView, onViewChange }) {
                                                                         children: "RRHH"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                                        lineNumber: 139,
+                                                                        lineNumber: 145,
+                                                                        columnNumber: 21
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectItem"], {
+                                                                        value: "Finanzas",
+                                                                        children: "Finanzas"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                                        lineNumber: 146,
+                                                                        columnNumber: 21
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectItem"], {
+                                                                        value: "TI",
+                                                                        children: "TI"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                                        lineNumber: 147,
+                                                                        columnNumber: 21
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectItem"], {
+                                                                        value: "Ventas",
+                                                                        children: "Ventas"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                                        lineNumber: 148,
                                                                         columnNumber: 21
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                                lineNumber: 135,
+                                                                lineNumber: 141,
                                                                 columnNumber: 19
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                        lineNumber: 131,
+                                                        lineNumber: 137,
                                                         columnNumber: 17
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                lineNumber: 129,
+                                                lineNumber: 135,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3461,7 +3525,7 @@ function ManagerPanel({ onLogout, currentView, onViewChange }) {
                                                         children: "Fecha de Inicio"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                        lineNumber: 145,
+                                                        lineNumber: 154,
                                                         columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -3471,13 +3535,13 @@ function ManagerPanel({ onLogout, currentView, onViewChange }) {
                                                         className: "w-full px-3 py-2 border border-slate-200 rounded-md text-sm"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                        lineNumber: 146,
+                                                        lineNumber: 155,
                                                         columnNumber: 17
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                lineNumber: 144,
+                                                lineNumber: 153,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3487,7 +3551,7 @@ function ManagerPanel({ onLogout, currentView, onViewChange }) {
                                                         children: "Fecha de Fin"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                        lineNumber: 155,
+                                                        lineNumber: 164,
                                                         columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -3497,13 +3561,13 @@ function ManagerPanel({ onLogout, currentView, onViewChange }) {
                                                         className: "w-full px-3 py-2 border border-slate-200 rounded-md text-sm"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                        lineNumber: 156,
+                                                        lineNumber: 165,
                                                         columnNumber: 17
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                lineNumber: 154,
+                                                lineNumber: 163,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3513,7 +3577,7 @@ function ManagerPanel({ onLogout, currentView, onViewChange }) {
                                                         children: "Estado"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                        lineNumber: 165,
+                                                        lineNumber: 174,
                                                         columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Select"], {
@@ -3524,12 +3588,12 @@ function ManagerPanel({ onLogout, currentView, onViewChange }) {
                                                                 className: "w-full",
                                                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectValue"], {}, void 0, false, {
                                                                     fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                                    lineNumber: 168,
+                                                                    lineNumber: 177,
                                                                     columnNumber: 21
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                                lineNumber: 167,
+                                                                lineNumber: 176,
                                                                 columnNumber: 19
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectContent"], {
@@ -3539,7 +3603,7 @@ function ManagerPanel({ onLogout, currentView, onViewChange }) {
                                                                         children: "Todos"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                                        lineNumber: 171,
+                                                                        lineNumber: 180,
                                                                         columnNumber: 21
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectItem"], {
@@ -3547,7 +3611,7 @@ function ManagerPanel({ onLogout, currentView, onViewChange }) {
                                                                         children: "Pendiente"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                                        lineNumber: 172,
+                                                                        lineNumber: 181,
                                                                         columnNumber: 21
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectItem"], {
@@ -3555,7 +3619,7 @@ function ManagerPanel({ onLogout, currentView, onViewChange }) {
                                                                         children: "Aprobado"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                                        lineNumber: 173,
+                                                                        lineNumber: 182,
                                                                         columnNumber: 21
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SelectItem"], {
@@ -3563,42 +3627,43 @@ function ManagerPanel({ onLogout, currentView, onViewChange }) {
                                                                         children: "Rechazado"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                                        lineNumber: 174,
+                                                                        lineNumber: 183,
                                                                         columnNumber: 21
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                                lineNumber: 170,
+                                                                lineNumber: 179,
                                                                 columnNumber: 19
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                        lineNumber: 166,
+                                                        lineNumber: 175,
                                                         columnNumber: 17
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                lineNumber: 164,
+                                                lineNumber: 173,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                        lineNumber: 128,
+                                        lineNumber: 134,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: "flex gap-2",
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
+                                                onClick: ()=>{},
                                                 className: "bg-blue-600 hover:bg-blue-700 text-white",
                                                 children: "Aplicar Filtros"
                                             }, void 0, false, {
                                                 fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                lineNumber: 181,
+                                                lineNumber: 190,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
@@ -3612,47 +3677,47 @@ function ManagerPanel({ onLogout, currentView, onViewChange }) {
                                                 children: "Limpiar Todo"
                                             }, void 0, false, {
                                                 fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                lineNumber: 182,
+                                                lineNumber: 196,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                        lineNumber: 180,
+                                        lineNumber: 189,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                lineNumber: 127,
+                                lineNumber: 133,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                        lineNumber: 123,
+                        lineNumber: 129,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Card"], {
                         className: "mt-8 shadow-md",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardHeader"], {
-                                className: "bg-slate-100 border-b border-slate-200",
+                                className: "bg-slate-100 border-b border-slate-200 flex flex-row justify-between items-center",
                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardTitle"], {
                                     className: "text-lg",
                                     children: [
-                                        "Mostrando 1-10 de ",
+                                        "Solicitudes (",
                                         filteredRequests.length,
-                                        " Solicitudes Pendientes"
+                                        ")"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                    lineNumber: 200,
+                                    lineNumber: 214,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                lineNumber: 199,
+                                lineNumber: 213,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -3672,60 +3737,52 @@ function ManagerPanel({ onLogout, currentView, onViewChange }) {
                                                                 onCheckedChange: handleSelectAll
                                                             }, void 0, false, {
                                                                 fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                                lineNumber: 210,
+                                                                lineNumber: 224,
                                                                 columnNumber: 23
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                            lineNumber: 209,
+                                                            lineNumber: 223,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TableHead"], {
                                                             className: "text-slate-700 font-semibold",
-                                                            children: "Foto y Nombre del Empleado"
+                                                            children: "Empleado"
                                                         }, void 0, false, {
                                                             fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                            lineNumber: 212,
+                                                            lineNumber: 226,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TableHead"], {
                                                             className: "text-slate-700 font-semibold",
-                                                            children: "Área Asignada"
+                                                            children: "Área"
                                                         }, void 0, false, {
                                                             fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                            lineNumber: 213,
+                                                            lineNumber: 227,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TableHead"], {
                                                             className: "text-slate-700 font-semibold",
-                                                            children: "Fechas de Solicitud"
+                                                            children: "Fechas"
                                                         }, void 0, false, {
                                                             fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                            lineNumber: 214,
+                                                            lineNumber: 228,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TableHead"], {
-                                                            className: "text-slate-700 font-semibold",
-                                                            children: "Días Totales"
+                                                            className: "text-slate-700 font-semibold text-center",
+                                                            children: "Días"
                                                         }, void 0, false, {
                                                             fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                            lineNumber: 215,
+                                                            lineNumber: 229,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TableHead"], {
-                                                            className: "text-slate-700 font-semibold",
+                                                            className: "text-slate-700 font-semibold text-center",
                                                             children: "Evidencia"
                                                         }, void 0, false, {
                                                             fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                            lineNumber: 216,
-                                                            columnNumber: 21
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TableHead"], {
-                                                            className: "text-slate-700 font-semibold",
-                                                            children: "Historial de Auditoría"
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                            lineNumber: 217,
+                                                            lineNumber: 230,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TableHead"], {
@@ -3733,30 +3790,44 @@ function ManagerPanel({ onLogout, currentView, onViewChange }) {
                                                             children: "Estado"
                                                         }, void 0, false, {
                                                             fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                            lineNumber: 218,
+                                                            lineNumber: 232,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TableHead"], {
                                                             className: "text-slate-700 font-semibold",
-                                                            children: "Acción Rápida"
+                                                            children: "Acciones"
                                                         }, void 0, false, {
                                                             fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                            lineNumber: 219,
+                                                            lineNumber: 233,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                    lineNumber: 208,
+                                                    lineNumber: 222,
                                                     columnNumber: 19
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                lineNumber: 207,
+                                                lineNumber: 221,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TableBody"], {
-                                                children: filteredRequests.map((req)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TableRow"], {
+                                                children: filteredRequests.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TableRow"], {
+                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TableCell"], {
+                                                        colSpan: 8,
+                                                        className: "text-center py-8 text-slate-500",
+                                                        children: "No se encontraron solicitudes."
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                        lineNumber: 239,
+                                                        columnNumber: 23
+                                                    }, this)
+                                                }, void 0, false, {
+                                                    fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                    lineNumber: 238,
+                                                    columnNumber: 21
+                                                }, this) : filteredRequests.map((req)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TableRow"], {
                                                         className: "hover:bg-slate-50",
                                                         children: [
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TableCell"], {
@@ -3765,215 +3836,230 @@ function ManagerPanel({ onLogout, currentView, onViewChange }) {
                                                                     onCheckedChange: (checked)=>handleSelectId(req.id, checked)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                                    lineNumber: 226,
-                                                                    columnNumber: 25
+                                                                    lineNumber: 247,
+                                                                    columnNumber: 27
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                                lineNumber: 225,
-                                                                columnNumber: 23
+                                                                lineNumber: 246,
+                                                                columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TableCell"], {
                                                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                     className: "flex items-center gap-3",
                                                                     children: [
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                            className: "w-10 h-10 bg-slate-200 rounded-full"
+                                                                            className: "flex h-10 w-10 items-center justify-center rounded-full bg-slate-200 text-slate-500 font-bold",
+                                                                            children: req.employeeName.charAt(0)
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                                            lineNumber: 233,
-                                                                            columnNumber: 27
+                                                                            lineNumber: 254,
+                                                                            columnNumber: 29
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                            className: "font-medium text-blue-600",
+                                                                            className: "font-medium text-slate-700",
                                                                             children: req.employeeName
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                                            lineNumber: 234,
-                                                                            columnNumber: 27
+                                                                            lineNumber: 257,
+                                                                            columnNumber: 29
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                                    lineNumber: 232,
-                                                                    columnNumber: 25
+                                                                    lineNumber: 253,
+                                                                    columnNumber: 27
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                                lineNumber: 231,
-                                                                columnNumber: 23
+                                                                lineNumber: 252,
+                                                                columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TableCell"], {
                                                                 children: req.workSite
                                                             }, void 0, false, {
                                                                 fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                                lineNumber: 237,
-                                                                columnNumber: 23
+                                                                lineNumber: 260,
+                                                                columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TableCell"], {
-                                                                children: [
-                                                                    req.startDate,
-                                                                    " al ",
-                                                                    req.endDate
-                                                                ]
-                                                            }, void 0, true, {
+                                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                    className: "text-sm",
+                                                                    children: [
+                                                                        req.startDate,
+                                                                        " ",
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
+                                                                            fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                                            lineNumber: 263,
+                                                                            columnNumber: 45
+                                                                        }, this),
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                            className: "text-slate-400",
+                                                                            children: "al"
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                                            lineNumber: 263,
+                                                                            columnNumber: 51
+                                                                        }, this),
+                                                                        " ",
+                                                                        req.endDate
+                                                                    ]
+                                                                }, void 0, true, {
+                                                                    fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                                    lineNumber: 262,
+                                                                    columnNumber: 27
+                                                                }, this)
+                                                            }, void 0, false, {
                                                                 fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                                lineNumber: 238,
-                                                                columnNumber: 23
+                                                                lineNumber: 261,
+                                                                columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TableCell"], {
-                                                                className: "text-center",
+                                                                className: "text-center font-medium",
                                                                 children: req.totalDays
                                                             }, void 0, false, {
                                                                 fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                                lineNumber: 241,
-                                                                columnNumber: 23
+                                                                lineNumber: 266,
+                                                                columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TableCell"], {
-                                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                                                    className: "text-slate-400 hover:text-slate-600",
-                                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$eye$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Eye$3e$__["Eye"], {
-                                                                        className: "w-4 h-4"
-                                                                    }, void 0, false, {
-                                                                        fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                                        lineNumber: 244,
-                                                                        columnNumber: 27
-                                                                    }, this)
+                                                                className: "text-center",
+                                                                children: req.evidence ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$check$2d$big$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__CheckCircle$3e$__["CheckCircle"], {
+                                                                    className: "w-5 h-5 text-green-500 mx-auto"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                                    lineNumber: 243,
-                                                                    columnNumber: 25
+                                                                    lineNumber: 269,
+                                                                    columnNumber: 29
+                                                                }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$x$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__XCircle$3e$__["XCircle"], {
+                                                                    className: "w-5 h-5 text-red-300 mx-auto"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                                    lineNumber: 271,
+                                                                    columnNumber: 29
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                                lineNumber: 242,
-                                                                columnNumber: 23
-                                                            }, this),
-                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TableCell"], {
-                                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                                                    className: "text-slate-400 hover:text-slate-600",
-                                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$message$2d$circle$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__MessageCircle$3e$__["MessageCircle"], {
-                                                                        className: "w-4 h-4"
-                                                                    }, void 0, false, {
-                                                                        fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                                        lineNumber: 249,
-                                                                        columnNumber: 27
-                                                                    }, this)
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                                    lineNumber: 248,
-                                                                    columnNumber: 25
-                                                                }, this)
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                                lineNumber: 247,
-                                                                columnNumber: 23
+                                                                lineNumber: 267,
+                                                                columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TableCell"], {
                                                                 children: getStatusBadge(req.status)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                                lineNumber: 252,
-                                                                columnNumber: 23
+                                                                lineNumber: 274,
+                                                                columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["TableCell"], {
                                                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
                                                                     onClick: ()=>setReviewingId(req.id),
                                                                     size: "sm",
-                                                                    className: "bg-blue-600 hover:bg-blue-700 text-white",
+                                                                    variant: "outline",
+                                                                    className: "border-blue-200 text-blue-600 hover:bg-blue-50",
                                                                     children: "Revisar"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                                    lineNumber: 254,
-                                                                    columnNumber: 25
+                                                                    lineNumber: 276,
+                                                                    columnNumber: 27
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                                lineNumber: 253,
-                                                                columnNumber: 23
+                                                                lineNumber: 275,
+                                                                columnNumber: 25
                                                             }, this)
                                                         ]
                                                     }, req.id, true, {
                                                         fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                        lineNumber: 224,
-                                                        columnNumber: 21
+                                                        lineNumber: 245,
+                                                        columnNumber: 23
                                                     }, this))
                                             }, void 0, false, {
                                                 fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                lineNumber: 222,
+                                                lineNumber: 236,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                        lineNumber: 206,
+                                        lineNumber: 220,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                    lineNumber: 205,
+                                    lineNumber: 219,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                lineNumber: 204,
+                                lineNumber: 218,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                        lineNumber: 198,
+                        lineNumber: 212,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "flex gap-4 mt-8",
+                        className: "flex gap-4 mt-8 sticky bottom-8 p-4 bg-white/90 backdrop-blur-sm border rounded-lg shadow-lg",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
                                 onClick: ()=>handleBulkAction("approve"),
                                 disabled: selectedIds.size === 0,
-                                className: "flex-1 bg-green-600 hover:bg-green-700 text-white disabled:opacity-50 disabled:cursor-not-allowed",
-                                children: "Aprobar Seleccionados"
-                            }, void 0, false, {
+                                className: "flex-1 bg-green-600 hover:bg-green-700 text-white disabled:opacity-50 disabled:cursor-not-allowed transition-colors shadow-sm",
+                                children: [
+                                    "Aprobar (",
+                                    selectedIds.size,
+                                    ")"
+                                ]
+                            }, void 0, true, {
                                 fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                lineNumber: 272,
+                                lineNumber: 296,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
                                 onClick: ()=>handleBulkAction("reject"),
                                 disabled: selectedIds.size === 0,
-                                className: "flex-1 bg-red-600 hover:bg-red-700 text-white disabled:opacity-50 disabled:cursor-not-allowed",
-                                children: "Rechazar Seleccionados"
-                            }, void 0, false, {
+                                className: "flex-1 bg-red-600 hover:bg-red-700 text-white disabled:opacity-50 disabled:cursor-not-allowed transition-colors shadow-sm",
+                                children: [
+                                    "Rechazar (",
+                                    selectedIds.size,
+                                    ")"
+                                ]
+                            }, void 0, true, {
                                 fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                lineNumber: 279,
+                                lineNumber: 303,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
                                 onClick: handlePrintPermits,
                                 disabled: selectedIds.size === 0,
-                                className: "flex-1 bg-blue-600 hover:bg-blue-700 text-white disabled:opacity-50 disabled:cursor-not-allowed",
-                                children: "Imprimir Papeletas Físicas"
-                            }, void 0, false, {
+                                className: "flex-1 bg-slate-800 hover:bg-slate-900 text-white disabled:opacity-50 disabled:cursor-not-allowed transition-colors shadow-sm",
+                                children: [
+                                    "Imprimir Papeletas (",
+                                    selectedIds.size,
+                                    ")"
+                                ]
+                            }, void 0, true, {
                                 fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                lineNumber: 286,
+                                lineNumber: 310,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                        lineNumber: 271,
+                        lineNumber: 295,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                lineNumber: 122,
+                lineNumber: 128,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-        lineNumber: 107,
+        lineNumber: 113,
         columnNumber: 5
     }, this);
 }
