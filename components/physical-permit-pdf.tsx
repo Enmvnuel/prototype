@@ -35,7 +35,7 @@ export default function PhysicalPermitPdf({ request, onBack }: PhysicalPermitPdf
         <div className="text-center border-b-2 border-slate-800 pb-6 mb-8">
           <div className="flex justify-between items-start mb-4">
             <div className="w-16 h-16 border-2 border-slate-400 flex items-center justify-center">📧</div>
-            <h1 className="text-2xl font-bold text-slate-900">PAPELETA DE SALIDA - LICENCIA Y PERMISOS</h1>
+            <h1 className="text-2xl font-bold text-slate-900">DOCUMENTO DE SALIDA - LICENCIA Y PERMISOS</h1>
             <div className="w-16 h-16 border-2 border-slate-400 flex items-center justify-center">📧</div>
           </div>
         </div>

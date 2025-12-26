@@ -35,7 +35,7 @@ function PrintablePermit({ request }: { request: any }) {
           LOGO EMPRESA
         </div>
         <div className="flex-1 px-4 text-center">
-          <h1 className="text-2xl font-extrabold text-slate-900 leading-tight">PAPELETA DE SALIDA</h1>
+          <h1 className="text-2xl font-extrabold text-slate-900 leading-tight">DOCUMENTO DE SALIDA</h1>
           <h2 className="text-lg font-bold text-slate-700">LICENCIA Y PERMISOS</h2>
         </div>
         <div className="w-32 h-20 border border-slate-400 flex items-center justify-center bg-slate-50 text-xs text-slate-400">
