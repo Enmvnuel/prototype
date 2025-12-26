@@ -15,6 +15,8 @@ export interface RequestData {
   status: "PENDIENTE" | "APROBADO" | "RECHAZADO"
   createdAt: string
   observations: string
+  managerNotes?: string
+  reviewedAt?: string
   evidence?: boolean // Changed to boolean for simulation: true = has evidence
 }
 
@@ -42,12 +44,13 @@ const generateMockRequests = (): RequestData[] => {
   // Requirement: Max 10 requests, changing year every 2 requests (2020-2025)
   const employeeId = "emp001"
   const employeeName = "Empleado Actual"
-  const types = ["Vacaciones", "Licencia por Enfermedad", "Compensatorio"] as const
+  // Avoiding "Vacaciones" for emp001 mocks so they start with full 15 days balance as requested
+  const types = ["Licencia por Enfermedad", "Compensatorio"] as const
   const statuses = ["APROBADO", "RECHAZADO", "PENDIENTE"] as const
 
   let currentYear = 2020
 
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 5; i++) { // Reduced count for clarity
     // Change year every 2 requests
     if (i > 0 && i % 2 === 0) {
       if (currentYear < 2025) currentYear++
@@ -66,15 +69,15 @@ const generateMockRequests = (): RequestData[] => {
       id: reqId,
       employeeId,
       employeeName,
-      type: types[i % 3], // Rotate types
+      type: types[i % 2], // Only non-vacation types
       startDate: dateStr,
       endDate: endDateStr,
       totalDays: 3,
       workSite: "Sede Central",
-      status: i === 9 ? "PENDIENTE" : statuses[i % 3], // Ensure at least one pending, rotate others
+      status: statuses[i % 3],
       createdAt: dateStr,
       observations: `Solicitud generada para el año ${currentYear}`,
-      evidence: i % 2 === 0, // Alternate evidence
+      evidence: i % 2 === 0,
     })
   }
 
@@ -83,6 +86,9 @@ const generateMockRequests = (): RequestData[] => {
   const firstNames = ["Juan", "María", "Carlos", "Ana", "Luis", "Elena", "Pedro", "Sofia", "Miguel", "Lucía"]
   const lastNames = ["Pérez", "García", "López", "Martínez", "Rodríguez", "González", "Sánchez", "Ramírez", "Torres", "Flores"]
   const areas = ["Logística", "Operaciones", "RRHH", "Finanzas", "TI", "Ventas"]
+
+  // Re-define types for manager requests to include Vacations
+  const managerTypes = ["Vacaciones", "Licencia por Enfermedad", "Compensatorio"]
 
   for (let i = 0; i < 50; i++) {
     const fName = firstNames[Math.floor(Math.random() * firstNames.length)]
@@ -104,7 +110,7 @@ const generateMockRequests = (): RequestData[] => {
       id: reqId,
       employeeId: `emp-${100 + i}`,
       employeeName: `${fName} ${lName}`,
-      type: types[Math.floor(Math.random() * types.length)],
+      type: managerTypes[Math.floor(Math.random() * managerTypes.length)] as any,
       startDate: dateStr,
       endDate: `2025-${month.toString().padStart(2, '0')}-${(day + 2).toString().padStart(2, '0')}`,
       totalDays: Math.floor(Math.random() * 5) + 1,
@@ -128,7 +134,14 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   // Load from localStorage on mount
   useEffect(() => {
-    const saved = localStorage.getItem("elm-requests-v1")
+    // CLEANUP: Remove old v1 data to prevent conflicts
+    if (localStorage.getItem("elm-requests-v1")) {
+      console.log("🧹 Cleaning up old data (v1)...")
+      localStorage.removeItem("elm-requests-v1")
+    }
+
+    // UPDATED KEY TO V2 TO FORCE RESET FOR USER
+    const saved = localStorage.getItem("elm-requests-v2")
     if (saved) {
       try {
         setRequests(JSON.parse(saved))
@@ -137,6 +150,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         setRequests(generateMockRequests())
       }
     } else {
+      console.log("🔄 Initializing with fresh mock data (15 vacation days for emp001)...")
       setRequests(generateMockRequests())
     }
     setIsInitialized(true)
@@ -145,7 +159,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   // Save to localStorage whenever requests change
   useEffect(() => {
     if (isInitialized) {
-      localStorage.setItem("elm-requests-v1", JSON.stringify(requests))
+      localStorage.setItem("elm-requests-v2", JSON.stringify(requests))
     }
   }, [requests, isInitialized])
 
@@ -158,8 +172,23 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   }
 
   const getEmployeeBalance = (employeeId: string) => {
-    // Fixed mock balance for the simulation
-    return { vacation: 15, compensatory: 4 }
+    // Starting balances
+    const baseVacation = 15
+    const baseCompensatory = 4
+
+    // Calculate approved deductions (and include PENDING to reserve days immediately)
+    const deductions = requests
+      .filter(req => req.employeeId === employeeId && (req.status === "APROBADO" || req.status === "PENDIENTE"))
+      .reduce((acc, req) => {
+        if (req.type === "Vacaciones") acc.vacation += req.totalDays
+        if (req.type === "Compensatorio") acc.compensatory += req.totalDays
+        return acc
+      }, { vacation: 0, compensatory: 0 })
+
+    return {
+      vacation: Math.max(0, baseVacation - deductions.vacation),
+      compensatory: Math.max(0, baseCompensatory - deductions.compensatory)
+    }
   }
 
   // Prevent hydration mismatch by rendering children only after init or providing fallback

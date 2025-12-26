@@ -43,7 +43,7 @@ export default function RequestFormPage({ onBack, onLogout }: RequestFormPagePro
 
   const totalDays = calculateDays(startDate, endDate)
   const availableBalance =
-    permissionType === "Vacaciones" ? balance.vacation : permissionType === "Compensatorio" ? balance.compensatory : 999
+    permissionType === "Vacaciones" ? balance.vacation : permissionType === "Compensatorio" ? balance.compensatory : 0 // Changed default to 0 to avoid 999 confusion
 
   const hasError = totalDays > availableBalance && totalDays > 0
 
@@ -79,11 +79,7 @@ export default function RequestFormPage({ onBack, onLogout }: RequestFormPagePro
 
     addRequest(newRequest)
     setSubmitted(true)
-
-    // Reset form
-    setTimeout(() => {
-      onBack()
-    }, 2000)
+    // REMOVED TIMEOUT: Let user click "Volver" manually
   }
 
   if (submitted) {
@@ -94,23 +90,44 @@ export default function RequestFormPage({ onBack, onLogout }: RequestFormPagePro
           animate={{ scale: 1, opacity: 1 }}
           className="w-full max-w-md"
         >
-          <Card className="border-0 shadow-2xl shadow-green-500/10 text-center overflow-hidden">
-            <CardContent className="pt-12 pb-12 space-y-6">
-              <m.div
-                initial={{ scale: 0 }} animate={{ scale: 1 }}
-                className="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto text-green-600 mb-6"
-              >
-                <span className="text-6xl">✓</span>
-              </m.div>
-              <h2 className="text-3xl font-extrabold text-slate-900">¡Solicitud Enviada!</h2>
-              <p className="text-slate-500 max-w-xs mx-auto">
-                Su solicitud ha sido registrada exitosamente en el sistema. Redirigiendo...
-              </p>
-              <div className="h-1 w-32 bg-slate-100 rounded-full mx-auto overflow-hidden">
+          <Card className="border-0 shadow-2xl shadow-green-500/10 text-center overflow-hidden bg-white/80 backdrop-blur-xl">
+            <CardContent className="pt-16 pb-12 space-y-8">
+              <div className="relative">
                 <m.div
-                  initial={{ width: 0 }} animate={{ width: "100%" }} transition={{ duration: 2 }}
-                  className="h-full bg-green-500"
+                  initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ type: "spring", damping: 12 }}
+                  className="w-24 h-24 bg-green-500 rounded-2xl flex items-center justify-center mx-auto text-white shadow-xl shadow-green-200"
+                >
+                  <span className="text-5xl font-bold">✓</span>
+                </m.div>
+                <m.div
+                  initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}
+                  className="absolute -top-4 -right-4 w-12 h-12 bg-yellow-400 rounded-full blur-2xl opacity-40"
                 />
+              </div>
+              <div>
+                <h2 className="text-3xl font-black text-slate-900 tracking-tight">¡Solicitud Completada!</h2>
+                <p className="text-slate-500 mt-3 font-medium px-8 text-sm leading-relaxed">
+                  Su solicitud de <span className="text-slate-900 font-bold">{permissionType}</span> por <span className="text-slate-900 font-bold">{totalDays} días</span> ha sido enviada correctamente.
+                </p>
+              </div>
+
+              <div className="space-y-4">
+                <div className="h-1.5 w-48 bg-slate-100 rounded-full mx-auto overflow-hidden">
+                  <m.div
+                    initial={{ width: 0 }} animate={{ width: "100%" }} transition={{ duration: 2.5 }}
+                    className="h-full bg-green-500"
+                  />
+                </div>
+                <p className="text-[10px] text-slate-400 uppercase font-bold tracking-widest">Registrando transacción...</p>
+              </div>
+
+              <div className="pt-4 px-8">
+                <Button
+                  onClick={onBack}
+                  className="w-full py-7 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-2xl shadow-xl shadow-slate-200 transition-all hover:scale-[1.02] active:scale-95"
+                >
+                  Regresar al Dashboard
+                </Button>
               </div>
             </CardContent>
           </Card>

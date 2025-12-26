@@ -1069,10 +1069,21 @@ const AppProvider = ({ children })=>{
                 } : req));
     };
     const getEmployeeBalance = (employeeId)=>{
-        // Fixed mock balance for the simulation
+        // Starting balances
+        const baseVacation = 15;
+        const baseCompensatory = 4;
+        // Calculate approved deductions
+        const deductions = requests.filter((req)=>req.employeeId === employeeId && req.status === "APROBADO").reduce((acc, req)=>{
+            if (req.type === "Vacaciones") acc.vacation += req.totalDays;
+            if (req.type === "Compensatorio") acc.compensatory += req.totalDays;
+            return acc;
+        }, {
+            vacation: 0,
+            compensatory: 0
+        });
         return {
-            vacation: 15,
-            compensatory: 4
+            vacation: Math.max(0, baseVacation - deductions.vacation),
+            compensatory: Math.max(0, baseCompensatory - deductions.compensatory)
         };
     };
     // Prevent hydration mismatch by rendering children only after init or providing fallback
@@ -1087,7 +1098,7 @@ const AppProvider = ({ children })=>{
         children: children
     }, void 0, false, {
         fileName: "[project]/Documents/prototype/context/app-context.tsx",
-        lineNumber: 169,
+        lineNumber: 186,
         columnNumber: 5
     }, ("TURBOPACK compile-time value", void 0));
 };
@@ -1124,14 +1135,20 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$co
 var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$context$2f$app$2d$context$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/prototype/context/app-context.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$log$2d$out$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__LogOut$3e$__ = __turbopack_context__.i("[project]/Documents/prototype/node_modules/lucide-react/dist/esm/icons/log-out.js [app-client] (ecmascript) <export default as LogOut>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$search$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Search$3e$__ = __turbopack_context__.i("[project]/Documents/prototype/node_modules/lucide-react/dist/esm/icons/search.js [app-client] (ecmascript) <export default as Search>");
-var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$message$2d$circle$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__MessageCircle$3e$__ = __turbopack_context__.i("[project]/Documents/prototype/node_modules/lucide-react/dist/esm/icons/message-circle.js [app-client] (ecmascript) <export default as MessageCircle>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$eye$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Eye$3e$__ = __turbopack_context__.i("[project]/Documents/prototype/node_modules/lucide-react/dist/esm/icons/eye.js [app-client] (ecmascript) <export default as Eye>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$m$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/prototype/node_modules/framer-motion/dist/es/render/components/m/proxy.mjs [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$components$2f$LazyMotion$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/prototype/node_modules/framer-motion/dist/es/components/LazyMotion/index.mjs [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$dom$2f$features$2d$animation$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/prototype/node_modules/framer-motion/dist/es/render/dom/features-animation.mjs [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$components$2f$AnimatePresence$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/prototype/node_modules/framer-motion/dist/es/components/AnimatePresence/index.mjs [app-client] (ecmascript)");
+(()=>{
+    const e = new Error("Cannot find module './view-request-modal'");
+    e.code = 'MODULE_NOT_FOUND';
+    throw e;
+})();
 ;
 var _s = __turbopack_context__.k.signature();
 "use client";
+;
 ;
 ;
 ;
@@ -1145,6 +1162,11 @@ function EmployeeDashboard({ onCreateRequest, onLogout }) {
     const { requests, getEmployeeBalance } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$context$2f$app$2d$context$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useAppContext"])();
     const [filterMonth, setFilterMonth] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("all");
     const [filterStatus, setFilterStatus] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("all");
+    const [searchQuery, setSearchQuery] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
+    const [currentPage, setCurrentPage] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(1);
+    const itemsPerPage = 5;
+    const [selectedRequest, setSelectedRequest] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
+    const [isModalOpen, setIsModalOpen] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const employeeId = "emp001";
     const employeeName = "Nombre del Empleado";
     const balance = getEmployeeBalance(employeeId);
@@ -1172,6 +1194,10 @@ function EmployeeDashboard({ onCreateRequest, onLogout }) {
                         if (reqMonth !== filterMonth) return false;
                     }
                     if (filterStatus !== "all" && req.status !== filterStatus) return false;
+                    if (searchQuery) {
+                        const query = searchQuery.toLowerCase();
+                        return req.id.toLowerCase().includes(query) || req.type.toLowerCase().includes(query) || req.workSite.toLowerCase().includes(query);
+                    }
                     return true;
                 }
             }["EmployeeDashboard.useMemo[filteredRequests]"]);
@@ -1179,8 +1205,15 @@ function EmployeeDashboard({ onCreateRequest, onLogout }) {
     }["EmployeeDashboard.useMemo[filteredRequests]"], [
         employeeRequests,
         filterMonth,
-        filterStatus
+        filterStatus,
+        searchQuery
     ]);
+    const totalPages = Math.ceil(filteredRequests.length / itemsPerPage);
+    const paginatedRequests = filteredRequests.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+    const handleOpenModal = (req)=>{
+        setSelectedRequest(req);
+        setIsModalOpen(true);
+    };
     const getStatusBadge = (status)=>{
         if (status === "PENDIENTE") {
             return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Badge"], {
@@ -1188,7 +1221,7 @@ function EmployeeDashboard({ onCreateRequest, onLogout }) {
                 children: "PENDIENTE"
             }, void 0, false, {
                 fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                lineNumber: 50,
+                lineNumber: 78,
                 columnNumber: 14
             }, this);
         } else if (status === "APROBADO") {
@@ -1197,7 +1230,7 @@ function EmployeeDashboard({ onCreateRequest, onLogout }) {
                 children: "APROBADO"
             }, void 0, false, {
                 fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                lineNumber: 52,
+                lineNumber: 80,
                 columnNumber: 14
             }, this);
         } else {
@@ -1206,7 +1239,7 @@ function EmployeeDashboard({ onCreateRequest, onLogout }) {
                 children: "RECHAZADO"
             }, void 0, false, {
                 fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                lineNumber: 54,
+                lineNumber: 82,
                 columnNumber: 14
             }, this);
         }
@@ -1229,7 +1262,7 @@ function EmployeeDashboard({ onCreateRequest, onLogout }) {
                                         children: "Inicio"
                                     }, void 0, false, {
                                         fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                        lineNumber: 66,
+                                        lineNumber: 94,
                                         columnNumber: 15
                                     }, this),
                                     " > Mis Solicitudes > ",
@@ -1238,42 +1271,41 @@ function EmployeeDashboard({ onCreateRequest, onLogout }) {
                                         children: "Historial"
                                     }, void 0, false, {
                                         fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                        lineNumber: 66,
+                                        lineNumber: 94,
                                         columnNumber: 142
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                lineNumber: 65,
+                                lineNumber: 93,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "flex items-center gap-4",
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "text-sm",
+                                        className: "text-sm text-right hidden sm:block",
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                className: "font-bold text-slate-800",
-                                                children: "Bienvenido,"
+                                                className: "font-bold text-slate-800 block",
+                                                children: "Bryan Lopez"
                                             }, void 0, false, {
                                                 fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                                lineNumber: 70,
+                                                lineNumber: 98,
                                                 columnNumber: 17
                                             }, this),
-                                            " ",
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                className: "text-blue-600 font-bold hover:underline decoration-blue-200 underline-offset-4 cursor-pointer",
-                                                children: employeeName
+                                                className: "text-xs text-slate-500 uppercase tracking-wider",
+                                                children: "EMPLEADO"
                                             }, void 0, false, {
                                                 fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                                lineNumber: 70,
-                                                columnNumber: 79
+                                                lineNumber: 99,
+                                                columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                        lineNumber: 69,
+                                        lineNumber: 97,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -1285,29 +1317,29 @@ function EmployeeDashboard({ onCreateRequest, onLogout }) {
                                             className: "w-4 h-4"
                                         }, void 0, false, {
                                             fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                            lineNumber: 73,
+                                            lineNumber: 102,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                        lineNumber: 72,
+                                        lineNumber: 101,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                lineNumber: 68,
+                                lineNumber: 96,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                        lineNumber: 64,
+                        lineNumber: 92,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                    lineNumber: 63,
+                    lineNumber: 91,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("main", {
@@ -1318,7 +1350,7 @@ function EmployeeDashboard({ onCreateRequest, onLogout }) {
                             children: "Dashboard de Saldo Personal"
                         }, void 0, false, {
                             fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                            lineNumber: 82,
+                            lineNumber: 111,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1349,7 +1381,7 @@ function EmployeeDashboard({ onCreateRequest, onLogout }) {
                                                     children: "Vacaciones Acumuladas"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                                    lineNumber: 93,
+                                                    lineNumber: 122,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -1360,7 +1392,7 @@ function EmployeeDashboard({ onCreateRequest, onLogout }) {
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                                    lineNumber: 94,
+                                                    lineNumber: 123,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1368,26 +1400,26 @@ function EmployeeDashboard({ onCreateRequest, onLogout }) {
                                                     children: "Última actualización: Marzo de Tiempo"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                                    lineNumber: 95,
+                                                    lineNumber: 124,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                            lineNumber: 92,
+                                            lineNumber: 121,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "absolute -right-8 -bottom-12 w-48 h-48 bg-emerald-400/40 rounded-full blur-2xl group-hover:scale-125 transition-transform duration-500 ease-in-out"
                                         }, void 0, false, {
                                             fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                            lineNumber: 97,
+                                            lineNumber: 126,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                    lineNumber: 87,
+                                    lineNumber: 116,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$m$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["m"].div, {
@@ -1416,7 +1448,7 @@ function EmployeeDashboard({ onCreateRequest, onLogout }) {
                                                     children: "Tiempo Compensatorio"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                                    lineNumber: 107,
+                                                    lineNumber: 136,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -1427,7 +1459,7 @@ function EmployeeDashboard({ onCreateRequest, onLogout }) {
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                                    lineNumber: 108,
+                                                    lineNumber: 137,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1435,32 +1467,32 @@ function EmployeeDashboard({ onCreateRequest, onLogout }) {
                                                     children: "Última actualización: Marzo de Tiempo"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                                    lineNumber: 109,
+                                                    lineNumber: 138,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                            lineNumber: 106,
+                                            lineNumber: 135,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "absolute -right-8 -bottom-12 w-48 h-48 bg-blue-500/40 rounded-full blur-2xl group-hover:scale-125 transition-transform duration-500 ease-in-out"
                                         }, void 0, false, {
                                             fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                            lineNumber: 111,
+                                            lineNumber: 140,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                    lineNumber: 101,
+                                    lineNumber: 130,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                            lineNumber: 85,
+                            lineNumber: 114,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1474,7 +1506,7 @@ function EmployeeDashboard({ onCreateRequest, onLogout }) {
                                             children: "Filtros de Historial"
                                         }, void 0, false, {
                                             fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                            lineNumber: 118,
+                                            lineNumber: 147,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1484,28 +1516,33 @@ function EmployeeDashboard({ onCreateRequest, onLogout }) {
                                                     className: "absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-blue-500 transition-colors"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                                    lineNumber: 120,
+                                                    lineNumber: 149,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                                     type: "text",
-                                                    placeholder: "Búsqueda por Palabra Clave",
-                                                    className: "w-full pl-10 pr-4 py-2.5 text-sm rounded-lg border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-100 outline-none transition-all text-slate-700 bg-white placeholder:text-slate-400 shadow-sm"
+                                                    placeholder: "Búsqueda por Palabra Clave (ID, Tipo, Sede)",
+                                                    className: "w-full pl-10 pr-4 py-2.5 text-sm rounded-lg border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-100 outline-none transition-all text-slate-700 bg-white placeholder:text-slate-400 shadow-sm",
+                                                    value: searchQuery,
+                                                    onChange: (e)=>{
+                                                        setSearchQuery(e.target.value);
+                                                        setCurrentPage(1);
+                                                    }
                                                 }, void 0, false, {
                                                     fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                                    lineNumber: 121,
+                                                    lineNumber: 150,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                            lineNumber: 119,
+                                            lineNumber: 148,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                    lineNumber: 117,
+                                    lineNumber: 146,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1521,12 +1558,12 @@ function EmployeeDashboard({ onCreateRequest, onLogout }) {
                                                         placeholder: "Mes/Año"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                                        lineNumber: 128,
+                                                        lineNumber: 166,
                                                         columnNumber: 19
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                                    lineNumber: 127,
+                                                    lineNumber: 165,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectContent"], {
@@ -1536,7 +1573,7 @@ function EmployeeDashboard({ onCreateRequest, onLogout }) {
                                                             children: "Todo"
                                                         }, void 0, false, {
                                                             fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                                            lineNumber: 131,
+                                                            lineNumber: 169,
                                                             columnNumber: 19
                                                         }, this),
                                                         uniqueMonths.map((month)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
@@ -1544,19 +1581,19 @@ function EmployeeDashboard({ onCreateRequest, onLogout }) {
                                                                 children: month
                                                             }, month, false, {
                                                                 fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                                                lineNumber: 133,
+                                                                lineNumber: 171,
                                                                 columnNumber: 21
                                                             }, this))
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                                    lineNumber: 130,
+                                                    lineNumber: 168,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                            lineNumber: 126,
+                                            lineNumber: 164,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Select"], {
@@ -1569,12 +1606,12 @@ function EmployeeDashboard({ onCreateRequest, onLogout }) {
                                                         placeholder: "Estado"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                                        lineNumber: 140,
+                                                        lineNumber: 178,
                                                         columnNumber: 19
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                                    lineNumber: 139,
+                                                    lineNumber: 177,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectContent"], {
@@ -1584,7 +1621,7 @@ function EmployeeDashboard({ onCreateRequest, onLogout }) {
                                                             children: "Todos"
                                                         }, void 0, false, {
                                                             fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                                            lineNumber: 143,
+                                                            lineNumber: 181,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
@@ -1592,7 +1629,7 @@ function EmployeeDashboard({ onCreateRequest, onLogout }) {
                                                             children: "PENDIENTE"
                                                         }, void 0, false, {
                                                             fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                                            lineNumber: 144,
+                                                            lineNumber: 182,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
@@ -1600,7 +1637,7 @@ function EmployeeDashboard({ onCreateRequest, onLogout }) {
                                                             children: "APROBADO"
                                                         }, void 0, false, {
                                                             fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                                            lineNumber: 145,
+                                                            lineNumber: 183,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
@@ -1608,31 +1645,31 @@ function EmployeeDashboard({ onCreateRequest, onLogout }) {
                                                             children: "RECHAZADO"
                                                         }, void 0, false, {
                                                             fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                                            lineNumber: 146,
+                                                            lineNumber: 184,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                                    lineNumber: 142,
+                                                    lineNumber: 180,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                            lineNumber: 138,
+                                            lineNumber: 176,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                    lineNumber: 125,
+                                    lineNumber: 163,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                            lineNumber: 116,
+                            lineNumber: 145,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -1640,7 +1677,7 @@ function EmployeeDashboard({ onCreateRequest, onLogout }) {
                             children: "Cuadrícula de Datos del Historial de Solicitudes"
                         }, void 0, false, {
                             fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                            lineNumber: 153,
+                            lineNumber: 191,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1657,7 +1694,7 @@ function EmployeeDashboard({ onCreateRequest, onLogout }) {
                                                     children: "ID Solicitud"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                                    lineNumber: 160,
+                                                    lineNumber: 198,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableHead"], {
@@ -1665,7 +1702,7 @@ function EmployeeDashboard({ onCreateRequest, onLogout }) {
                                                     children: "Fecha de Envío"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                                    lineNumber: 161,
+                                                    lineNumber: 199,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableHead"], {
@@ -1673,7 +1710,7 @@ function EmployeeDashboard({ onCreateRequest, onLogout }) {
                                                     children: "Tipo de Licencia"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                                    lineNumber: 162,
+                                                    lineNumber: 200,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableHead"], {
@@ -1681,7 +1718,7 @@ function EmployeeDashboard({ onCreateRequest, onLogout }) {
                                                     children: "Fechas Solicitadas"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                                    lineNumber: 163,
+                                                    lineNumber: 201,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableHead"], {
@@ -1689,7 +1726,7 @@ function EmployeeDashboard({ onCreateRequest, onLogout }) {
                                                     children: "Días"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                                    lineNumber: 164,
+                                                    lineNumber: 202,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableHead"], {
@@ -1697,7 +1734,7 @@ function EmployeeDashboard({ onCreateRequest, onLogout }) {
                                                     children: "Sede Asignada"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                                    lineNumber: 165,
+                                                    lineNumber: 203,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableHead"], {
@@ -1705,7 +1742,7 @@ function EmployeeDashboard({ onCreateRequest, onLogout }) {
                                                     children: "Estado"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                                    lineNumber: 166,
+                                                    lineNumber: 204,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableHead"], {
@@ -1713,36 +1750,36 @@ function EmployeeDashboard({ onCreateRequest, onLogout }) {
                                                     children: "Acciones"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                                    lineNumber: 167,
+                                                    lineNumber: 205,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                            lineNumber: 159,
+                                            lineNumber: 197,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                        lineNumber: 158,
+                                        lineNumber: 196,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableBody"], {
-                                        children: filteredRequests.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableRow"], {
+                                        children: paginatedRequests.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableRow"], {
                                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"], {
                                                 colSpan: 8,
                                                 className: "h-48 text-center text-slate-400",
-                                                children: "No se encontraron registros activos."
+                                                children: "No se encontraron registros que coincidan con los filtros."
                                             }, void 0, false, {
                                                 fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                                lineNumber: 173,
+                                                lineNumber: 211,
                                                 columnNumber: 21
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                            lineNumber: 172,
+                                            lineNumber: 210,
                                             columnNumber: 19
-                                        }, this) : filteredRequests.map((req, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$m$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["m"].tr, {
+                                        }, this) : paginatedRequests.map((req, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$m$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["m"].tr, {
                                                 initial: {
                                                     opacity: 0,
                                                     x: -10
@@ -1761,7 +1798,7 @@ function EmployeeDashboard({ onCreateRequest, onLogout }) {
                                                         children: req.id
                                                     }, void 0, false, {
                                                         fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                                        lineNumber: 186,
+                                                        lineNumber: 224,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"], {
@@ -1769,7 +1806,7 @@ function EmployeeDashboard({ onCreateRequest, onLogout }) {
                                                         children: req.createdAt
                                                     }, void 0, false, {
                                                         fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                                        lineNumber: 187,
+                                                        lineNumber: 225,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"], {
@@ -1777,7 +1814,7 @@ function EmployeeDashboard({ onCreateRequest, onLogout }) {
                                                         children: req.type
                                                     }, void 0, false, {
                                                         fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                                        lineNumber: 188,
+                                                        lineNumber: 226,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"], {
@@ -1790,7 +1827,7 @@ function EmployeeDashboard({ onCreateRequest, onLogout }) {
                                                                 children: "/"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                                                lineNumber: 189,
+                                                                lineNumber: 227,
                                                                 columnNumber: 97
                                                             }, this),
                                                             " ",
@@ -1798,7 +1835,7 @@ function EmployeeDashboard({ onCreateRequest, onLogout }) {
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                                        lineNumber: 189,
+                                                        lineNumber: 227,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"], {
@@ -1806,7 +1843,7 @@ function EmployeeDashboard({ onCreateRequest, onLogout }) {
                                                         children: req.totalDays
                                                     }, void 0, false, {
                                                         fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                                        lineNumber: 190,
+                                                        lineNumber: 228,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"], {
@@ -1814,80 +1851,65 @@ function EmployeeDashboard({ onCreateRequest, onLogout }) {
                                                         children: req.workSite
                                                     }, void 0, false, {
                                                         fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                                        lineNumber: 191,
+                                                        lineNumber: 229,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"], {
                                                         children: getStatusBadge(req.status)
                                                     }, void 0, false, {
                                                         fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                                        lineNumber: 192,
+                                                        lineNumber: 230,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"], {
                                                         className: "text-right pr-6",
                                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                             className: "flex justify-end gap-2 text-slate-400",
-                                                            children: [
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                                                    className: "hover:text-blue-600 hover:bg-blue-50 transition-all p-2 rounded-lg group/btn hover:shadow-sm ring-1 ring-transparent hover:ring-blue-100",
-                                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$eye$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Eye$3e$__["Eye"], {
-                                                                        className: "w-5 h-5"
-                                                                    }, void 0, false, {
-                                                                        fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                                                        lineNumber: 196,
-                                                                        columnNumber: 29
-                                                                    }, this)
+                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                                onClick: ()=>handleOpenModal(req),
+                                                                className: "hover:text-blue-600 hover:bg-blue-50 transition-all p-2 rounded-lg group/btn hover:shadow-sm ring-1 ring-transparent hover:ring-blue-100",
+                                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$eye$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Eye$3e$__["Eye"], {
+                                                                    className: "w-5 h-5"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                                                    lineNumber: 195,
-                                                                    columnNumber: 27
-                                                                }, this),
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                                                    className: "hover:text-blue-600 hover:bg-blue-50 transition-all p-2 rounded-lg group/btn hover:shadow-sm ring-1 ring-transparent hover:ring-blue-100",
-                                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$message$2d$circle$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__MessageCircle$3e$__["MessageCircle"], {
-                                                                        className: "w-5 h-5"
-                                                                    }, void 0, false, {
-                                                                        fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                                                        lineNumber: 199,
-                                                                        columnNumber: 29
-                                                                    }, this)
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                                                    lineNumber: 198,
-                                                                    columnNumber: 27
+                                                                    lineNumber: 237,
+                                                                    columnNumber: 29
                                                                 }, this)
-                                                            ]
-                                                        }, void 0, true, {
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
+                                                                lineNumber: 233,
+                                                                columnNumber: 27
+                                                            }, this)
+                                                        }, void 0, false, {
                                                             fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                                            lineNumber: 194,
+                                                            lineNumber: 232,
                                                             columnNumber: 25
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                                        lineNumber: 193,
+                                                        lineNumber: 231,
                                                         columnNumber: 23
                                                     }, this)
                                                 ]
                                             }, req.id, true, {
                                                 fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                                lineNumber: 179,
+                                                lineNumber: 217,
                                                 columnNumber: 21
                                             }, this))
                                     }, void 0, false, {
                                         fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                        lineNumber: 170,
+                                        lineNumber: 208,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                lineNumber: 157,
+                                lineNumber: 195,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                            lineNumber: 156,
+                            lineNumber: 194,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1897,70 +1919,61 @@ function EmployeeDashboard({ onCreateRequest, onLogout }) {
                                     className: "flex items-center gap-6 text-sm font-bold text-slate-400 select-none",
                                     children: [
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                            className: "hover:text-blue-600 hover:bg-blue-50 px-3 py-1.5 rounded-md transition-all flex items-center  disabled:opacity-50",
+                                            onClick: ()=>setCurrentPage((prev)=>Math.max(1, prev - 1)),
+                                            disabled: currentPage === 1,
+                                            className: "hover:text-blue-600 hover:bg-blue-50 px-3 py-1.5 rounded-md transition-all flex items-center disabled:opacity-30 disabled:cursor-not-allowed",
                                             children: "< Anterior"
                                         }, void 0, false, {
                                             fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                            lineNumber: 213,
+                                            lineNumber: 251,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "flex gap-2",
-                                            children: [
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                    className: "bg-blue-600 text-white w-8 h-8 flex items-center justify-center rounded-lg shadow-md shadow-blue-200",
-                                                    children: "1"
-                                                }, void 0, false, {
+                                            children: Array.from({
+                                                length: totalPages
+                                            }, (_, i)=>i + 1).map((page)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                    onClick: ()=>setCurrentPage(page),
+                                                    className: `w-8 h-8 flex items-center justify-center rounded-lg cursor-pointer transition-all ${currentPage === page ? "bg-blue-600 text-white shadow-md shadow-blue-200" : "hover:bg-slate-100 hover:text-blue-600"}`,
+                                                    children: page
+                                                }, page, false, {
                                                     fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                                    lineNumber: 215,
-                                                    columnNumber: 17
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                    className: "hover:bg-slate-100 hover:text-blue-600 w-8 h-8 flex items-center justify-center rounded-lg cursor-pointer transition-colors",
-                                                    children: "2"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                                    lineNumber: 216,
-                                                    columnNumber: 17
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                    className: "hover:bg-slate-100 hover:text-blue-600 w-8 h-8 flex items-center justify-center rounded-lg cursor-pointer transition-colors",
-                                                    children: "3"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                                    lineNumber: 217,
-                                                    columnNumber: 17
-                                                }, this)
-                                            ]
-                                        }, void 0, true, {
+                                                    lineNumber: 260,
+                                                    columnNumber: 19
+                                                }, this))
+                                        }, void 0, false, {
                                             fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                            lineNumber: 214,
+                                            lineNumber: 258,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                            className: "hover:text-blue-600 hover:bg-blue-50 px-3 py-1.5 rounded-md transition-all flex items-center",
+                                            onClick: ()=>setCurrentPage((prev)=>Math.min(totalPages, prev + 1)),
+                                            disabled: currentPage === totalPages || totalPages === 0,
+                                            className: "hover:text-blue-600 hover:bg-blue-50 px-3 py-1.5 rounded-md transition-all flex items-center disabled:opacity-30 disabled:cursor-not-allowed",
                                             children: "Siguiente >"
                                         }, void 0, false, {
                                             fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                            lineNumber: 219,
+                                            lineNumber: 272,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                             className: "text-slate-400 font-medium ml-4 text-xs tracking-wide uppercase border-l pl-6 border-slate-200",
                                             children: [
                                                 "Mostrando ",
+                                                paginatedRequests.length,
+                                                " de ",
                                                 filteredRequests.length,
-                                                " de 45 registros"
+                                                " registros"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                            lineNumber: 220,
+                                            lineNumber: 279,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                    lineNumber: 212,
+                                    lineNumber: 250,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -1971,39 +1984,56 @@ function EmployeeDashboard({ onCreateRequest, onLogout }) {
                                         children: "[ + ] NUEVA SOLICITUD"
                                     }, void 0, false, {
                                         fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                        lineNumber: 224,
+                                        lineNumber: 285,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                                    lineNumber: 223,
+                                    lineNumber: 284,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                            lineNumber: 211,
+                            lineNumber: 249,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-                    lineNumber: 79,
+                    lineNumber: 108,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$components$2f$AnimatePresence$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AnimatePresence"], {
+                    children: isModalOpen && selectedRequest && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(ViewRequestModal, {
+                        request: selectedRequest,
+                        onClose: ()=>{
+                            setIsModalOpen(false);
+                            setSelectedRequest(null);
+                        }
+                    }, void 0, false, {
+                        fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
+                        lineNumber: 293,
+                        columnNumber: 13
+                    }, this)
+                }, void 0, false, {
+                    fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
+                    lineNumber: 291,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-            lineNumber: 60,
+            lineNumber: 88,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/Documents/prototype/components/employee-dashboard.tsx",
-        lineNumber: 59,
+        lineNumber: 87,
         columnNumber: 5
     }, this);
 }
-_s(EmployeeDashboard, "KwTWtjy58wmMKiaSenVsgupIQPE=", false, function() {
+_s(EmployeeDashboard, "J9fAQVcw7YEWjaco6Apzb8z0iWg=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$context$2f$app$2d$context$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useAppContext"]
     ];
@@ -4692,7 +4722,7 @@ function ManagerPanel({ onLogout, currentView, onViewChange }) {
                                                 children: [
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                         className: "font-bold text-slate-800 block",
-                                                        children: "Gerente General"
+                                                        children: "Cristopher Arias"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
                                                         lineNumber: 229,

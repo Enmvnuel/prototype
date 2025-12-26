@@ -226,7 +226,7 @@ export default function ManagerPanel({ onLogout, currentView, onViewChange }: Ma
               </div>
               <div className="flex items-center gap-4">
                 <div className="text-sm text-right hidden sm:block">
-                  <span className="font-bold text-slate-800 block">Gerente General</span>
+                  <span className="font-bold text-slate-800 block">Cristopher Arias</span>
                   <span className="text-xs text-slate-500 uppercase tracking-wider">Administrador</span>
                 </div>
                 <Button onClick={onLogout} variant="ghost" size="sm" className="text-slate-400 hover:text-red-500 hover:bg-red-50 rounded-full transition-all">
