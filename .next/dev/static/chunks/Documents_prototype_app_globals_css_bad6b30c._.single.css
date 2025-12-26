@@ -1209,6 +1209,10 @@
     height: 350px;
   }
 
+  .h-\[450px\] {
+    height: 450px;
+  }
+
   .h-\[calc\(100\%-1px\)\] {
     height: calc(100% - 1px);
   }
@@ -1291,6 +1295,10 @@
 
   .min-h-\[320px\] {
     min-height: 320px;
+  }
+
+  .min-h-\[400px\] {
+    min-height: 400px;
   }
 
   .min-h-screen {

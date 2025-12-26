@@ -331,7 +331,7 @@ export default function ManagerPanel({ onLogout, currentView, onViewChange }: Ma
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.2 }}
-                className="h-[350px]"
+                className="h-[450px]"
               >
                 <RequestStatusChart
                   requests={filteredRequests}
@@ -346,7 +346,7 @@ export default function ManagerPanel({ onLogout, currentView, onViewChange }: Ma
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.3 }}
-                className="lg:col-span-2 bg-white rounded-2xl border border-slate-200 shadow-lg shadow-slate-200/40 p-8 flex flex-col justify-between h-[350px] relative overflow-hidden"
+                className="lg:col-span-2 bg-white rounded-2xl border border-slate-200 shadow-lg shadow-slate-200/40 p-8 flex flex-col justify-between h-[450px] relative overflow-hidden"
               >
                 <div className="relative z-10">
                   <div className="flex items-center gap-3 mb-4">
