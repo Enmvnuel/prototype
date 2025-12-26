@@ -15,7 +15,7 @@ import { m, LazyMotion, domAnimation } from "framer-motion"
 interface ManagerPanelProps {
   onLogout: () => void
   currentView: "panel" | "review-modal"
-  onViewChange: (view: "panel" | "review-modal") => void
+  onViewChange: (view: any) => void
 }
 
 // Printable Permit Component
