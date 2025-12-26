@@ -2,7 +2,6 @@
 2:I[66096,["/_next/static/chunks/b3a514db4ac3c39e.js"],"ViewportBoundary"]
 4:I[66096,["/_next/static/chunks/b3a514db4ac3c39e.js"],"MetadataBoundary"]
 5:"$Sreact.suspense"
-7:I[33295,["/_next/static/chunks/b3a514db4ac3c39e.js"],"IconMark"]
-0:{"buildId":"BrpkJdF2M0ZUkgVpNatCO","rsc":["$","$1","h",{"children":[null,["$","$L2",null,{"children":"$@3"}],["$","div",null,{"hidden":true,"children":["$","$L4",null,{"children":["$","$5",null,{"name":"Next.Metadata","children":"$@6"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"loading":null,"isPartial":false}
+0:{"buildId":"LZKFwQrdzpeVVrNGJkqG7","rsc":["$","$1","h",{"children":[null,["$","$L2",null,{"children":"$@3"}],["$","div",null,{"hidden":true,"children":["$","$L4",null,{"children":["$","$5",null,{"name":"Next.Metadata","children":"$@6"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"loading":null,"isPartial":false}
 3:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
-6:[["$","title","0",{"children":"v0 App"}],["$","meta","1",{"name":"description","content":"Created with v0"}],["$","meta","2",{"name":"generator","content":"v0.app"}],["$","link","3",{"rel":"icon","href":"/icon-light-32x32.png","media":"(prefers-color-scheme: light)"}],["$","link","4",{"rel":"icon","href":"/icon-dark-32x32.png","media":"(prefers-color-scheme: dark)"}],["$","link","5",{"rel":"icon","href":"/icon.svg","type":"image/svg+xml"}],["$","link","6",{"rel":"apple-touch-icon","href":"/apple-icon.png"}],["$","$L7","7",{}]]
+6:[["$","title","0",{"children":"Sistema de Gestión de Licencias"}],["$","meta","1",{"name":"description","content":"Gestión corporativa de permisos y licencias"}],["$","meta","2",{"name":"generator","content":"v0.app"}]]

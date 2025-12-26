@@ -10,6 +10,7 @@ import { useAppContext } from "@/context/app-context"
 import { LogOut, Search, Eye } from "lucide-react"
 import { m, LazyMotion, domAnimation, AnimatePresence } from "framer-motion"
 import ViewRequestModal from "./view-request-modal"
+import RequestStatusChart from "./request-status-chart"
 
 interface EmployeeDashboardProps {
   onCreateRequest: () => void
@@ -110,34 +111,80 @@ export default function EmployeeDashboard({ onCreateRequest, onLogout }: Employe
           {/* Section Title */}
           <h2 className="text-xl font-bold text-slate-800 tracking-tight">Dashboard de Saldo Personal</h2>
 
-          {/* Cards Row */}
-          <div className="flex flex-col md:flex-row gap-6">
+          {/* Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Green Card - Vacation */}
             <m.div
               initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}
-              whileHover={{ scale: 1.02 }}
-              className="bg-emerald-500 rounded-2xl p-6 text-white shadow-xl shadow-emerald-500/20 w-full md:w-80 relative overflow-hidden group cursor-pointer"
+              whileHover={{ y: -5 }}
+              className="bg-white rounded-2xl p-8 shadow-xl shadow-slate-200/50 border border-slate-100 relative overflow-hidden group flex flex-col justify-between min-h-[320px]"
             >
-              <div className="relative z-10 font-sans">
-                <p className="font-medium text-emerald-50 mb-2 opacity-90">Vacaciones Acumuladas</p>
-                <h3 className="text-5xl font-extrabold mb-4 tracking-tight">{balance.vacation} días</h3>
-                <p className="text-xs text-emerald-100 opacity-80 underline decoration-emerald-300 underline-offset-2">Última actualización: Marzo de Tiempo</p>
+              <div className="relative z-10 font-sans h-full flex flex-col">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-10 h-10 rounded-xl bg-emerald-100 flex items-center justify-center text-emerald-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  <p className="font-bold text-slate-500 uppercase text-xs tracking-wider">Vacaciones</p>
+                </div>
+
+                <div className="flex-1 flex flex-col justify-center">
+                  <h3 className="text-6xl font-extrabold tracking-tight text-slate-800">{balance.vacation}</h3>
+                  <span className="text-xl font-medium text-slate-400 -mt-1">días disponibles</span>
+                </div>
+
+                <div className="mt-4 pt-4 border-t border-slate-100 flex items-center gap-2">
+                  <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
+                  <p className="text-xs text-slate-400 font-medium">Estado: Activo y acumulando</p>
+                </div>
               </div>
-              <div className="absolute -right-8 -bottom-12 w-48 h-48 bg-emerald-400/40 rounded-full blur-2xl group-hover:scale-125 transition-transform duration-500 ease-in-out"></div>
+
+              {/* Decorative gradient blob */}
+              <div className="absolute -right-16 -top-16 w-64 h-64 bg-emerald-50/50 rounded-full blur-3xl group-hover:bg-emerald-100/50 transition-colors duration-500"></div>
             </m.div>
 
             {/* Blue Card - Compensatory */}
             <m.div
               initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.1 }}
-              whileHover={{ scale: 1.02 }}
-              className="bg-blue-600 rounded-2xl p-6 text-white shadow-xl shadow-blue-600/20 w-full md:w-80 relative overflow-hidden group cursor-pointer"
+              whileHover={{ y: -5 }}
+              className="bg-white rounded-2xl p-8 shadow-xl shadow-slate-200/50 border border-slate-100 relative overflow-hidden group flex flex-col justify-between min-h-[320px]"
             >
-              <div className="relative z-10 font-sans">
-                <p className="font-medium text-blue-50 mb-2 opacity-90">Tiempo Compensatorio</p>
-                <h3 className="text-5xl font-extrabold mb-4 tracking-tight">{balance.compensatory} días</h3>
-                <p className="text-xs text-blue-100 opacity-80 underline decoration-blue-400 underline-offset-2">Última actualización: Marzo de Tiempo</p>
+              <div className="relative z-10 font-sans h-full flex flex-col">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-center text-blue-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  <p className="font-bold text-slate-500 uppercase text-xs tracking-wider">Compensatorio</p>
+                </div>
+
+                <div className="flex-1 flex flex-col justify-center">
+                  <h3 className="text-6xl font-extrabold tracking-tight text-slate-800">{balance.compensatory}</h3>
+                  <span className="text-xl font-medium text-slate-400 -mt-1">horas/días</span>
+                </div>
+
+                <div className="mt-4 pt-4 border-t border-slate-100 flex items-center gap-2">
+                  <div className="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></div>
+                  <p className="text-xs text-slate-400 font-medium">Caduca: Diciembre 2025</p>
+                </div>
               </div>
-              <div className="absolute -right-8 -bottom-12 w-48 h-48 bg-blue-500/40 rounded-full blur-2xl group-hover:scale-125 transition-transform duration-500 ease-in-out"></div>
+
+              {/* Decorative gradient blob */}
+              <div className="absolute -right-16 -top-16 w-64 h-64 bg-blue-50/50 rounded-full blur-3xl group-hover:bg-blue-100/50 transition-colors duration-500"></div>
+            </m.div>
+
+            {/* Chart Card */}
+            <m.div
+              initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.2 }}
+              className="min-h-[320px]"
+            >
+              <RequestStatusChart
+                requests={employeeRequests}
+                title="Estado de Mis Solicitudes"
+                className="rounded-2xl border-none shadow-xl shadow-slate-200/50"
+              />
             </m.div>
           </div>
 
@@ -261,8 +308,8 @@ export default function EmployeeDashboard({ onCreateRequest, onLogout }: Employe
                     key={page}
                     onClick={() => setCurrentPage(page)}
                     className={`w-8 h-8 flex items-center justify-center rounded-lg cursor-pointer transition-all ${currentPage === page
-                        ? "bg-blue-600 text-white shadow-md shadow-blue-200"
-                        : "hover:bg-slate-100 hover:text-blue-600"
+                      ? "bg-blue-600 text-white shadow-md shadow-blue-200"
+                      : "hover:bg-slate-100 hover:text-blue-600"
                       }`}
                   >
                     {page}

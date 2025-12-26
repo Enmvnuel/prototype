@@ -11,6 +11,7 @@ import { useAppContext } from "@/context/app-context"
 import ReviewModal from "./review-modal"
 import { LogOut, Eye, CheckCircle, XCircle, Search, Calendar, ChevronDown } from "lucide-react"
 import { m, LazyMotion, domAnimation } from "framer-motion"
+import RequestStatusChart from "./request-status-chart"
 
 interface ManagerPanelProps {
   onLogout: () => void
@@ -322,6 +323,77 @@ export default function ManagerPanel({ onLogout, currentView, onViewChange }: Ma
                 </Button>
               </div>
             </m.div>
+
+            {/* Visual Summary Section */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              {/* Chart Component */}
+              <m.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.2 }}
+                className="h-[350px]"
+              >
+                <RequestStatusChart
+                  requests={filteredRequests}
+                  title="Distribución Actual"
+                  description="Visualización de estados según filtros"
+                  className="rounded-2xl border-slate-200 shadow-lg shadow-slate-200/40"
+                />
+              </m.div>
+
+              {/* Executive Summary Card */}
+              <m.div
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.3 }}
+                className="lg:col-span-2 bg-white rounded-2xl border border-slate-200 shadow-lg shadow-slate-200/40 p-8 flex flex-col justify-between h-[350px] relative overflow-hidden"
+              >
+                <div className="relative z-10">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="p-3 bg-blue-100 rounded-xl">
+                      <Calendar className="w-6 h-6 text-blue-600" />
+                    </div>
+                    <h3 className="text-xl font-bold text-slate-800">Resumen Ejecutivo</h3>
+                  </div>
+
+                  <div className="space-y-6 max-w-2xl">
+                    <div>
+                      <p className="text-slate-500 text-sm font-medium uppercase tracking-wider mb-1">Acciones Requeridas</p>
+                      <div className="flex items-baseline gap-2">
+                        <span className="text-5xl font-extrabold text-slate-900 tracking-tight">{requests.filter(r => r.status === 'PENDIENTE' && r.employeeId !== 'emp001').length}</span>
+                        <span className="text-lg text-slate-600 font-medium">solicitudes pendientes</span>
+                      </div>
+                      <p className="text-slate-400 text-sm mt-2 leading-relaxed">
+                        Estas solicitudes están esperando su aprobación o rechazo. Mantener este número bajo ayuda a la eficiencia operativa del equipo.
+                      </p>
+                    </div>
+
+                    <div className="flex gap-4">
+                      <Button
+                        onClick={() => setFilterStatus("PENDIENTE")}
+                        className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-lg shadow-lg shadow-blue-500/20 transition-all active:scale-95"
+                      >
+                        Filtrar Pendientes
+                      </Button>
+                      <Button
+                        variant="outline"
+                        onClick={() => { setFilterStatus("all"); setFilterUnit("all"); }}
+                        className="border-slate-200 text-slate-600 hover:bg-slate-50"
+                      >
+                        Ver Todo
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Decorative Background Elements */}
+                <div className="absolute right-0 top-0 h-full w-1/3 bg-gradient-to-l from-blue-50 to-transparent pointer-events-none"></div>
+                <div className="absolute -right-16 -top-16 w-64 h-64 bg-blue-100/50 rounded-full blur-3xl"></div>
+                <div className="absolute -right-4 -bottom-4 w-48 h-48 bg-indigo-50/80 rounded-full blur-2xl"></div>
+              </m.div>
+            </div>
+
+            {/* Table Container */}
 
             {/* Table Container */}
             <m.div
