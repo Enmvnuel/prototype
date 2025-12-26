@@ -42,10 +42,17 @@ export default function RequestFormPage({ onBack, onLogout }: RequestFormPagePro
   }
 
   const totalDays = calculateDays(startDate, endDate)
-  const availableBalance =
-    permissionType === "Vacaciones" ? balance.vacation : permissionType === "Compensatorio" ? balance.compensatory : 0 // Changed default to 0 to avoid 999 confusion
 
-  const hasError = totalDays > availableBalance && totalDays > 0
+  // Calculate available balance based on current permission type
+  // For types that don't track balance, we use null to prevent showing incorrect info
+  const availableBalance =
+    permissionType === "Vacaciones"
+      ? balance.vacation
+      : permissionType === "Compensatorio"
+        ? balance.compensatory
+        : null
+
+  const hasError = availableBalance !== null && totalDays > availableBalance && totalDays > 0
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -56,7 +63,7 @@ export default function RequestFormPage({ onBack, onLogout }: RequestFormPagePro
       return
     }
 
-    if (hasError) {
+    if (hasError && availableBalance !== null) {
       setError(`Los días solicitados exceden su saldo actual de ${availableBalance} días.`)
       return
     }
@@ -85,53 +92,55 @@ export default function RequestFormPage({ onBack, onLogout }: RequestFormPagePro
   if (submitted) {
     return (
       <div className="min-h-screen bg-slate-50 flex items-center justify-center p-4">
-        <m.div
-          initial={{ scale: 0.9, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          className="w-full max-w-md"
-        >
-          <Card className="border-0 shadow-2xl shadow-green-500/10 text-center overflow-hidden bg-white/80 backdrop-blur-xl">
-            <CardContent className="pt-16 pb-12 space-y-8">
-              <div className="relative">
-                <m.div
-                  initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ type: "spring", damping: 12 }}
-                  className="w-24 h-24 bg-green-500 rounded-2xl flex items-center justify-center mx-auto text-white shadow-xl shadow-green-200"
-                >
-                  <span className="text-5xl font-bold">✓</span>
-                </m.div>
-                <m.div
-                  initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}
-                  className="absolute -top-4 -right-4 w-12 h-12 bg-yellow-400 rounded-full blur-2xl opacity-40"
-                />
-              </div>
-              <div>
-                <h2 className="text-3xl font-black text-slate-900 tracking-tight">¡Solicitud Completada!</h2>
-                <p className="text-slate-500 mt-3 font-medium px-8 text-sm leading-relaxed">
-                  Su solicitud de <span className="text-slate-900 font-bold">{permissionType}</span> por <span className="text-slate-900 font-bold">{totalDays} días</span> ha sido enviada correctamente.
-                </p>
-              </div>
-
-              <div className="space-y-4">
-                <div className="h-1.5 w-48 bg-slate-100 rounded-full mx-auto overflow-hidden">
+        <LazyMotion features={domAnimation}>
+          <m.div
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            className="w-full max-w-md"
+          >
+            <Card className="border-0 shadow-2xl shadow-green-500/10 text-center overflow-hidden bg-white/80 backdrop-blur-xl">
+              <CardContent className="pt-16 pb-12 space-y-8">
+                <div className="relative">
                   <m.div
-                    initial={{ width: 0 }} animate={{ width: "100%" }} transition={{ duration: 2.5 }}
-                    className="h-full bg-green-500"
+                    initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ type: "spring", damping: 12 }}
+                    className="w-24 h-24 bg-green-500 rounded-2xl flex items-center justify-center mx-auto text-white shadow-xl shadow-green-200"
+                  >
+                    <span className="text-5xl font-bold">✓</span>
+                  </m.div>
+                  <m.div
+                    initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}
+                    className="absolute -top-4 -right-4 w-12 h-12 bg-yellow-400 rounded-full blur-2xl opacity-40"
                   />
                 </div>
-                <p className="text-[10px] text-slate-400 uppercase font-bold tracking-widest">Registrando transacción...</p>
-              </div>
+                <div>
+                  <h2 className="text-3xl font-black text-slate-900 tracking-tight">¡Solicitud Completada!</h2>
+                  <p className="text-slate-500 mt-3 font-medium px-8 text-sm leading-relaxed">
+                    Su solicitud de <span className="text-slate-900 font-bold">{permissionType}</span> por <span className="text-slate-900 font-bold">{totalDays} días</span> ha sido enviada correctamente.
+                  </p>
+                </div>
 
-              <div className="pt-4 px-8">
-                <Button
-                  onClick={onBack}
-                  className="w-full py-7 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-2xl shadow-xl shadow-slate-200 transition-all hover:scale-[1.02] active:scale-95"
-                >
-                  Regresar al Dashboard
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
-        </m.div>
+                <div className="space-y-4">
+                  <div className="h-1.5 w-48 bg-slate-100 rounded-full mx-auto overflow-hidden">
+                    <m.div
+                      initial={{ width: 0 }} animate={{ width: "100%" }} transition={{ duration: 2.5 }}
+                      className="h-full bg-green-500"
+                    />
+                  </div>
+                  <p className="text-[10px] text-slate-400 uppercase font-bold tracking-widest">Registrando transacción...</p>
+                </div>
+
+                <div className="pt-4 px-8">
+                  <Button
+                    onClick={onBack}
+                    className="w-full py-7 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-2xl shadow-xl shadow-slate-200 transition-all hover:scale-[1.02] active:scale-95"
+                  >
+                    Regresar al Dashboard
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          </m.div>
+        </LazyMotion>
       </div>
     )
   }
@@ -190,16 +199,25 @@ export default function RequestFormPage({ onBack, onLogout }: RequestFormPagePro
                   </div>
                   <div className="space-y-2">
                     <label className="text-sm font-semibold text-slate-700">Tipo de Permiso</label>
-                    <Select value={permissionType} onValueChange={setPermissionType}>
-                      <SelectTrigger className="h-12 bg-white border-slate-200 focus:ring-2 focus:ring-blue-100 rounded-xl">
-                        <SelectValue placeholder="Seleccione el motivo..." />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="Vacaciones">Vacaciones</SelectItem>
-                        <SelectItem value="Licencia por Enfermedad">Licencia por Enfermedad</SelectItem>
-                        <SelectItem value="Compensatorio">Compensatorio</SelectItem>
-                      </SelectContent>
-                    </Select>
+                    <div className="space-y-2">
+                      <Select value={permissionType} onValueChange={setPermissionType}>
+                        <SelectTrigger className="h-12 bg-white border-slate-200 focus:ring-2 focus:ring-blue-100 rounded-xl">
+                          <SelectValue placeholder="Seleccione el motivo..." />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="Vacaciones">Vacaciones</SelectItem>
+                          <SelectItem value="Licencia por Enfermedad">Licencia por Enfermedad</SelectItem>
+                          <SelectItem value="Compensatorio">Compensatorio</SelectItem>
+                        </SelectContent>
+                      </Select>
+                      {/* Balance preview */}
+                      {availableBalance !== null && (
+                        <div className="text-xs font-medium text-blue-600 bg-blue-50 px-3 py-2 rounded-lg border border-blue-100 flex items-center gap-2">
+                          <div className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse"></div>
+                          Saldo actual disponible: <span className="font-bold">{availableBalance} días</span>
+                        </div>
+                      )}
+                    </div>
                   </div>
                 </CardContent>
               </Card>
@@ -238,15 +256,17 @@ export default function RequestFormPage({ onBack, onLogout }: RequestFormPagePro
                     <div className="bg-blue-50/50 border border-blue-100 rounded-xl p-4 flex flex-col sm:flex-row justify-between items-center text-sm gap-2">
                       <div className="flex items-center gap-2 text-blue-800">
                         <span className="font-bold text-2xl">{totalDays}</span>
-                        <span className="opacity-80">días serán descontados</span>
+                        <span className="opacity-80">días {availableBalance !== null ? 'serán descontados' : 'solicitados'}</span>
                       </div>
-                      <div className="text-blue-600 bg-white px-3 py-1 rounded-full border border-blue-100 shadow-sm text-xs font-bold">
-                        Saldo restante estimado: {availableBalance - totalDays} días
-                      </div>
+                      {availableBalance !== null && (
+                        <div className="text-blue-600 bg-white px-3 py-1 rounded-full border border-blue-100 shadow-sm text-xs font-bold">
+                          Saldo restante estimado: {availableBalance - totalDays} días
+                        </div>
+                      )}
                     </div>
                   )}
 
-                  {hasError && (
+                  {hasError && availableBalance !== null && (
                     <m.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }}>
                       <Alert className="border-red-200 bg-red-50 text-red-800 rounded-xl">
                         <AlertCircle className="h-5 w-5 text-red-600" />
