@@ -103,6 +103,13 @@ export default function ReviewModal({ request, onClose, onApprove, onReject, onR
               </div>
 
               <div>
+                <h4 className="font-semibold text-slate-900 text-sm mb-2">Motivo de la Solicitud</h4>
+                <div className="p-4 bg-slate-50 rounded-lg border border-slate-100 text-sm text-slate-700 italic leading-relaxed">
+                  "{request.observations || "Sin observaciones adicionales proporcionadas."}"
+                </div>
+              </div>
+
+              <div>
                 <h4 className="font-semibold text-slate-900 text-sm mb-2">Evidencia Adjunta</h4>
                 {request.evidence ? (
                   <div className="border border-slate-200 rounded-lg p-2 bg-slate-50 flex items-center gap-3">
@@ -200,8 +207,8 @@ export default function ReviewModal({ request, onClose, onApprove, onReject, onR
             onClick={handleSubmit}
             disabled={!decision}
             className={`px-8 rounded-xl text-white shadow-lg transition-all ${decision === 'reject' ? 'bg-red-600 hover:bg-red-700 shadow-red-200' :
-                decision === 'return' ? 'bg-yellow-600 hover:bg-yellow-700 shadow-yellow-200' :
-                  'bg-slate-900 hover:bg-slate-800 shadow-slate-200'
+              decision === 'return' ? 'bg-yellow-600 hover:bg-yellow-700 shadow-yellow-200' :
+                'bg-slate-900 hover:bg-slate-800 shadow-slate-200'
               }`}
           >
             Confirmar Decisión
