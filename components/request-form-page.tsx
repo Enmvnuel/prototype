@@ -1,7 +1,7 @@
 "use client"
 
 import type React from "react"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
@@ -27,6 +27,16 @@ export default function RequestFormPage({ onBack, onLogout }: RequestFormPagePro
   const [file, setFile] = useState<File | null>(null)
   const [error, setError] = useState("")
   const [submitted, setSubmitted] = useState(false)
+
+  // Auto-redirect after 3 seconds
+  useEffect(() => {
+    if (submitted) {
+      const timer = setTimeout(() => {
+        onBack()
+      }, 3000)
+      return () => clearTimeout(timer)
+    }
+  }, [submitted, onBack])
 
   const balance = getEmployeeBalance("emp001")
   const employeeId = "emp001"
@@ -126,7 +136,7 @@ export default function RequestFormPage({ onBack, onLogout }: RequestFormPagePro
                       className="h-full bg-green-500"
                     />
                   </div>
-                  <p className="text-[10px] text-slate-400 uppercase font-bold tracking-widest">Registrando transacción...</p>
+                  <p className="text-[10px] text-slate-400 uppercase font-bold tracking-widest">Registrando transacción y redirigiendo...</p>
                 </div>
 
                 <div className="pt-4 px-8">
