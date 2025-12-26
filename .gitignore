@@ -1,39 +1,56 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
 # Dependencies
 node_modules/
-jspm_packages/
-venv/
-.venv/
-env/
-__pycache__/
-*.py[cod]
+/jspm_packages/
+# Bun
+bun.lockb
+# If you prefer to commit bun.lock, keep it uncommented. Since I see bun.lock in the directory, I'll keep it.
+# bun.lock
 
-# Build and Output
-dist/
-build/
+# Next.js build output
+.next/
 out/
-target/
-bin/
-obj/
 
-# IDEs and Editors
-.vscode/
-.idea/
-*.swp
-*.swo
-.project
-.classpath
-.settings/
-
-# Operating System Files
-.DS_Store
-Thumbs.db
-desktop.ini
+# Production
+build/
+dist/
 
 # Logs
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Testing
+coverage/
+.nyc_output/
+.gest/
+
+# Next.js/Vercel
+.vercel
+.turbo
+
+# IDEs and Editors
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/launch.json
+.idea/
+*.swp
+*.swo
+.project
+.classpath
+.settings/
+*.sublime-workspace
+
+# Operating System Files
+.DS_Store
+*.DS_Store
+Thumbs.db
+desktop.ini
 
 # Environment variables
 .env
@@ -41,10 +58,14 @@ yarn-error.log*
 .env.development.local
 .env.test.local
 .env.production.local
+.env*.local
 
-# Testing
-coverage/
-.nyc_output/
+# Python artifacts (found in current .gitignore but might not be needed)
+venv/
+.venv/
+env/
+__pycache__/
+*.py[cod]
 
 # Temporary files
 tmp/

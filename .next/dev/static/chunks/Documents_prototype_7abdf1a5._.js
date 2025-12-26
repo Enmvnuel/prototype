@@ -51,7 +51,7 @@ function LoginPage({ onLogin }) {
                                         "Gestión de ",
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                             className: "text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600",
-                                            children: "Talento"
+                                            children: "Permisos"
                                         }, void 0, false, {
                                             fileName: "[project]/Documents/prototype/components/login-page.tsx",
                                             lineNumber: 28,
@@ -5683,9 +5683,13 @@ function Home() {
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "Home.useEffect": ()=>{
             // Check for saved session
-            const savedRole = localStorage.getItem("elm-user-role");
-            if (savedRole) {
-                setUserRole(savedRole);
+            try {
+                const savedRole = localStorage.getItem("elm-user-role");
+                if (savedRole) {
+                    setUserRole(savedRole);
+                }
+            } catch (error) {
+                console.warn("Failed to access localStorage:", error);
             }
             setLoading(false);
         }
@@ -5707,12 +5711,12 @@ function Home() {
                 className: "w-8 h-8 animate-spin text-blue-600"
             }, void 0, false, {
                 fileName: "[project]/Documents/prototype/app/page.tsx",
-                lineNumber: 45,
+                lineNumber: 49,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/Documents/prototype/app/page.tsx",
-            lineNumber: 44,
+            lineNumber: 48,
             columnNumber: 7
         }, this);
     }
@@ -5721,7 +5725,7 @@ function Home() {
             onLogin: handleLogin
         }, void 0, false, {
             fileName: "[project]/Documents/prototype/app/page.tsx",
-            lineNumber: 51,
+            lineNumber: 55,
             columnNumber: 12
         }, this);
     }
@@ -5736,7 +5740,7 @@ function Home() {
                             onLogout: handleLogout
                         }, void 0, false, {
                             fileName: "[project]/Documents/prototype/app/page.tsx",
-                            lineNumber: 60,
+                            lineNumber: 64,
                             columnNumber: 15
                         }, this),
                         employeeView === "request-form" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$request$2d$form$2d$page$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -5744,7 +5748,7 @@ function Home() {
                             onLogout: handleLogout
                         }, void 0, false, {
                             fileName: "[project]/Documents/prototype/app/page.tsx",
-                            lineNumber: 63,
+                            lineNumber: 67,
                             columnNumber: 15
                         }, this)
                     ]
@@ -5755,18 +5759,18 @@ function Home() {
                     onViewChange: setManagerView
                 }, void 0, false, {
                     fileName: "[project]/Documents/prototype/app/page.tsx",
-                    lineNumber: 69,
+                    lineNumber: 73,
                     columnNumber: 11
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/Documents/prototype/app/page.tsx",
-            lineNumber: 56,
+            lineNumber: 60,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/Documents/prototype/app/page.tsx",
-        lineNumber: 55,
+        lineNumber: 59,
         columnNumber: 5
     }, this);
 }

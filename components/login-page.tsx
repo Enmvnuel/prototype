@@ -25,7 +25,7 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
               Sistema Corporativo
             </div>
             <h1 className="text-5xl md:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.1]">
-              Gestión de <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Talento</span> y Licencias
+              Gestión de <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Permisos</span> y Licencias
             </h1>
             <p className="text-lg text-slate-500 font-light max-w-md leading-relaxed">
               Plataforma centralizada para solicitudes, aprobaciones y control de balance de vida laboral.

@@ -20,9 +20,13 @@ export default function Home() {
 
   useEffect(() => {
     // Check for saved session
-    const savedRole = localStorage.getItem("elm-user-role") as UserRole
-    if (savedRole) {
-      setUserRole(savedRole)
+    try {
+      const savedRole = localStorage.getItem("elm-user-role") as UserRole
+      if (savedRole) {
+        setUserRole(savedRole)
+      }
+    } catch (error) {
+      console.warn("Failed to access localStorage:", error)
     }
     setLoading(false)
   }, [])
