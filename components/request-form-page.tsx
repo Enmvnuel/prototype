@@ -1,7 +1,6 @@
 "use client"
 
 import type React from "react"
-
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -10,7 +9,8 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { useAppContext } from "@/context/app-context"
-import { ArrowLeft, LogOut, AlertCircle } from "lucide-react"
+import { ArrowLeft, LogOut, AlertCircle, UploadCloud, Calendar, MapPin, FileText } from "lucide-react"
+import { m, LazyMotion, domAnimation } from "framer-motion"
 
 interface RequestFormPageProps {
   onBack: () => void
@@ -30,6 +30,7 @@ export default function RequestFormPage({ onBack, onLogout }: RequestFormPagePro
 
   const balance = getEmployeeBalance("emp001")
   const employeeId = "emp001"
+  const employeeName = "Nombre del Empleado"
 
   const calculateDays = (start: string, end: string): number => {
     if (!start || !end) return 0
@@ -62,11 +63,9 @@ export default function RequestFormPage({ onBack, onLogout }: RequestFormPagePro
 
     // Create new request
     const newRequest = {
-      id: `REQ${Math.floor(Math.random() * 10000)
-        .toString()
-        .padStart(3, "0")}`,
+      id: `REQ${Math.floor(Math.random() * 10000).toString().padStart(3, "0")}`,
       employeeId,
-      employeeName: "Nombre del Empleado",
+      employeeName,
       type: permissionType as "Vacaciones" | "Licencia por Enfermedad" | "Compensatorio",
       startDate,
       endDate,
@@ -75,7 +74,7 @@ export default function RequestFormPage({ onBack, onLogout }: RequestFormPagePro
       status: "PENDIENTE" as const,
       createdAt: new Date().toISOString().split("T")[0],
       observations,
-      evidence: file,
+      evidence: file ? true : false, // Fixed type
     }
 
     addRequest(newRequest)
@@ -89,182 +88,233 @@ export default function RequestFormPage({ onBack, onLogout }: RequestFormPagePro
 
   if (submitted) {
     return (
-      <div className="min-h-screen bg-slate-50 flex items-center justify-center">
-        <Card className="w-full max-w-md text-center">
-          <CardContent className="pt-8">
-            <div className="text-5xl mb-4">✓</div>
-            <h2 className="text-2xl font-bold text-green-600 mb-2">¡Solicitud Enviada!</h2>
-            <p className="text-slate-600 mb-6">
-              Tu solicitud ha sido registrada correctamente. Redirigiendo al panel principal...
-            </p>
-          </CardContent>
-        </Card>
+      <div className="min-h-screen bg-slate-50 flex items-center justify-center p-4">
+        <m.div
+          initial={{ scale: 0.9, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          className="w-full max-w-md"
+        >
+          <Card className="border-0 shadow-2xl shadow-green-500/10 text-center overflow-hidden">
+            <CardContent className="pt-12 pb-12 space-y-6">
+              <m.div
+                initial={{ scale: 0 }} animate={{ scale: 1 }}
+                className="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto text-green-600 mb-6"
+              >
+                <span className="text-6xl">✓</span>
+              </m.div>
+              <h2 className="text-3xl font-extrabold text-slate-900">¡Solicitud Enviada!</h2>
+              <p className="text-slate-500 max-w-xs mx-auto">
+                Su solicitud ha sido registrada exitosamente en el sistema. Redirigiendo...
+              </p>
+              <div className="h-1 w-32 bg-slate-100 rounded-full mx-auto overflow-hidden">
+                <m.div
+                  initial={{ width: 0 }} animate={{ width: "100%" }} transition={{ duration: 2 }}
+                  className="h-full bg-green-500"
+                />
+              </div>
+            </CardContent>
+          </Card>
+        </m.div>
       </div>
     )
   }
 
   return (
-    <div className="min-h-screen bg-slate-50">
-      {/* Header */}
-      <div className="bg-white border-b border-slate-200">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-          <div className="flex items-center gap-4">
-            <Button onClick={onBack} variant="ghost" className="text-slate-600 hover:text-slate-900">
-              <ArrowLeft className="w-4 h-4 mr-2" />
-              Atrás
-            </Button>
-            <h1 className="text-2xl font-bold text-slate-900">Formulario Oficial de Solicitud de Permiso</h1>
-          </div>
-          <Button onClick={onLogout} variant="ghost" className="text-slate-600 hover:text-slate-900">
-            <LogOut className="w-4 h-4 mr-2" />
-            Salir
-          </Button>
-        </div>
-      </div>
-
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <form onSubmit={handleSubmit} className="space-y-6">
-          {/* Section 1: Sede y Oficina Asignada */}
-          <Card>
-            <CardHeader className="bg-slate-100 border-b border-slate-200">
-              <CardTitle className="text-lg">Sede y Oficina Asignada</CardTitle>
-            </CardHeader>
-            <CardContent className="pt-6">
-              <label className="block text-sm font-medium text-slate-700 mb-2">Marcador de Posición</label>
-              <Select value={workSite} onValueChange={setWorkSite}>
-                <SelectTrigger className="w-full">
-                  <SelectValue placeholder="Seleccionar sede..." />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="Oficina Principal">Oficina Principal</SelectItem>
-                  <SelectItem value="Sucursal A">Sucursal A</SelectItem>
-                  <SelectItem value="Sucursal B">Sucursal B</SelectItem>
-                  <SelectItem value="Remoto">Remoto</SelectItem>
-                </SelectContent>
-              </Select>
-            </CardContent>
-          </Card>
-
-          {/* Section 2: Tipo de Permiso y Fechas */}
-          <Card>
-            <CardHeader className="bg-slate-100 border-b border-slate-200">
-              <CardTitle className="text-lg">Tipo de Permiso</CardTitle>
-            </CardHeader>
-            <CardContent className="pt-6 space-y-4">
-              <div>
-                <label className="block text-sm font-medium text-slate-700 mb-2">Tipo de Permiso</label>
-                <Select value={permissionType} onValueChange={setPermissionType}>
-                  <SelectTrigger className="w-full">
-                    <SelectValue placeholder="Seleccionar tipo..." />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="Vacaciones">Vacaciones</SelectItem>
-                    <SelectItem value="Licencia por Enfermedad">Licencia por Enfermedad</SelectItem>
-                    <SelectItem value="Compensatorio">Compensatorio</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-2">Fecha de Inicio</label>
-                  <Input
-                    type="date"
-                    value={startDate}
-                    onChange={(e) => setStartDate(e.target.value)}
-                    className="w-full"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-2">Fecha de Fin</label>
-                  <Input type="date" value={endDate} onChange={(e) => setEndDate(e.target.value)} className="w-full" />
-                </div>
-              </div>
-
-              {totalDays > 0 && (
-                <div className="bg-blue-50 border border-blue-200 rounded-md p-3">
-                  <p className="text-sm text-blue-900">
-                    <strong>Días Totales a Deducir:</strong> {totalDays} días
-                  </p>
-                  <p className="text-sm text-blue-800 mt-1">Saldo disponible: {availableBalance} días</p>
-                </div>
-              )}
-            </CardContent>
-          </Card>
-
-          {/* Error Alert */}
-          {error && (
-            <Alert className="border-red-200 bg-red-50">
-              <AlertCircle className="h-4 w-4 text-red-600" />
-              <AlertDescription className="text-red-700 ml-2">{error}</AlertDescription>
-            </Alert>
-          )}
-
-          {hasError && (
-            <Alert className="border-red-200 bg-red-50">
-              <AlertCircle className="h-4 w-4 text-red-600" />
-              <AlertDescription className="text-red-700 ml-2">
-                Error: Los días solicitados exceden su saldo actual de {availableBalance} días.
-              </AlertDescription>
-            </Alert>
-          )}
-
-          {/* Section 3: Evidencia */}
-          <Card>
-            <CardHeader className="bg-slate-100 border-b border-slate-200">
-              <CardTitle className="text-lg">Zona de Adjuntar Evidencia</CardTitle>
-            </CardHeader>
-            <CardContent className="pt-6">
-              <div className="border-2 border-dashed border-slate-300 rounded-lg p-8 text-center hover:border-slate-400 transition-colors">
-                <p className="text-slate-600 mb-2">Arrostre y Suelte archivos PDF/JPG</p>
-                <label className="inline-block">
-                  <input
-                    type="file"
-                    accept=".pdf,.jpg,.jpeg,.png"
-                    onChange={(e) => setFile(e.target.files?.[0] || null)}
-                    className="hidden"
-                  />
-                  <span className="text-blue-600 cursor-pointer hover:underline">o haga clic para seleccionar</span>
-                </label>
-                {file && <p className="text-sm text-green-600 mt-2">✓ {file.name}</p>}
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Section 4: Observaciones */}
-          <Card>
-            <CardHeader className="bg-slate-100 border-b border-slate-200">
-              <CardTitle className="text-lg">Observaciones del Empleado</CardTitle>
-            </CardHeader>
-            <CardContent className="pt-6">
-              <Textarea
-                value={observations}
-                onChange={(e) => setObservations(e.target.value)}
-                placeholder="Escriba aquí sus observaciones adicionales (opcional)"
-                className="min-h-32"
-              />
-            </CardContent>
-          </Card>
-
-          {/* Action Buttons */}
-          <div className="flex gap-4">
-            <Button type="button" onClick={onBack} variant="outline" className="flex-1 bg-transparent">
-              Limpiar Formulario/Cancelar
-            </Button>
-            <Button
-              type="submit"
-              disabled={hasError}
-              className="flex-1 bg-blue-600 hover:bg-blue-700 text-white disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              Validar y Enviar Solicitud
+    <LazyMotion features={domAnimation}>
+      <div className="min-h-screen bg-slate-50 font-sans text-slate-900">
+        {/* Header */}
+        <header className="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-sm">
+          <div className="max-w-4xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div className="flex items-center gap-4">
+              <Button onClick={onBack} variant="ghost" className="text-slate-500 hover:text-slate-900 -ml-2 hover:bg-slate-100">
+                <ArrowLeft className="w-5 h-5 mr-1" />
+                <span className="font-medium">Volver</span>
+              </Button>
+              <div className="h-6 w-px bg-slate-200 mx-2 hidden sm:block"></div>
+              <h1 className="text-lg font-bold text-slate-900 truncate">Nueva Solicitud de Permiso</h1>
+            </div>
+            <Button onClick={onLogout} variant="ghost" size="sm" className="text-slate-400 hover:text-red-500 hover:bg-red-50 rounded-full transition-all">
+              <LogOut className="w-4 h-4" />
             </Button>
           </div>
+        </header>
 
-          <p className="text-xs text-slate-500 text-center">
-            La presentación se registrará con un ID de Seguimiento único y una Marca de Tiempo para la auditoría.
-          </p>
-        </form>
+        <main className="max-w-4xl mx-auto px-6 py-10">
+          <form onSubmit={handleSubmit} className="space-y-8">
+
+            <m.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+              <div className="mb-6">
+                <h2 className="text-3xl font-extrabold text-slate-900 tracking-tight">Formulario de Solicitud</h2>
+                <p className="text-slate-500 mt-2">Complete los detalles a continuación para procesar su licencia.</p>
+              </div>
+
+              {/* Section 1: Detalles Clave */}
+              <Card className="border-0 shadow-lg shadow-slate-200/40 overflow-hidden mb-8">
+                <CardHeader className="bg-slate-50/50 border-b border-slate-100 pb-4">
+                  <CardTitle className="text-base font-bold text-slate-700 flex items-center gap-2">
+                    <MapPin className="w-4 h-4 text-blue-500" />
+                    Sede y Tipo
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="pt-6 grid md:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <label className="text-sm font-semibold text-slate-700">Sede o Ubicación</label>
+                    <Select value={workSite} onValueChange={setWorkSite}>
+                      <SelectTrigger className="h-12 bg-white border-slate-200 focus:ring-2 focus:ring-blue-100 rounded-xl">
+                        <SelectValue placeholder="Seleccionar ubicación..." />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="Oficina Principal">Oficina Principal</SelectItem>
+                        <SelectItem value="Sucursal A">Sucursal A</SelectItem>
+                        <SelectItem value="Sucursal B">Sucursal B</SelectItem>
+                        <SelectItem value="Remoto">Remoto</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-sm font-semibold text-slate-700">Tipo de Permiso</label>
+                    <Select value={permissionType} onValueChange={setPermissionType}>
+                      <SelectTrigger className="h-12 bg-white border-slate-200 focus:ring-2 focus:ring-blue-100 rounded-xl">
+                        <SelectValue placeholder="Seleccione el motivo..." />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="Vacaciones">Vacaciones</SelectItem>
+                        <SelectItem value="Licencia por Enfermedad">Licencia por Enfermedad</SelectItem>
+                        <SelectItem value="Compensatorio">Compensatorio</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Section 2: Fechas */}
+              <Card className="border-0 shadow-lg shadow-slate-200/40 overflow-hidden mb-8">
+                <CardHeader className="bg-slate-50/50 border-b border-slate-100 pb-4">
+                  <CardTitle className="text-base font-bold text-slate-700 flex items-center gap-2">
+                    <Calendar className="w-4 h-4 text-blue-500" />
+                    Duración del Permiso
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="pt-6 space-y-6">
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <label className="text-sm font-semibold text-slate-700">Fecha de Inicio</label>
+                      <Input
+                        type="date"
+                        value={startDate}
+                        onChange={(e) => setStartDate(e.target.value)}
+                        className="h-12 border-slate-200 focus:ring-2 focus:ring-blue-100 rounded-xl"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <label className="text-sm font-semibold text-slate-700">Fecha de Fin</label>
+                      <Input
+                        type="date"
+                        value={endDate}
+                        onChange={(e) => setEndDate(e.target.value)}
+                        className="h-12 border-slate-200 focus:ring-2 focus:ring-blue-100 rounded-xl"
+                      />
+                    </div>
+                  </div>
+
+                  {totalDays > 0 && (
+                    <div className="bg-blue-50/50 border border-blue-100 rounded-xl p-4 flex flex-col sm:flex-row justify-between items-center text-sm gap-2">
+                      <div className="flex items-center gap-2 text-blue-800">
+                        <span className="font-bold text-2xl">{totalDays}</span>
+                        <span className="opacity-80">días serán descontados</span>
+                      </div>
+                      <div className="text-blue-600 bg-white px-3 py-1 rounded-full border border-blue-100 shadow-sm text-xs font-bold">
+                        Saldo restante estimado: {availableBalance - totalDays} días
+                      </div>
+                    </div>
+                  )}
+
+                  {hasError && (
+                    <m.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }}>
+                      <Alert className="border-red-200 bg-red-50 text-red-800 rounded-xl">
+                        <AlertCircle className="h-5 w-5 text-red-600" />
+                        <AlertDescription className="ml-2 font-medium">
+                          No tiene suficiente saldo disponible ({availableBalance} días).
+                        </AlertDescription>
+                      </Alert>
+                    </m.div>
+                  )}
+                </CardContent>
+              </Card>
+
+              {/* Section 3: Documentación y Notas */}
+              <div className="grid md:grid-cols-2 gap-6">
+                <Card className="border-0 shadow-lg shadow-slate-200/40 overflow-hidden">
+                  <CardHeader className="bg-slate-50/50 border-b border-slate-100 pb-4">
+                    <CardTitle className="text-base font-bold text-slate-700 flex items-center gap-2">
+                      <UploadCloud className="w-4 h-4 text-blue-500" />
+                      Evidencia (Opcional)
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="pt-6">
+                    <div className="border-2 border-dashed border-slate-200 rounded-xl p-8 text-center hover:border-blue-400 hover:bg-blue-50/30 transition-all group cursor-pointer relative">
+                      <input
+                        type="file"
+                        accept=".pdf,.jpg,.jpeg,.png"
+                        onChange={(e) => setFile(e.target.files?.[0] || null)}
+                        className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                      />
+                      <div className="w-12 h-12 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform">
+                        <UploadCloud className="w-6 h-6" />
+                      </div>
+                      <p className="text-sm font-medium text-slate-700">Arrastre archivos aquí</p>
+                      <p className="text-xs text-slate-400 mt-1">PDF, JPG o PNG hasta 5MB</p>
+                      {file && (
+                        <div className="mt-4 bg-green-50 text-green-700 px-3 py-2 rounded-lg text-sm font-medium border border-green-200 inline-block">
+                          ✓ {file.name}
+                        </div>
+                      )}
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card className="border-0 shadow-lg shadow-slate-200/40 overflow-hidden">
+                  <CardHeader className="bg-slate-50/50 border-b border-slate-100 pb-4">
+                    <CardTitle className="text-base font-bold text-slate-700 flex items-center gap-2">
+                      <FileText className="w-4 h-4 text-blue-500" />
+                      Observaciones
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="pt-6">
+                    <Textarea
+                      value={observations}
+                      onChange={(e) => setObservations(e.target.value)}
+                      placeholder="Añada cualquier detalle relevante para su aprobador..."
+                      className="min-h-[160px] border-slate-200 focus:ring-2 focus:ring-blue-100 rounded-xl resize-none"
+                    />
+                  </CardContent>
+                </Card>
+              </div>
+
+              {/* Submit Actions */}
+              <div className="mt-8 flex gap-4 pt-4 border-t border-slate-200">
+                <Button
+                  type="button"
+                  onClick={onBack}
+                  variant="outline"
+                  className="flex-1 py-6 text-base font-medium border-slate-300 text-slate-600 hover:bg-slate-50 rounded-xl"
+                >
+                  Cancelar
+                </Button>
+                <Button
+                  type="submit"
+                  disabled={hasError}
+                  className="flex-[2] py-6 text-base font-bold bg-blue-600 hover:bg-blue-700 text-white rounded-xl shadow-xl shadow-blue-500/30 transition-all hover:scale-[1.02] active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  Enviar Solicitud
+                </Button>
+              </div>
+
+            </m.div>
+
+          </form>
+        </main>
       </div>
-    </div>
+    </LazyMotion>
   )
 }

@@ -9,12 +9,108 @@ import { Checkbox } from "@/components/ui/checkbox"
 import { Badge } from "@/components/ui/badge"
 import { useAppContext } from "@/context/app-context"
 import ReviewModal from "./review-modal"
-import { LogOut, Eye, CheckCircle, XCircle } from "lucide-react"
+import { LogOut, Eye, CheckCircle, XCircle, Search, Calendar, ChevronDown } from "lucide-react"
+import { m, LazyMotion, domAnimation } from "framer-motion"
 
 interface ManagerPanelProps {
   onLogout: () => void
   currentView: string
   onViewChange: (view: string) => void
+}
+
+// Printable Permit Component
+function PrintablePermit({ request }: { request: any }) {
+  const serialNumber = `SN-2025-${request.id.replace('REQ', '')}`
+  const currentDate = new Date().toLocaleDateString('es-PE', { year: 'numeric', month: '2-digit', day: '2-digit' })
+  // Use createdAt or current date for approval if status is approved. 
+  // Since we don't store approval date separately in mock data, 'currentDate' of printing 
+  // usually implies the date the document is issued/validated.
+  const approvalDate = request.status === 'APROBADO' ? currentDate : 'PENDIENTE DE FIRMA'
+
+  return (
+    <div className="p-8 font-sans max-w-[800px] mx-auto border border-black mb-8 page-break" style={{ pageBreakAfter: 'always' }}>
+      {/* Header */}
+      <div className="flex justify-between items-start mb-6 border-b-2 border-slate-800 pb-4">
+        <div className="w-32 h-20 border border-slate-400 flex items-center justify-center bg-slate-50 text-xs text-slate-400">
+          LOGO EMPRESA
+        </div>
+        <div className="flex-1 px-4 text-center">
+          <h1 className="text-2xl font-extrabold text-slate-900 leading-tight">PAPELETA DE SALIDA</h1>
+          <h2 className="text-lg font-bold text-slate-700">LICENCIA Y PERMISOS</h2>
+        </div>
+        <div className="w-32 h-20 border border-slate-400 flex items-center justify-center bg-slate-50 text-xs text-slate-400">
+          LOGO/QR
+        </div>
+      </div>
+
+      {/* Metadata Section */}
+      <div className="mb-8 text-sm space-y-1 bg-slate-50/50 p-4 rounded-lg border border-slate-100">
+        <p><strong className="text-slate-800">Número de Serie:</strong> {serialNumber}</p>
+        <p><strong className="text-slate-800">Fecha de Emisión:</strong> {currentDate}</p>
+        <div className="h-2"></div>
+        <p><strong className="text-slate-800">Lugar de Trabajo Asignado:</strong> Sede Central - Piso 4</p>
+        <p><strong className="text-slate-800">Dirección Física:</strong> Av. Javier Prado 1234, San Isidro, Lima</p>
+      </div>
+
+      {/* Main Table */}
+      <div className="border border-slate-300 rounded-sm mb-16 overflow-hidden">
+        <div className="flex border-b border-slate-300">
+          <div className="w-1/3 p-3 bg-slate-100 font-bold text-slate-800 border-r border-slate-300 text-sm flex items-center">
+            Nombre del Empleado:
+          </div>
+          <div className="w-2/3 p-3 text-sm text-slate-700 font-medium">
+            {request.employeeName}
+          </div>
+        </div>
+        <div className="flex border-b border-slate-300">
+          <div className="w-1/3 p-3 bg-slate-100 font-bold text-slate-800 border-r border-slate-300 text-sm flex items-center">
+            Unidad de Origen:
+          </div>
+          <div className="w-2/3 p-3 text-sm text-slate-700 font-medium">
+            {request.workSite}
+          </div>
+        </div>
+        <div className="flex border-b border-slate-300">
+          <div className="w-1/3 p-3 bg-slate-100 font-bold text-slate-800 border-r border-slate-300 text-sm flex items-center">
+            Fecha de Aprobación:
+          </div>
+          <div className="w-2/3 p-3 text-sm text-slate-700 font-medium">
+            {approvalDate}
+          </div>
+        </div>
+        <div className="flex">
+          <div className="w-1/3 p-3 bg-slate-100 font-bold text-slate-800 border-r border-slate-300 text-sm flex items-center">
+            Duración de la Licencia:
+          </div>
+          <div className="w-2/3 p-3 text-sm text-slate-700 font-medium">
+            {request.totalDays} días <span className="text-slate-500 ml-1">(Del {request.startDate} al {request.endDate})</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Signatures */}
+      <div className="flex justify-between mt-32 px-8 gap-12">
+        <div className="text-center w-1/2">
+          <div className="border-t-2 border-slate-800 pt-2 mb-1"></div>
+          <p className="text-sm font-bold text-slate-900">Firma del Supervisor</p>
+          <p className="text-xs text-slate-500 mt-1">Autorizado por Gerencia</p>
+        </div>
+        <div className="text-center w-1/2">
+          <div className="border-t-2 border-slate-800 pt-2 mb-1"></div>
+          <p className="text-sm font-bold text-slate-900">Firma del Empleado</p>
+          <p className="text-xs text-slate-500 mt-1">Conformidad de Recepción</p>
+        </div>
+      </div>
+
+      {/* Footer */}
+      <div className="mt-24 text-center">
+        <p className="text-[10px] text-slate-400">
+          Este documento es válido solo con las firmas correspondientes. Cualquier alteración anula su validez.<br />
+          Sistema de Gestión de Licencias v1.0 | Generado el {currentDate}
+        </p>
+      </div>
+    </div>
+  )
 }
 
 export default function ManagerPanel({ onLogout, currentView, onViewChange }: ManagerPanelProps) {
@@ -28,19 +124,13 @@ export default function ManagerPanel({ onLogout, currentView, onViewChange }: Ma
   const [selectAll, setSelectAll] = useState(false)
 
   // Filter requests - Only show Manager requests (exclude current user's own requests if desired, or all)
-  // Logic: In a real app, managers see their team. Here we just show the mock "MGR" requests.
   const filteredRequests = useMemo(() => {
     return requests.filter((req) => {
-      // Basic filtering
       if (filterUnit !== "all" && req.workSite !== filterUnit) return false
       if (filterStatus !== "all" && req.status !== filterStatus) return false
       if (startDate && req.createdAt < startDate) return false
       if (endDate && req.createdAt > endDate) return false
-
-      // Only show requests that look like they belong to 'others' (e.g. ID starts with REQ-MGR)
-      // or just filter out the current user 'emp001'
-      if (req.employeeId === "emp001") return false
-
+      if (req.employeeId === "emp001") return false // Filter out own requests
       return true
     })
   }, [requests, filterUnit, filterStatus, startDate, endDate])
@@ -75,17 +165,17 @@ export default function ManagerPanel({ onLogout, currentView, onViewChange }: Ma
   }
 
   const handlePrintPermits = () => {
-    alert(`Generando ${selectedIds.size} papeletas físicas...`)
+    window.print()
   }
 
   const getStatusBadge = (status: string) => {
-    const variants: Record<string, any> = {
-      PENDIENTE: { bg: "bg-yellow-100", text: "text-yellow-800", label: "Pendiente" },
-      APROBADO: { bg: "bg-green-100", text: "text-green-800", label: "Aprobado" },
-      RECHAZADO: { bg: "bg-red-100", text: "text-red-800", label: "Rechazado" },
+    if (status === "PENDIENTE") {
+      return <Badge className="bg-yellow-400 text-yellow-900 border-0 hover:bg-yellow-500 rounded-md font-bold px-3 shadow-sm">PENDIENTE</Badge>
+    } else if (status === "APROBADO") {
+      return <Badge className="bg-green-500 text-white border-0 hover:bg-green-600 rounded-md font-bold px-3 shadow-sm">APROBADO</Badge>
+    } else {
+      return <Badge className="bg-red-500 text-white border-0 hover:bg-red-600 rounded-md font-bold px-3 shadow-sm">RECHAZADO</Badge>
     }
-    const variant = variants[status] || variants.PENDIENTE
-    return <Badge className={`${variant.bg} ${variant.text} border-0`}>{variant.label}</Badge>
   }
 
   if (reviewingId) {
@@ -109,214 +199,250 @@ export default function ManagerPanel({ onLogout, currentView, onViewChange }: Ma
     )
   }
 
+  const requestsToPrint = requests.filter(r => selectedIds.has(r.id))
+
   return (
-    <div className="min-h-screen bg-slate-50">
-      {/* Header */}
-      <div className="bg-white border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-          <div>
-            <h1 className="text-2xl font-bold text-slate-900">Panel de Acceso Gerencial</h1>
-            <p className="text-sm text-slate-600 mt-1">Bienvenido, Gerente General</p>
-          </div>
-          <Button onClick={onLogout} variant="ghost" className="text-slate-600 hover:text-slate-900">
-            <LogOut className="w-4 h-4 mr-2" />
-            Salir
-          </Button>
+    <LazyMotion features={domAnimation}>
+      <>
+        {/* Printable Section - Only visible when printing */}
+        <div className="hidden print:block absolute top-0 left-0 w-full bg-white z-[9999]">
+          {requestsToPrint.length > 0 ? (
+            requestsToPrint.map((req) => (
+              <PrintablePermit key={req.id} request={req} />
+            ))
+          ) : (
+            <div className="p-8 text-center text-xl">Por favor, seleccione al menos una solicitud para imprimir.</div>
+          )}
         </div>
-      </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <Card className="shadow-md">
-          <CardHeader className="bg-slate-100 border-b border-slate-200">
-            <CardTitle className="text-lg">Filtros de Búsqueda</CardTitle>
-          </CardHeader>
-          <CardContent className="pt-6">
-            <div className="grid md:grid-cols-4 gap-4 mb-4">
-              <div>
-                <label className="block text-sm font-medium text-slate-700 mb-2">Unidad Organizacional</label>
-                <Select value={filterUnit} onValueChange={setFilterUnit}>
-                  <SelectTrigger className="w-full">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="all">Todas las Unidades</SelectItem>
-                    <SelectItem value="Logística">Logística</SelectItem>
-                    <SelectItem value="Operaciones">Operaciones</SelectItem>
-                    <SelectItem value="RRHH">RRHH</SelectItem>
-                    <SelectItem value="Finanzas">Finanzas</SelectItem>
-                    <SelectItem value="TI">TI</SelectItem>
-                    <SelectItem value="Ventas">Ventas</SelectItem>
-                  </SelectContent>
-                </Select>
+        {/* Regular Dashboard - Hidden when printing */}
+        <div className="min-h-screen bg-slate-50 font-sans text-slate-900 print:hidden">
+
+          {/* Top Navigation / Breadcrumb */}
+          <header className="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-sm">
+            <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+              <div className="text-sm font-medium text-slate-500">
+                <span className="text-slate-900 hover:text-slate-700 cursor-pointer transition-colors">Inicio</span> &gt; Gestión &gt; <span className="text-slate-900 font-semibold">Panel Gerencial</span>
               </div>
-
-              <div>
-                <label className="block text-sm font-medium text-slate-700 mb-2">Fecha de Inicio</label>
-                <input
-                  type="date"
-                  value={startDate}
-                  onChange={(e) => setStartDate(e.target.value)}
-                  className="w-full px-3 py-2 border border-slate-200 rounded-md text-sm"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-slate-700 mb-2">Fecha de Fin</label>
-                <input
-                  type="date"
-                  value={endDate}
-                  onChange={(e) => setEndDate(e.target.value)}
-                  className="w-full px-3 py-2 border border-slate-200 rounded-md text-sm"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-slate-700 mb-2">Estado</label>
-                <Select value={filterStatus} onValueChange={setFilterStatus}>
-                  <SelectTrigger className="w-full">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="all">Todos</SelectItem>
-                    <SelectItem value="PENDIENTE">Pendiente</SelectItem>
-                    <SelectItem value="APROBADO">Aprobado</SelectItem>
-                    <SelectItem value="RECHAZADO">Rechazado</SelectItem>
-                  </SelectContent>
-                </Select>
+              <div className="flex items-center gap-4">
+                <div className="text-sm text-right hidden sm:block">
+                  <span className="font-bold text-slate-800 block">Gerente General</span>
+                  <span className="text-xs text-slate-500 uppercase tracking-wider">Administrador</span>
+                </div>
+                <Button onClick={onLogout} variant="ghost" size="sm" className="text-slate-400 hover:text-red-500 hover:bg-red-50 rounded-full transition-all">
+                  <LogOut className="w-4 h-4" />
+                </Button>
               </div>
             </div>
+          </header>
 
-            <div className="flex gap-2">
-              <Button
-                onClick={() => {/* Trigger re-render or explicit search if needed, currently auto-filters */ }}
-                className="bg-blue-600 hover:bg-blue-700 text-white"
-              >
-                Aplicar Filtros
-              </Button>
-              <Button
-                variant="outline"
-                onClick={() => {
-                  setFilterUnit("all")
-                  setFilterStatus("all")
-                  setStartDate("")
-                  setEndDate("")
-                }}
-              >
-                Limpiar Todo
-              </Button>
-            </div>
-          </CardContent>
-        </Card>
+          <main className="max-w-7xl mx-auto px-6 py-8 space-y-8">
 
-        {/* Table Section */}
-        <Card className="mt-8 shadow-md">
-          <CardHeader className="bg-slate-100 border-b border-slate-200 flex flex-row justify-between items-center">
-            <CardTitle className="text-lg">
-              Solicitudes ({filteredRequests.length})
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="pt-6">
-            <div className="overflow-x-auto border border-slate-200 rounded-lg">
-              <Table>
-                <TableHeader className="bg-slate-50">
-                  <TableRow>
-                    <TableHead className="w-12">
-                      <Checkbox checked={selectAll} onCheckedChange={handleSelectAll} />
-                    </TableHead>
-                    <TableHead className="text-slate-700 font-semibold">Empleado</TableHead>
-                    <TableHead className="text-slate-700 font-semibold">Área</TableHead>
-                    <TableHead className="text-slate-700 font-semibold">Fechas</TableHead>
-                    <TableHead className="text-slate-700 font-semibold text-center">Días</TableHead>
-                    <TableHead className="text-slate-700 font-semibold text-center">Evidencia</TableHead>
-                    {/* Removed Audit History Column */}
-                    <TableHead className="text-slate-700 font-semibold">Estado</TableHead>
-                    <TableHead className="text-slate-700 font-semibold">Acciones</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {filteredRequests.length === 0 ? (
-                    <TableRow>
-                      <TableCell colSpan={8} className="text-center py-8 text-slate-500">
-                        No se encontraron solicitudes.
-                      </TableCell>
+            {/* Welcome Section */}
+            <m.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="flex flex-col md:flex-row justify-between items-end gap-4"
+            >
+              <div>
+                <h2 className="text-3xl font-extrabold text-slate-900 tracking-tight">Solicitudes de Equipo</h2>
+                <p className="text-slate-500 mt-1">Gestione y audite las solicitudes de licencias pendientes.</p>
+              </div>
+              <div className="flex gap-2">
+                <div className="bg-white px-4 py-2 rounded-lg border border-slate-200 shadow-sm flex items-center gap-2 text-sm text-slate-600">
+                  <span className="w-2 h-2 rounded-full bg-yellow-400"></span>
+                  Pendientes: <span className="font-bold text-slate-900">{requests.filter(r => r.status === 'PENDIENTE' && r.employeeId !== 'emp001').length}</span>
+                </div>
+                <div className="bg-white px-4 py-2 rounded-lg border border-slate-200 shadow-sm flex items-center gap-2 text-sm text-slate-600">
+                  <span className="w-2 h-2 rounded-full bg-green-500"></span>
+                  Total: <span className="font-bold text-slate-900">{filteredRequests.length}</span>
+                </div>
+              </div>
+            </m.div>
+
+            {/* Filters Bar */}
+            <m.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
+              className="bg-white p-5 rounded-2xl shadow-sm border border-slate-200 flex flex-col lg:flex-row gap-4 items-end lg:items-center"
+            >
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 w-full">
+                <div className="space-y-1.5">
+                  <label className="text-xs font-semibold text-slate-500 uppercase tracking-wider ml-1">Unidad</label>
+                  <Select value={filterUnit} onValueChange={setFilterUnit}>
+                    <SelectTrigger className="bg-slate-50 border-slate-200 h-10 rounded-lg focus:ring-2 focus:ring-blue-100"><SelectValue placeholder="Todas" /></SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="all">Todas las Unidades</SelectItem>
+                      <SelectItem value="Logística">Logística</SelectItem>
+                      <SelectItem value="Operaciones">Operaciones</SelectItem>
+                      <SelectItem value="RRHH">RRHH</SelectItem>
+                      <SelectItem value="Finanzas">Finanzas</SelectItem>
+                      <SelectItem value="TI">TI</SelectItem>
+                      <SelectItem value="Ventas">Ventas</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div className="space-y-1.5">
+                  <label className="text-xs font-semibold text-slate-500 uppercase tracking-wider ml-1">Estado</label>
+                  <Select value={filterStatus} onValueChange={setFilterStatus}>
+                    <SelectTrigger className="bg-slate-50 border-slate-200 h-10 rounded-lg focus:ring-2 focus:ring-blue-100"><SelectValue placeholder="Todos" /></SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="all">Todos</SelectItem>
+                      <SelectItem value="PENDIENTE">Pendiente</SelectItem>
+                      <SelectItem value="APROBADO">Aprobado</SelectItem>
+                      <SelectItem value="RECHAZADO">Rechazado</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div className="space-y-1.5">
+                  <label className="text-xs font-semibold text-slate-500 uppercase tracking-wider ml-1">Desde</label>
+                  <div className="relative">
+                    <input type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} className="w-full bg-slate-50 border border-slate-200 text-slate-900 text-sm rounded-lg focus:ring-2 focus:ring-blue-100 focus:border-blue-500 block w-full p-2.5" />
+                  </div>
+                </div>
+
+                <div className="space-y-1.5">
+                  <label className="text-xs font-semibold text-slate-500 uppercase tracking-wider ml-1">Hasta</label>
+                  <div className="relative">
+                    <input type="date" value={endDate} onChange={(e) => setEndDate(e.target.value)} className="w-full bg-slate-50 border border-slate-200 text-slate-900 text-sm rounded-lg focus:ring-2 focus:ring-blue-100 focus:border-blue-500 block w-full p-2.5" />
+                  </div>
+                </div>
+              </div>
+
+              <div className="w-full lg:w-auto flex justify-end">
+                <Button
+                  variant="ghost"
+                  onClick={() => { setFilterUnit("all"); setFilterStatus("all"); setStartDate(""); setEndDate(""); }}
+                  className="text-slate-500 hover:text-red-500 hover:bg-red-50"
+                >
+                  Limpiar
+                </Button>
+              </div>
+            </m.div>
+
+            {/* Table Container */}
+            <m.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden ring-1 ring-black/5"
+            >
+              <div className="p-4 border-b border-slate-100 bg-slate-50/30 flex justify-between items-center">
+                <h3 className="font-bold text-slate-700">Listado de Solicitudes</h3>
+                <span className="text-xs font-medium bg-slate-200 text-slate-600 px-2 py-1 rounded-md">{filteredRequests.length} registros</span>
+              </div>
+
+              <div className="overflow-x-auto">
+                <Table>
+                  <TableHeader className="bg-slate-50 border-b border-slate-100">
+                    <TableRow className="hover:bg-transparent">
+                      <TableHead className="w-12 pl-4"><Checkbox checked={selectAll} onCheckedChange={handleSelectAll} /></TableHead>
+                      <TableHead className="font-bold text-slate-600 uppercase text-xs tracking-wider py-4 w-[100px]">ID</TableHead>
+                      <TableHead className="font-bold text-slate-600 uppercase text-xs tracking-wider py-4">Empleado</TableHead>
+                      <TableHead className="font-bold text-slate-600 uppercase text-xs tracking-wider py-4">Unidad</TableHead>
+                      <TableHead className="font-bold text-slate-600 uppercase text-xs tracking-wider py-4">Fechas</TableHead>
+                      <TableHead className="font-bold text-slate-600 uppercase text-xs tracking-wider text-center py-4">Días</TableHead>
+                      <TableHead className="font-bold text-slate-600 uppercase text-xs tracking-wider text-center py-4">Evidencia</TableHead>
+                      <TableHead className="font-bold text-slate-600 uppercase text-xs tracking-wider py-4">Estado</TableHead>
+                      <TableHead className="font-bold text-slate-600 uppercase text-xs tracking-wider text-right pr-6 py-4">Acción</TableHead>
                     </TableRow>
-                  ) : (
-                    filteredRequests.map((req) => (
-                      <TableRow key={req.id} className="hover:bg-slate-50">
-                        <TableCell>
-                          <Checkbox
-                            checked={selectedIds.has(req.id)}
-                            onCheckedChange={(checked) => handleSelectId(req.id, checked as boolean)}
-                          />
-                        </TableCell>
-                        <TableCell>
-                          <div className="flex items-center gap-3">
-                            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-200 text-slate-500 font-bold">
-                              {req.employeeName.charAt(0)}
-                            </div>
-                            <span className="font-medium text-slate-700">{req.employeeName}</span>
-                          </div>
-                        </TableCell>
-                        <TableCell>{req.workSite}</TableCell>
-                        <TableCell>
-                          <span className="text-sm">
-                            {req.startDate} <br /><span className="text-slate-400">al</span> {req.endDate}
-                          </span>
-                        </TableCell>
-                        <TableCell className="text-center font-medium">{req.totalDays}</TableCell>
-                        <TableCell className="text-center">
-                          {req.evidence ? (
-                            <CheckCircle className="w-5 h-5 text-green-500 mx-auto" />
-                          ) : (
-                            <XCircle className="w-5 h-5 text-red-300 mx-auto" />
-                          )}
-                        </TableCell>
-                        <TableCell>{getStatusBadge(req.status)}</TableCell>
-                        <TableCell>
-                          <Button
-                            onClick={() => setReviewingId(req.id)}
-                            size="sm"
-                            variant="outline"
-                            className="border-blue-200 text-blue-600 hover:bg-blue-50"
-                          >
-                            Revisar
-                          </Button>
+                  </TableHeader>
+                  <TableBody>
+                    {filteredRequests.length === 0 ? (
+                      <TableRow>
+                        <TableCell colSpan={9} className="h-32 text-center text-slate-400">
+                          No hay solicitudes que coincidan con los filtros.
                         </TableCell>
                       </TableRow>
-                    ))
-                  )}
-                </TableBody>
-              </Table>
-            </div>
-          </CardContent>
-        </Card>
+                    ) : (
+                      filteredRequests.map((req, index) => (
+                        <TableRow key={req.id} className="border-b border-slate-50 hover:bg-slate-50/80 transition-colors h-[72px]">
+                          <TableCell className="pl-4">
+                            <Checkbox checked={selectedIds.has(req.id)} onCheckedChange={(checked) => handleSelectId(req.id, checked as boolean)} />
+                          </TableCell>
+                          <TableCell className="text-xs font-bold text-slate-500">
+                            {req.id}
+                          </TableCell>
+                          <TableCell>
+                            <div className="flex items-center gap-3">
+                              <div className="w-9 h-9 rounded-full bg-gradient-to-br from-blue-100 to-indigo-100 text-blue-700 flex items-center justify-center font-bold text-sm shadow-sm border border-white">
+                                {req.employeeName.charAt(0)}
+                              </div>
+                              <div className="flex flex-col">
+                                <span className="font-semibold text-slate-700 text-sm">{req.employeeName}</span>
+                                <span className="text-[10px] text-slate-400 font-medium tracking-wide">ID: {req.employeeId}</span>
+                              </div>
+                            </div>
+                          </TableCell>
+                          <TableCell className="text-slate-600 font-medium text-sm">{req.workSite}</TableCell>
+                          <TableCell className="text-slate-500 font-medium text-xs">
+                            <div className="flex flex-col">
+                              <span>{req.startDate}</span>
+                              <span className="text-slate-300">a</span>
+                              <span>{req.endDate}</span>
+                            </div>
+                          </TableCell>
+                          <TableCell className="text-center">
+                            <span className="bg-slate-100 text-slate-700 font-bold px-2.5 py-1 rounded-md text-sm">{req.totalDays}</span>
+                          </TableCell>
+                          <TableCell className="text-center">
+                            {req.evidence ? (
+                              <div className="flex justify-center"><CheckCircle className="w-5 h-5 text-emerald-500 fill-emerald-50" /></div>
+                            ) : (
+                              <div className="flex justify-center"><XCircle className="w-5 h-5 text-slate-300" /></div>
+                            )}
+                          </TableCell>
+                          <TableCell>{getStatusBadge(req.status)}</TableCell>
+                          <TableCell className="text-right pr-6">
+                            <Button
+                              size="sm"
+                              variant="outline"
+                              onClick={() => setReviewingId(req.id)}
+                              className="border-blue-200 text-blue-600 hover:bg-blue-50 hover:border-blue-300 font-medium"
+                            >
+                              Revisar
+                            </Button>
+                          </TableCell>
+                        </TableRow>
+                      ))
+                    )}
+                  </TableBody>
+                </Table>
+              </div>
+            </m.div>
 
-        {/* Action Buttons */}
-        <div className="flex gap-4 mt-8 sticky bottom-8 p-4 bg-white/90 backdrop-blur-sm border rounded-lg shadow-lg">
-          <Button
-            onClick={() => handleBulkAction("approve")}
-            disabled={selectedIds.size === 0}
-            className="flex-1 bg-green-600 hover:bg-green-700 text-white disabled:opacity-50 disabled:cursor-not-allowed transition-colors shadow-sm"
-          >
-            Aprobar ({selectedIds.size})
-          </Button>
-          <Button
-            onClick={() => handleBulkAction("reject")}
-            disabled={selectedIds.size === 0}
-            className="flex-1 bg-red-600 hover:bg-red-700 text-white disabled:opacity-50 disabled:cursor-not-allowed transition-colors shadow-sm"
-          >
-            Rechazar ({selectedIds.size})
-          </Button>
-          <Button
-            onClick={handlePrintPermits}
-            disabled={selectedIds.size === 0}
-            className="flex-1 bg-slate-800 hover:bg-slate-900 text-white disabled:opacity-50 disabled:cursor-not-allowed transition-colors shadow-sm"
-          >
-            Imprimir Papeletas ({selectedIds.size})
-          </Button>
+            {/* Bulk Actions Footer - Sticky */}
+            <m.div
+              initial={{ y: 100, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              className="sticky bottom-6 z-40 bg-white/90 backdrop-blur-md border border-slate-200 p-4 rounded-xl shadow-2xl flex flex-col sm:flex-row gap-4 items-center justify-between"
+            >
+              <div className="text-sm font-medium text-slate-600 pl-2">
+                {selectedIds.size > 0 ? (
+                  <span className="text-slate-900 font-bold">{selectedIds.size} solicitudes seleccionadas</span>
+                ) : (
+                  <span>Seleccione solicitudes para acciones masivas</span>
+                )}
+              </div>
+              <div className="flex gap-3 w-full sm:w-auto">
+                <Button onClick={() => handleBulkAction("approve")} disabled={selectedIds.size === 0} className="flex-1 sm:flex-none bg-emerald-600 hover:bg-emerald-700 text-white shadow-lg shadow-emerald-500/20">
+                  Aprobar Selección
+                </Button>
+                <Button onClick={() => handleBulkAction("reject")} disabled={selectedIds.size === 0} className="flex-1 sm:flex-none bg-red-600 hover:bg-red-700 text-white shadow-lg shadow-red-500/20">
+                  Rechazar Selección
+                </Button>
+                <Button onClick={handlePrintPermits} disabled={selectedIds.size === 0} variant="outline" className="flex-1 sm:flex-none border-slate-300 text-slate-700">
+                  Imprimir
+                </Button>
+              </div>
+            </m.div>
+
+          </main>
         </div>
-      </div>
-    </div>
+      </>
+    </LazyMotion>
   )
 }
-

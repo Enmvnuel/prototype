@@ -2291,9 +2291,17 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$co
 var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$arrow$2d$left$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ArrowLeft$3e$__ = __turbopack_context__.i("[project]/Documents/prototype/node_modules/lucide-react/dist/esm/icons/arrow-left.js [app-client] (ecmascript) <export default as ArrowLeft>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$log$2d$out$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__LogOut$3e$__ = __turbopack_context__.i("[project]/Documents/prototype/node_modules/lucide-react/dist/esm/icons/log-out.js [app-client] (ecmascript) <export default as LogOut>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$alert$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__AlertCircle$3e$__ = __turbopack_context__.i("[project]/Documents/prototype/node_modules/lucide-react/dist/esm/icons/circle-alert.js [app-client] (ecmascript) <export default as AlertCircle>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$cloud$2d$upload$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__UploadCloud$3e$__ = __turbopack_context__.i("[project]/Documents/prototype/node_modules/lucide-react/dist/esm/icons/cloud-upload.js [app-client] (ecmascript) <export default as UploadCloud>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$calendar$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Calendar$3e$__ = __turbopack_context__.i("[project]/Documents/prototype/node_modules/lucide-react/dist/esm/icons/calendar.js [app-client] (ecmascript) <export default as Calendar>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$map$2d$pin$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__MapPin$3e$__ = __turbopack_context__.i("[project]/Documents/prototype/node_modules/lucide-react/dist/esm/icons/map-pin.js [app-client] (ecmascript) <export default as MapPin>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$file$2d$text$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__FileText$3e$__ = __turbopack_context__.i("[project]/Documents/prototype/node_modules/lucide-react/dist/esm/icons/file-text.js [app-client] (ecmascript) <export default as FileText>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$m$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/prototype/node_modules/framer-motion/dist/es/render/components/m/proxy.mjs [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$components$2f$LazyMotion$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/prototype/node_modules/framer-motion/dist/es/components/LazyMotion/index.mjs [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$dom$2f$features$2d$animation$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/prototype/node_modules/framer-motion/dist/es/render/dom/features-animation.mjs [app-client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature();
 "use client";
+;
 ;
 ;
 ;
@@ -2316,6 +2324,7 @@ function RequestFormPage({ onBack, onLogout }) {
     const [submitted, setSubmitted] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const balance = getEmployeeBalance("emp001");
     const employeeId = "emp001";
+    const employeeName = "Nombre del Empleado";
     const calculateDays = (start, end)=>{
         if (!start || !end) return 0;
         const startD = new Date(start);
@@ -2342,7 +2351,7 @@ function RequestFormPage({ onBack, onLogout }) {
         const newRequest = {
             id: `REQ${Math.floor(Math.random() * 10000).toString().padStart(3, "0")}`,
             employeeId,
-            employeeName: "Nombre del Empleado",
+            employeeName,
             type: permissionType,
             startDate,
             endDate,
@@ -2351,7 +2360,7 @@ function RequestFormPage({ onBack, onLogout }) {
             status: "PENDIENTE",
             createdAt: new Date().toISOString().split("T")[0],
             observations,
-            evidence: file
+            evidence: file ? true : false
         };
         addRequest(newRequest);
         setSubmitted(true);
@@ -2362,672 +2371,835 @@ function RequestFormPage({ onBack, onLogout }) {
     };
     if (submitted) {
         return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-            className: "min-h-screen bg-slate-50 flex items-center justify-center",
-            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
-                className: "w-full max-w-md text-center",
-                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
-                    className: "pt-8",
-                    children: [
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "text-5xl mb-4",
-                            children: "✓"
-                        }, void 0, false, {
-                            fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                            lineNumber: 95,
-                            columnNumber: 13
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
-                            className: "text-2xl font-bold text-green-600 mb-2",
-                            children: "¡Solicitud Enviada!"
-                        }, void 0, false, {
-                            fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                            lineNumber: 96,
-                            columnNumber: 13
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                            className: "text-slate-600 mb-6",
-                            children: "Tu solicitud ha sido registrada correctamente. Redirigiendo al panel principal..."
-                        }, void 0, false, {
-                            fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                            lineNumber: 97,
-                            columnNumber: 13
-                        }, this)
-                    ]
-                }, void 0, true, {
+            className: "min-h-screen bg-slate-50 flex items-center justify-center p-4",
+            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$m$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["m"].div, {
+                initial: {
+                    scale: 0.9,
+                    opacity: 0
+                },
+                animate: {
+                    scale: 1,
+                    opacity: 1
+                },
+                className: "w-full max-w-md",
+                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
+                    className: "border-0 shadow-2xl shadow-green-500/10 text-center overflow-hidden",
+                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
+                        className: "pt-12 pb-12 space-y-6",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$m$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["m"].div, {
+                                initial: {
+                                    scale: 0
+                                },
+                                animate: {
+                                    scale: 1
+                                },
+                                className: "w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto text-green-600 mb-6",
+                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                    className: "text-6xl",
+                                    children: "✓"
+                                }, void 0, false, {
+                                    fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                    lineNumber: 103,
+                                    columnNumber: 17
+                                }, this)
+                            }, void 0, false, {
+                                fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                lineNumber: 99,
+                                columnNumber: 15
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
+                                className: "text-3xl font-extrabold text-slate-900",
+                                children: "¡Solicitud Enviada!"
+                            }, void 0, false, {
+                                fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                lineNumber: 105,
+                                columnNumber: 15
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                className: "text-slate-500 max-w-xs mx-auto",
+                                children: "Su solicitud ha sido registrada exitosamente en el sistema. Redirigiendo..."
+                            }, void 0, false, {
+                                fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                lineNumber: 106,
+                                columnNumber: 15
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "h-1 w-32 bg-slate-100 rounded-full mx-auto overflow-hidden",
+                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$m$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["m"].div, {
+                                    initial: {
+                                        width: 0
+                                    },
+                                    animate: {
+                                        width: "100%"
+                                    },
+                                    transition: {
+                                        duration: 2
+                                    },
+                                    className: "h-full bg-green-500"
+                                }, void 0, false, {
+                                    fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                    lineNumber: 110,
+                                    columnNumber: 17
+                                }, this)
+                            }, void 0, false, {
+                                fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                lineNumber: 109,
+                                columnNumber: 15
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                        lineNumber: 98,
+                        columnNumber: 13
+                    }, this)
+                }, void 0, false, {
                     fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                    lineNumber: 94,
+                    lineNumber: 97,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                lineNumber: 93,
+                lineNumber: 92,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-            lineNumber: 92,
+            lineNumber: 91,
             columnNumber: 7
         }, this);
     }
-    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "min-h-screen bg-slate-50",
-        children: [
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "bg-white border-b border-slate-200",
-                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center",
-                    children: [
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "flex items-center gap-4",
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
-                                    onClick: onBack,
-                                    variant: "ghost",
-                                    className: "text-slate-600 hover:text-slate-900",
-                                    children: [
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$arrow$2d$left$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ArrowLeft$3e$__["ArrowLeft"], {
-                                            className: "w-4 h-4 mr-2"
-                                        }, void 0, false, {
-                                            fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                                            lineNumber: 113,
-                                            columnNumber: 15
-                                        }, this),
-                                        "Atrás"
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                                    lineNumber: 112,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
-                                    className: "text-2xl font-bold text-slate-900",
-                                    children: "Formulario Oficial de Solicitud de Permiso"
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$components$2f$LazyMotion$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["LazyMotion"], {
+        features: __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$dom$2f$features$2d$animation$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["domAnimation"],
+        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+            className: "min-h-screen bg-slate-50 font-sans text-slate-900",
+            children: [
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("header", {
+                    className: "bg-white border-b border-slate-200 sticky top-0 z-30 shadow-sm",
+                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "max-w-4xl mx-auto px-6 py-4 flex justify-between items-center",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "flex items-center gap-4",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
+                                        onClick: onBack,
+                                        variant: "ghost",
+                                        className: "text-slate-500 hover:text-slate-900 -ml-2 hover:bg-slate-100",
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$arrow$2d$left$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ArrowLeft$3e$__["ArrowLeft"], {
+                                                className: "w-5 h-5 mr-1"
+                                            }, void 0, false, {
+                                                fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                                lineNumber: 130,
+                                                columnNumber: 17
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                className: "font-medium",
+                                                children: "Volver"
+                                            }, void 0, false, {
+                                                fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                                lineNumber: 131,
+                                                columnNumber: 17
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                        lineNumber: 129,
+                                        columnNumber: 15
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "h-6 w-px bg-slate-200 mx-2 hidden sm:block"
+                                    }, void 0, false, {
+                                        fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                        lineNumber: 133,
+                                        columnNumber: 15
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
+                                        className: "text-lg font-bold text-slate-900 truncate",
+                                        children: "Nueva Solicitud de Permiso"
+                                    }, void 0, false, {
+                                        fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                        lineNumber: 134,
+                                        columnNumber: 15
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                lineNumber: 128,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
+                                onClick: onLogout,
+                                variant: "ghost",
+                                size: "sm",
+                                className: "text-slate-400 hover:text-red-500 hover:bg-red-50 rounded-full transition-all",
+                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$log$2d$out$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__LogOut$3e$__["LogOut"], {
+                                    className: "w-4 h-4"
                                 }, void 0, false, {
                                     fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                                    lineNumber: 116,
-                                    columnNumber: 13
+                                    lineNumber: 137,
+                                    columnNumber: 15
                                 }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                            lineNumber: 111,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
-                            onClick: onLogout,
-                            variant: "ghost",
-                            className: "text-slate-600 hover:text-slate-900",
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$log$2d$out$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__LogOut$3e$__["LogOut"], {
-                                    className: "w-4 h-4 mr-2"
-                                }, void 0, false, {
-                                    fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                                    lineNumber: 119,
-                                    columnNumber: 13
-                                }, this),
-                                "Salir"
-                            ]
-                        }, void 0, true, {
-                            fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                            lineNumber: 118,
-                            columnNumber: 11
-                        }, this)
-                    ]
-                }, void 0, true, {
+                            }, void 0, false, {
+                                fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                lineNumber: 136,
+                                columnNumber: 13
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                        lineNumber: 127,
+                        columnNumber: 11
+                    }, this)
+                }, void 0, false, {
                     fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                    lineNumber: 110,
+                    lineNumber: 126,
                     columnNumber: 9
-                }, this)
-            }, void 0, false, {
-                fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                lineNumber: 109,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8",
-                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
-                    onSubmit: handleSubmit,
-                    className: "space-y-6",
-                    children: [
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("main", {
+                    className: "max-w-4xl mx-auto px-6 py-10",
+                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
+                        onSubmit: handleSubmit,
+                        className: "space-y-8",
+                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$m$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["m"].div, {
+                            initial: {
+                                opacity: 0,
+                                y: 20
+                            },
+                            animate: {
+                                opacity: 1,
+                                y: 0
+                            },
                             children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardHeader"], {
-                                    className: "bg-slate-100 border-b border-slate-200",
-                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardTitle"], {
-                                        className: "text-lg",
-                                        children: "Sede y Oficina Asignada"
-                                    }, void 0, false, {
-                                        fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                                        lineNumber: 130,
-                                        columnNumber: 15
-                                    }, this)
-                                }, void 0, false, {
-                                    fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                                    lineNumber: 129,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
-                                    className: "pt-6",
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "mb-6",
                                     children: [
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-                                            className: "block text-sm font-medium text-slate-700 mb-2",
-                                            children: "Marcador de Posición"
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
+                                            className: "text-3xl font-extrabold text-slate-900 tracking-tight",
+                                            children: "Formulario de Solicitud"
                                         }, void 0, false, {
                                             fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                                            lineNumber: 133,
-                                            columnNumber: 15
+                                            lineNumber: 147,
+                                            columnNumber: 17
                                         }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Select"], {
-                                            value: workSite,
-                                            onValueChange: setWorkSite,
-                                            children: [
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectTrigger"], {
-                                                    className: "w-full",
-                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectValue"], {
-                                                        placeholder: "Seleccionar sede..."
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                                                        lineNumber: 136,
-                                                        columnNumber: 19
-                                                    }, this)
-                                                }, void 0, false, {
-                                                    fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                                                    lineNumber: 135,
-                                                    columnNumber: 17
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectContent"], {
-                                                    children: [
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
-                                                            value: "Oficina Principal",
-                                                            children: "Oficina Principal"
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                                                            lineNumber: 139,
-                                                            columnNumber: 19
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
-                                                            value: "Sucursal A",
-                                                            children: "Sucursal A"
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                                                            lineNumber: 140,
-                                                            columnNumber: 19
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
-                                                            value: "Sucursal B",
-                                                            children: "Sucursal B"
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                                                            lineNumber: 141,
-                                                            columnNumber: 19
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
-                                                            value: "Remoto",
-                                                            children: "Remoto"
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                                                            lineNumber: 142,
-                                                            columnNumber: 19
-                                                        }, this)
-                                                    ]
-                                                }, void 0, true, {
-                                                    fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                                                    lineNumber: 138,
-                                                    columnNumber: 17
-                                                }, this)
-                                            ]
-                                        }, void 0, true, {
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                            className: "text-slate-500 mt-2",
+                                            children: "Complete los detalles a continuación para procesar su licencia."
+                                        }, void 0, false, {
                                             fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                                            lineNumber: 134,
-                                            columnNumber: 15
-                                        }, this)
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                                    lineNumber: 132,
-                                    columnNumber: 13
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                            lineNumber: 128,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardHeader"], {
-                                    className: "bg-slate-100 border-b border-slate-200",
-                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardTitle"], {
-                                        className: "text-lg",
-                                        children: "Tipo de Permiso"
-                                    }, void 0, false, {
-                                        fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                                        lineNumber: 151,
-                                        columnNumber: 15
-                                    }, this)
-                                }, void 0, false, {
-                                    fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                                    lineNumber: 150,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
-                                    className: "pt-6 space-y-4",
-                                    children: [
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            children: [
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-                                                    className: "block text-sm font-medium text-slate-700 mb-2",
-                                                    children: "Tipo de Permiso"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                                                    lineNumber: 155,
-                                                    columnNumber: 17
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Select"], {
-                                                    value: permissionType,
-                                                    onValueChange: setPermissionType,
-                                                    children: [
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectTrigger"], {
-                                                            className: "w-full",
-                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectValue"], {
-                                                                placeholder: "Seleccionar tipo..."
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                                                                lineNumber: 158,
-                                                                columnNumber: 21
-                                                            }, this)
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                                                            lineNumber: 157,
-                                                            columnNumber: 19
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectContent"], {
-                                                            children: [
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
-                                                                    value: "Vacaciones",
-                                                                    children: "Vacaciones"
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                                                                    lineNumber: 161,
-                                                                    columnNumber: 21
-                                                                }, this),
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
-                                                                    value: "Licencia por Enfermedad",
-                                                                    children: "Licencia por Enfermedad"
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                                                                    lineNumber: 162,
-                                                                    columnNumber: 21
-                                                                }, this),
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
-                                                                    value: "Compensatorio",
-                                                                    children: "Compensatorio"
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                                                                    lineNumber: 163,
-                                                                    columnNumber: 21
-                                                                }, this)
-                                                            ]
-                                                        }, void 0, true, {
-                                                            fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                                                            lineNumber: 160,
-                                                            columnNumber: 19
-                                                        }, this)
-                                                    ]
-                                                }, void 0, true, {
-                                                    fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                                                    lineNumber: 156,
-                                                    columnNumber: 17
-                                                }, this)
-                                            ]
-                                        }, void 0, true, {
-                                            fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                                            lineNumber: 154,
-                                            columnNumber: 15
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: "grid md:grid-cols-2 gap-4",
-                                            children: [
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    children: [
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-                                                            className: "block text-sm font-medium text-slate-700 mb-2",
-                                                            children: "Fecha de Inicio"
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                                                            lineNumber: 170,
-                                                            columnNumber: 19
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
-                                                            type: "date",
-                                                            value: startDate,
-                                                            onChange: (e)=>setStartDate(e.target.value),
-                                                            className: "w-full"
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                                                            lineNumber: 171,
-                                                            columnNumber: 19
-                                                        }, this)
-                                                    ]
-                                                }, void 0, true, {
-                                                    fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                                                    lineNumber: 169,
-                                                    columnNumber: 17
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    children: [
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-                                                            className: "block text-sm font-medium text-slate-700 mb-2",
-                                                            children: "Fecha de Fin"
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                                                            lineNumber: 179,
-                                                            columnNumber: 19
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
-                                                            type: "date",
-                                                            value: endDate,
-                                                            onChange: (e)=>setEndDate(e.target.value),
-                                                            className: "w-full"
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                                                            lineNumber: 180,
-                                                            columnNumber: 19
-                                                        }, this)
-                                                    ]
-                                                }, void 0, true, {
-                                                    fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                                                    lineNumber: 178,
-                                                    columnNumber: 17
-                                                }, this)
-                                            ]
-                                        }, void 0, true, {
-                                            fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                                            lineNumber: 168,
-                                            columnNumber: 15
-                                        }, this),
-                                        totalDays > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: "bg-blue-50 border border-blue-200 rounded-md p-3",
-                                            children: [
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                    className: "text-sm text-blue-900",
-                                                    children: [
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
-                                                            children: "Días Totales a Deducir:"
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                                                            lineNumber: 187,
-                                                            columnNumber: 21
-                                                        }, this),
-                                                        " ",
-                                                        totalDays,
-                                                        " días"
-                                                    ]
-                                                }, void 0, true, {
-                                                    fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                                                    lineNumber: 186,
-                                                    columnNumber: 19
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                    className: "text-sm text-blue-800 mt-1",
-                                                    children: [
-                                                        "Saldo disponible: ",
-                                                        availableBalance,
-                                                        " días"
-                                                    ]
-                                                }, void 0, true, {
-                                                    fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                                                    lineNumber: 189,
-                                                    columnNumber: 19
-                                                }, this)
-                                            ]
-                                        }, void 0, true, {
-                                            fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                                            lineNumber: 185,
+                                            lineNumber: 148,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                                    lineNumber: 153,
-                                    columnNumber: 13
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                            lineNumber: 149,
-                            columnNumber: 11
-                        }, this),
-                        error && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$alert$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Alert"], {
-                            className: "border-red-200 bg-red-50",
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$alert$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__AlertCircle$3e$__["AlertCircle"], {
-                                    className: "h-4 w-4 text-red-600"
-                                }, void 0, false, {
-                                    fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                                    lineNumber: 198,
+                                    lineNumber: 146,
                                     columnNumber: 15
                                 }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$alert$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AlertDescription"], {
-                                    className: "text-red-700 ml-2",
-                                    children: error
-                                }, void 0, false, {
-                                    fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                                    lineNumber: 199,
-                                    columnNumber: 15
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                            lineNumber: 197,
-                            columnNumber: 13
-                        }, this),
-                        hasError && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$alert$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Alert"], {
-                            className: "border-red-200 bg-red-50",
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$alert$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__AlertCircle$3e$__["AlertCircle"], {
-                                    className: "h-4 w-4 text-red-600"
-                                }, void 0, false, {
-                                    fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                                    lineNumber: 205,
-                                    columnNumber: 15
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$alert$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AlertDescription"], {
-                                    className: "text-red-700 ml-2",
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
+                                    className: "border-0 shadow-lg shadow-slate-200/40 overflow-hidden mb-8",
                                     children: [
-                                        "Error: Los días solicitados exceden su saldo actual de ",
-                                        availableBalance,
-                                        " días."
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardHeader"], {
+                                            className: "bg-slate-50/50 border-b border-slate-100 pb-4",
+                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardTitle"], {
+                                                className: "text-base font-bold text-slate-700 flex items-center gap-2",
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$map$2d$pin$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__MapPin$3e$__["MapPin"], {
+                                                        className: "w-4 h-4 text-blue-500"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                                        lineNumber: 155,
+                                                        columnNumber: 21
+                                                    }, this),
+                                                    "Sede y Tipo"
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                                lineNumber: 154,
+                                                columnNumber: 19
+                                            }, this)
+                                        }, void 0, false, {
+                                            fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                            lineNumber: 153,
+                                            columnNumber: 17
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
+                                            className: "pt-6 grid md:grid-cols-2 gap-6",
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    className: "space-y-2",
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
+                                                            className: "text-sm font-semibold text-slate-700",
+                                                            children: "Sede o Ubicación"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                                            lineNumber: 161,
+                                                            columnNumber: 21
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Select"], {
+                                                            value: workSite,
+                                                            onValueChange: setWorkSite,
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectTrigger"], {
+                                                                    className: "h-12 bg-white border-slate-200 focus:ring-2 focus:ring-blue-100 rounded-xl",
+                                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectValue"], {
+                                                                        placeholder: "Seleccionar ubicación..."
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                                                        lineNumber: 164,
+                                                                        columnNumber: 25
+                                                                    }, this)
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                                                    lineNumber: 163,
+                                                                    columnNumber: 23
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectContent"], {
+                                                                    children: [
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
+                                                                            value: "Oficina Principal",
+                                                                            children: "Oficina Principal"
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                                                            lineNumber: 167,
+                                                                            columnNumber: 25
+                                                                        }, this),
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
+                                                                            value: "Sucursal A",
+                                                                            children: "Sucursal A"
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                                                            lineNumber: 168,
+                                                                            columnNumber: 25
+                                                                        }, this),
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
+                                                                            value: "Sucursal B",
+                                                                            children: "Sucursal B"
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                                                            lineNumber: 169,
+                                                                            columnNumber: 25
+                                                                        }, this),
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
+                                                                            value: "Remoto",
+                                                                            children: "Remoto"
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                                                            lineNumber: 170,
+                                                                            columnNumber: 25
+                                                                        }, this)
+                                                                    ]
+                                                                }, void 0, true, {
+                                                                    fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                                                    lineNumber: 166,
+                                                                    columnNumber: 23
+                                                                }, this)
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                                            lineNumber: 162,
+                                                            columnNumber: 21
+                                                        }, this)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                                    lineNumber: 160,
+                                                    columnNumber: 19
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    className: "space-y-2",
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
+                                                            className: "text-sm font-semibold text-slate-700",
+                                                            children: "Tipo de Permiso"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                                            lineNumber: 175,
+                                                            columnNumber: 21
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Select"], {
+                                                            value: permissionType,
+                                                            onValueChange: setPermissionType,
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectTrigger"], {
+                                                                    className: "h-12 bg-white border-slate-200 focus:ring-2 focus:ring-blue-100 rounded-xl",
+                                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectValue"], {
+                                                                        placeholder: "Seleccione el motivo..."
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                                                        lineNumber: 178,
+                                                                        columnNumber: 25
+                                                                    }, this)
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                                                    lineNumber: 177,
+                                                                    columnNumber: 23
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectContent"], {
+                                                                    children: [
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
+                                                                            value: "Vacaciones",
+                                                                            children: "Vacaciones"
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                                                            lineNumber: 181,
+                                                                            columnNumber: 25
+                                                                        }, this),
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
+                                                                            value: "Licencia por Enfermedad",
+                                                                            children: "Licencia por Enfermedad"
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                                                            lineNumber: 182,
+                                                                            columnNumber: 25
+                                                                        }, this),
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
+                                                                            value: "Compensatorio",
+                                                                            children: "Compensatorio"
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                                                            lineNumber: 183,
+                                                                            columnNumber: 25
+                                                                        }, this)
+                                                                    ]
+                                                                }, void 0, true, {
+                                                                    fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                                                    lineNumber: 180,
+                                                                    columnNumber: 23
+                                                                }, this)
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                                            lineNumber: 176,
+                                                            columnNumber: 21
+                                                        }, this)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                                    lineNumber: 174,
+                                                    columnNumber: 19
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                            lineNumber: 159,
+                                            columnNumber: 17
+                                        }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                                    lineNumber: 206,
+                                    lineNumber: 152,
+                                    columnNumber: 15
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
+                                    className: "border-0 shadow-lg shadow-slate-200/40 overflow-hidden mb-8",
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardHeader"], {
+                                            className: "bg-slate-50/50 border-b border-slate-100 pb-4",
+                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardTitle"], {
+                                                className: "text-base font-bold text-slate-700 flex items-center gap-2",
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$calendar$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Calendar$3e$__["Calendar"], {
+                                                        className: "w-4 h-4 text-blue-500"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                                        lineNumber: 194,
+                                                        columnNumber: 21
+                                                    }, this),
+                                                    "Duración del Permiso"
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                                lineNumber: 193,
+                                                columnNumber: 19
+                                            }, this)
+                                        }, void 0, false, {
+                                            fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                            lineNumber: 192,
+                                            columnNumber: 17
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
+                                            className: "pt-6 space-y-6",
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    className: "grid md:grid-cols-2 gap-6",
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                            className: "space-y-2",
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
+                                                                    className: "text-sm font-semibold text-slate-700",
+                                                                    children: "Fecha de Inicio"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                                                    lineNumber: 201,
+                                                                    columnNumber: 23
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
+                                                                    type: "date",
+                                                                    value: startDate,
+                                                                    onChange: (e)=>setStartDate(e.target.value),
+                                                                    className: "h-12 border-slate-200 focus:ring-2 focus:ring-blue-100 rounded-xl"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                                                    lineNumber: 202,
+                                                                    columnNumber: 23
+                                                                }, this)
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                                            lineNumber: 200,
+                                                            columnNumber: 21
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                            className: "space-y-2",
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
+                                                                    className: "text-sm font-semibold text-slate-700",
+                                                                    children: "Fecha de Fin"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                                                    lineNumber: 210,
+                                                                    columnNumber: 23
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
+                                                                    type: "date",
+                                                                    value: endDate,
+                                                                    onChange: (e)=>setEndDate(e.target.value),
+                                                                    className: "h-12 border-slate-200 focus:ring-2 focus:ring-blue-100 rounded-xl"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                                                    lineNumber: 211,
+                                                                    columnNumber: 23
+                                                                }, this)
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                                            lineNumber: 209,
+                                                            columnNumber: 21
+                                                        }, this)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                                    lineNumber: 199,
+                                                    columnNumber: 19
+                                                }, this),
+                                                totalDays > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    className: "bg-blue-50/50 border border-blue-100 rounded-xl p-4 flex flex-col sm:flex-row justify-between items-center text-sm gap-2",
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                            className: "flex items-center gap-2 text-blue-800",
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                    className: "font-bold text-2xl",
+                                                                    children: totalDays
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                                                    lineNumber: 223,
+                                                                    columnNumber: 25
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                    className: "opacity-80",
+                                                                    children: "días serán descontados"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                                                    lineNumber: 224,
+                                                                    columnNumber: 25
+                                                                }, this)
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                                            lineNumber: 222,
+                                                            columnNumber: 23
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                            className: "text-blue-600 bg-white px-3 py-1 rounded-full border border-blue-100 shadow-sm text-xs font-bold",
+                                                            children: [
+                                                                "Saldo restante estimado: ",
+                                                                availableBalance - totalDays,
+                                                                " días"
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                                            lineNumber: 226,
+                                                            columnNumber: 23
+                                                        }, this)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                                    lineNumber: 221,
+                                                    columnNumber: 21
+                                                }, this),
+                                                hasError && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$m$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["m"].div, {
+                                                    initial: {
+                                                        opacity: 0,
+                                                        height: 0
+                                                    },
+                                                    animate: {
+                                                        opacity: 1,
+                                                        height: "auto"
+                                                    },
+                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$alert$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Alert"], {
+                                                        className: "border-red-200 bg-red-50 text-red-800 rounded-xl",
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$alert$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__AlertCircle$3e$__["AlertCircle"], {
+                                                                className: "h-5 w-5 text-red-600"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                                                lineNumber: 235,
+                                                                columnNumber: 25
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$alert$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AlertDescription"], {
+                                                                className: "ml-2 font-medium",
+                                                                children: [
+                                                                    "No tiene suficiente saldo disponible (",
+                                                                    availableBalance,
+                                                                    " días)."
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                                                lineNumber: 236,
+                                                                columnNumber: 25
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                                        lineNumber: 234,
+                                                        columnNumber: 23
+                                                    }, this)
+                                                }, void 0, false, {
+                                                    fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                                    lineNumber: 233,
+                                                    columnNumber: 21
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                            lineNumber: 198,
+                                            columnNumber: 17
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                    lineNumber: 191,
+                                    columnNumber: 15
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "grid md:grid-cols-2 gap-6",
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
+                                            className: "border-0 shadow-lg shadow-slate-200/40 overflow-hidden",
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardHeader"], {
+                                                    className: "bg-slate-50/50 border-b border-slate-100 pb-4",
+                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardTitle"], {
+                                                        className: "text-base font-bold text-slate-700 flex items-center gap-2",
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$cloud$2d$upload$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__UploadCloud$3e$__["UploadCloud"], {
+                                                                className: "w-4 h-4 text-blue-500"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                                                lineNumber: 250,
+                                                                columnNumber: 23
+                                                            }, this),
+                                                            "Evidencia (Opcional)"
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                                        lineNumber: 249,
+                                                        columnNumber: 21
+                                                    }, this)
+                                                }, void 0, false, {
+                                                    fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                                    lineNumber: 248,
+                                                    columnNumber: 19
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
+                                                    className: "pt-6",
+                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        className: "border-2 border-dashed border-slate-200 rounded-xl p-8 text-center hover:border-blue-400 hover:bg-blue-50/30 transition-all group cursor-pointer relative",
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                                                type: "file",
+                                                                accept: ".pdf,.jpg,.jpeg,.png",
+                                                                onChange: (e)=>setFile(e.target.files?.[0] || null),
+                                                                className: "absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                                                lineNumber: 256,
+                                                                columnNumber: 23
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                className: "w-12 h-12 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform",
+                                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$cloud$2d$upload$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__UploadCloud$3e$__["UploadCloud"], {
+                                                                    className: "w-6 h-6"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                                                    lineNumber: 263,
+                                                                    columnNumber: 25
+                                                                }, this)
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                                                lineNumber: 262,
+                                                                columnNumber: 23
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                                className: "text-sm font-medium text-slate-700",
+                                                                children: "Arrastre archivos aquí"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                                                lineNumber: 265,
+                                                                columnNumber: 23
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                                className: "text-xs text-slate-400 mt-1",
+                                                                children: "PDF, JPG o PNG hasta 5MB"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                                                lineNumber: 266,
+                                                                columnNumber: 23
+                                                            }, this),
+                                                            file && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                className: "mt-4 bg-green-50 text-green-700 px-3 py-2 rounded-lg text-sm font-medium border border-green-200 inline-block",
+                                                                children: [
+                                                                    "✓ ",
+                                                                    file.name
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                                                lineNumber: 268,
+                                                                columnNumber: 25
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                                        lineNumber: 255,
+                                                        columnNumber: 21
+                                                    }, this)
+                                                }, void 0, false, {
+                                                    fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                                    lineNumber: 254,
+                                                    columnNumber: 19
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                            lineNumber: 247,
+                                            columnNumber: 17
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
+                                            className: "border-0 shadow-lg shadow-slate-200/40 overflow-hidden",
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardHeader"], {
+                                                    className: "bg-slate-50/50 border-b border-slate-100 pb-4",
+                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardTitle"], {
+                                                        className: "text-base font-bold text-slate-700 flex items-center gap-2",
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$file$2d$text$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__FileText$3e$__["FileText"], {
+                                                                className: "w-4 h-4 text-blue-500"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                                                lineNumber: 279,
+                                                                columnNumber: 23
+                                                            }, this),
+                                                            "Observaciones"
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                                        lineNumber: 278,
+                                                        columnNumber: 21
+                                                    }, this)
+                                                }, void 0, false, {
+                                                    fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                                    lineNumber: 277,
+                                                    columnNumber: 19
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
+                                                    className: "pt-6",
+                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$textarea$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Textarea"], {
+                                                        value: observations,
+                                                        onChange: (e)=>setObservations(e.target.value),
+                                                        placeholder: "Añada cualquier detalle relevante para su aprobador...",
+                                                        className: "min-h-[160px] border-slate-200 focus:ring-2 focus:ring-blue-100 rounded-xl resize-none"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                                        lineNumber: 284,
+                                                        columnNumber: 21
+                                                    }, this)
+                                                }, void 0, false, {
+                                                    fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                                    lineNumber: 283,
+                                                    columnNumber: 19
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                            lineNumber: 276,
+                                            columnNumber: 17
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                    lineNumber: 246,
+                                    columnNumber: 15
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "mt-8 flex gap-4 pt-4 border-t border-slate-200",
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
+                                            type: "button",
+                                            onClick: onBack,
+                                            variant: "outline",
+                                            className: "flex-1 py-6 text-base font-medium border-slate-300 text-slate-600 hover:bg-slate-50 rounded-xl",
+                                            children: "Cancelar"
+                                        }, void 0, false, {
+                                            fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                            lineNumber: 296,
+                                            columnNumber: 17
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
+                                            type: "submit",
+                                            disabled: hasError,
+                                            className: "flex-[2] py-6 text-base font-bold bg-blue-600 hover:bg-blue-700 text-white rounded-xl shadow-xl shadow-blue-500/30 transition-all hover:scale-[1.02] active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed",
+                                            children: "Enviar Solicitud"
+                                        }, void 0, false, {
+                                            fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                            lineNumber: 304,
+                                            columnNumber: 17
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                                    lineNumber: 295,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                            lineNumber: 204,
+                            lineNumber: 145,
                             columnNumber: 13
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardHeader"], {
-                                    className: "bg-slate-100 border-b border-slate-200",
-                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardTitle"], {
-                                        className: "text-lg",
-                                        children: "Zona de Adjuntar Evidencia"
-                                    }, void 0, false, {
-                                        fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                                        lineNumber: 215,
-                                        columnNumber: 15
-                                    }, this)
-                                }, void 0, false, {
-                                    fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                                    lineNumber: 214,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
-                                    className: "pt-6",
-                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "border-2 border-dashed border-slate-300 rounded-lg p-8 text-center hover:border-slate-400 transition-colors",
-                                        children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                className: "text-slate-600 mb-2",
-                                                children: "Arrostre y Suelte archivos PDF/JPG"
-                                            }, void 0, false, {
-                                                fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                                                lineNumber: 219,
-                                                columnNumber: 17
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-                                                className: "inline-block",
-                                                children: [
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                                        type: "file",
-                                                        accept: ".pdf,.jpg,.jpeg,.png",
-                                                        onChange: (e)=>setFile(e.target.files?.[0] || null),
-                                                        className: "hidden"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                                                        lineNumber: 221,
-                                                        columnNumber: 19
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                        className: "text-blue-600 cursor-pointer hover:underline",
-                                                        children: "o haga clic para seleccionar"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                                                        lineNumber: 227,
-                                                        columnNumber: 19
-                                                    }, this)
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                                                lineNumber: 220,
-                                                columnNumber: 17
-                                            }, this),
-                                            file && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                className: "text-sm text-green-600 mt-2",
-                                                children: [
-                                                    "✓ ",
-                                                    file.name
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                                                lineNumber: 229,
-                                                columnNumber: 26
-                                            }, this)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                                        lineNumber: 218,
-                                        columnNumber: 15
-                                    }, this)
-                                }, void 0, false, {
-                                    fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                                    lineNumber: 217,
-                                    columnNumber: 13
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                            lineNumber: 213,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardHeader"], {
-                                    className: "bg-slate-100 border-b border-slate-200",
-                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardTitle"], {
-                                        className: "text-lg",
-                                        children: "Observaciones del Empleado"
-                                    }, void 0, false, {
-                                        fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                                        lineNumber: 237,
-                                        columnNumber: 15
-                                    }, this)
-                                }, void 0, false, {
-                                    fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                                    lineNumber: 236,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
-                                    className: "pt-6",
-                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$textarea$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Textarea"], {
-                                        value: observations,
-                                        onChange: (e)=>setObservations(e.target.value),
-                                        placeholder: "Escriba aquí sus observaciones adicionales (opcional)",
-                                        className: "min-h-32"
-                                    }, void 0, false, {
-                                        fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                                        lineNumber: 240,
-                                        columnNumber: 15
-                                    }, this)
-                                }, void 0, false, {
-                                    fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                                    lineNumber: 239,
-                                    columnNumber: 13
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                            lineNumber: 235,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "flex gap-4",
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
-                                    type: "button",
-                                    onClick: onBack,
-                                    variant: "outline",
-                                    className: "flex-1 bg-transparent",
-                                    children: "Limpiar Formulario/Cancelar"
-                                }, void 0, false, {
-                                    fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                                    lineNumber: 251,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
-                                    type: "submit",
-                                    disabled: hasError,
-                                    className: "flex-1 bg-blue-600 hover:bg-blue-700 text-white disabled:opacity-50 disabled:cursor-not-allowed",
-                                    children: "Validar y Enviar Solicitud"
-                                }, void 0, false, {
-                                    fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                                    lineNumber: 254,
-                                    columnNumber: 13
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                            lineNumber: 250,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                            className: "text-xs text-slate-500 text-center",
-                            children: "La presentación se registrará con un ID de Seguimiento único y una Marca de Tiempo para la auditoría."
-                        }, void 0, false, {
-                            fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                            lineNumber: 263,
-                            columnNumber: 11
                         }, this)
-                    ]
-                }, void 0, true, {
+                    }, void 0, false, {
+                        fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+                        lineNumber: 143,
+                        columnNumber: 11
+                    }, this)
+                }, void 0, false, {
                     fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                    lineNumber: 126,
+                    lineNumber: 142,
                     columnNumber: 9
                 }, this)
-            }, void 0, false, {
-                fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-                lineNumber: 125,
-                columnNumber: 7
-            }, this)
-        ]
-    }, void 0, true, {
+            ]
+        }, void 0, true, {
+            fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
+            lineNumber: 124,
+            columnNumber: 7
+        }, this)
+    }, void 0, false, {
         fileName: "[project]/Documents/prototype/components/request-form-page.tsx",
-        lineNumber: 107,
+        lineNumber: 123,
         columnNumber: 5
     }, this);
 }
@@ -3921,7 +4093,6 @@ __turbopack_context__.s([
 var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/prototype/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/prototype/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/prototype/components/ui/button.tsx [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/prototype/components/ui/card.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/prototype/components/ui/select.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/prototype/components/ui/table.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$checkbox$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/prototype/components/ui/checkbox.tsx [app-client] (ecmascript)");
@@ -3931,6 +4102,9 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$co
 var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$log$2d$out$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__LogOut$3e$__ = __turbopack_context__.i("[project]/Documents/prototype/node_modules/lucide-react/dist/esm/icons/log-out.js [app-client] (ecmascript) <export default as LogOut>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$check$2d$big$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__CheckCircle$3e$__ = __turbopack_context__.i("[project]/Documents/prototype/node_modules/lucide-react/dist/esm/icons/circle-check-big.js [app-client] (ecmascript) <export default as CheckCircle>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$x$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__XCircle$3e$__ = __turbopack_context__.i("[project]/Documents/prototype/node_modules/lucide-react/dist/esm/icons/circle-x.js [app-client] (ecmascript) <export default as XCircle>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$m$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/prototype/node_modules/framer-motion/dist/es/render/components/m/proxy.mjs [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$components$2f$LazyMotion$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/prototype/node_modules/framer-motion/dist/es/components/LazyMotion/index.mjs [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$dom$2f$features$2d$animation$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/prototype/node_modules/framer-motion/dist/es/render/dom/features-animation.mjs [app-client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature();
 "use client";
@@ -3944,6 +4118,391 @@ var _s = __turbopack_context__.k.signature();
 ;
 ;
 ;
+// Printable Permit Component
+function PrintablePermit({ request }) {
+    const serialNumber = `SN-2025-${request.id.replace('REQ', '')}`;
+    const currentDate = new Date().toLocaleDateString('es-PE', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit'
+    });
+    // Use createdAt or current date for approval if status is approved. 
+    // Since we don't store approval date separately in mock data, 'currentDate' of printing 
+    // usually implies the date the document is issued/validated.
+    const approvalDate = request.status === 'APROBADO' ? currentDate : 'PENDIENTE DE FIRMA';
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+        className: "p-8 font-sans max-w-[800px] mx-auto border border-black mb-8 page-break",
+        style: {
+            pageBreakAfter: 'always'
+        },
+        children: [
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "flex justify-between items-start mb-6 border-b-2 border-slate-800 pb-4",
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "w-32 h-20 border border-slate-400 flex items-center justify-center bg-slate-50 text-xs text-slate-400",
+                        children: "LOGO EMPRESA"
+                    }, void 0, false, {
+                        fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                        lineNumber: 34,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "flex-1 px-4 text-center",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
+                                className: "text-2xl font-extrabold text-slate-900 leading-tight",
+                                children: "PAPELETA DE SALIDA"
+                            }, void 0, false, {
+                                fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                lineNumber: 38,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
+                                className: "text-lg font-bold text-slate-700",
+                                children: "LICENCIA Y PERMISOS"
+                            }, void 0, false, {
+                                fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                lineNumber: 39,
+                                columnNumber: 11
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                        lineNumber: 37,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "w-32 h-20 border border-slate-400 flex items-center justify-center bg-slate-50 text-xs text-slate-400",
+                        children: "LOGO/QR"
+                    }, void 0, false, {
+                        fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                        lineNumber: 41,
+                        columnNumber: 9
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                lineNumber: 33,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "mb-8 text-sm space-y-1 bg-slate-50/50 p-4 rounded-lg border border-slate-100",
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
+                                className: "text-slate-800",
+                                children: "Número de Serie:"
+                            }, void 0, false, {
+                                fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                lineNumber: 48,
+                                columnNumber: 12
+                            }, this),
+                            " ",
+                            serialNumber
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                        lineNumber: 48,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
+                                className: "text-slate-800",
+                                children: "Fecha de Emisión:"
+                            }, void 0, false, {
+                                fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                lineNumber: 49,
+                                columnNumber: 12
+                            }, this),
+                            " ",
+                            currentDate
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                        lineNumber: 49,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "h-2"
+                    }, void 0, false, {
+                        fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                        lineNumber: 50,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
+                                className: "text-slate-800",
+                                children: "Lugar de Trabajo Asignado:"
+                            }, void 0, false, {
+                                fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                lineNumber: 51,
+                                columnNumber: 12
+                            }, this),
+                            " Sede Central - Piso 4"
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                        lineNumber: 51,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
+                                className: "text-slate-800",
+                                children: "Dirección Física:"
+                            }, void 0, false, {
+                                fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                lineNumber: 52,
+                                columnNumber: 12
+                            }, this),
+                            " Av. Javier Prado 1234, San Isidro, Lima"
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                        lineNumber: 52,
+                        columnNumber: 9
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                lineNumber: 47,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "border border-slate-300 rounded-sm mb-16 overflow-hidden",
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "flex border-b border-slate-300",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "w-1/3 p-3 bg-slate-100 font-bold text-slate-800 border-r border-slate-300 text-sm flex items-center",
+                                children: "Nombre del Empleado:"
+                            }, void 0, false, {
+                                fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                lineNumber: 58,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "w-2/3 p-3 text-sm text-slate-700 font-medium",
+                                children: request.employeeName
+                            }, void 0, false, {
+                                fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                lineNumber: 61,
+                                columnNumber: 11
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                        lineNumber: 57,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "flex border-b border-slate-300",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "w-1/3 p-3 bg-slate-100 font-bold text-slate-800 border-r border-slate-300 text-sm flex items-center",
+                                children: "Unidad de Origen:"
+                            }, void 0, false, {
+                                fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                lineNumber: 66,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "w-2/3 p-3 text-sm text-slate-700 font-medium",
+                                children: request.workSite
+                            }, void 0, false, {
+                                fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                lineNumber: 69,
+                                columnNumber: 11
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                        lineNumber: 65,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "flex border-b border-slate-300",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "w-1/3 p-3 bg-slate-100 font-bold text-slate-800 border-r border-slate-300 text-sm flex items-center",
+                                children: "Fecha de Aprobación:"
+                            }, void 0, false, {
+                                fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                lineNumber: 74,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "w-2/3 p-3 text-sm text-slate-700 font-medium",
+                                children: approvalDate
+                            }, void 0, false, {
+                                fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                lineNumber: 77,
+                                columnNumber: 11
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                        lineNumber: 73,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "flex",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "w-1/3 p-3 bg-slate-100 font-bold text-slate-800 border-r border-slate-300 text-sm flex items-center",
+                                children: "Duración de la Licencia:"
+                            }, void 0, false, {
+                                fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                lineNumber: 82,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "w-2/3 p-3 text-sm text-slate-700 font-medium",
+                                children: [
+                                    request.totalDays,
+                                    " días ",
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                        className: "text-slate-500 ml-1",
+                                        children: [
+                                            "(Del ",
+                                            request.startDate,
+                                            " al ",
+                                            request.endDate,
+                                            ")"
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                        lineNumber: 86,
+                                        columnNumber: 38
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                lineNumber: 85,
+                                columnNumber: 11
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                        lineNumber: 81,
+                        columnNumber: 9
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                lineNumber: 56,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "flex justify-between mt-32 px-8 gap-12",
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "text-center w-1/2",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "border-t-2 border-slate-800 pt-2 mb-1"
+                            }, void 0, false, {
+                                fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                lineNumber: 94,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                className: "text-sm font-bold text-slate-900",
+                                children: "Firma del Supervisor"
+                            }, void 0, false, {
+                                fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                lineNumber: 95,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                className: "text-xs text-slate-500 mt-1",
+                                children: "Autorizado por Gerencia"
+                            }, void 0, false, {
+                                fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                lineNumber: 96,
+                                columnNumber: 11
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                        lineNumber: 93,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "text-center w-1/2",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "border-t-2 border-slate-800 pt-2 mb-1"
+                            }, void 0, false, {
+                                fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                lineNumber: 99,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                className: "text-sm font-bold text-slate-900",
+                                children: "Firma del Empleado"
+                            }, void 0, false, {
+                                fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                lineNumber: 100,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                className: "text-xs text-slate-500 mt-1",
+                                children: "Conformidad de Recepción"
+                            }, void 0, false, {
+                                fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                lineNumber: 101,
+                                columnNumber: 11
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                        lineNumber: 98,
+                        columnNumber: 9
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                lineNumber: 92,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "mt-24 text-center",
+                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                    className: "text-[10px] text-slate-400",
+                    children: [
+                        "Este documento es válido solo con las firmas correspondientes. Cualquier alteración anula su validez.",
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
+                            fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                            lineNumber: 108,
+                            columnNumber: 112
+                        }, this),
+                        "Sistema de Gestión de Licencias v1.0 | Generado el ",
+                        currentDate
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                    lineNumber: 107,
+                    columnNumber: 9
+                }, this)
+            }, void 0, false, {
+                fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                lineNumber: 106,
+                columnNumber: 7
+            }, this)
+        ]
+    }, void 0, true, {
+        fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+        lineNumber: 31,
+        columnNumber: 5
+    }, this);
+}
+_c = PrintablePermit;
 function ManagerPanel({ onLogout, currentView, onViewChange }) {
     _s();
     const { requests, updateRequest } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$context$2f$app$2d$context$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useAppContext"])();
@@ -3955,19 +4514,16 @@ function ManagerPanel({ onLogout, currentView, onViewChange }) {
     const [reviewingId, setReviewingId] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
     const [selectAll, setSelectAll] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     // Filter requests - Only show Manager requests (exclude current user's own requests if desired, or all)
-    // Logic: In a real app, managers see their team. Here we just show the mock "MGR" requests.
     const filteredRequests = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMemo"])({
         "ManagerPanel.useMemo[filteredRequests]": ()=>{
             return requests.filter({
                 "ManagerPanel.useMemo[filteredRequests]": (req)=>{
-                    // Basic filtering
                     if (filterUnit !== "all" && req.workSite !== filterUnit) return false;
                     if (filterStatus !== "all" && req.status !== filterStatus) return false;
                     if (startDate && req.createdAt < startDate) return false;
                     if (endDate && req.createdAt > endDate) return false;
-                    // Only show requests that look like they belong to 'others' (e.g. ID starts with REQ-MGR)
-                    // or just filter out the current user 'emp001'
-                    if (req.employeeId === "emp001") return false;
+                    if (req.employeeId === "emp001") return false // Filter out own requests
+                    ;
                     return true;
                 }
             }["ManagerPanel.useMemo[filteredRequests]"]);
@@ -4008,35 +4564,37 @@ function ManagerPanel({ onLogout, currentView, onViewChange }) {
         setSelectAll(false);
     };
     const handlePrintPermits = ()=>{
-        alert(`Generando ${selectedIds.size} papeletas físicas...`);
+        window.print();
     };
     const getStatusBadge = (status)=>{
-        const variants = {
-            PENDIENTE: {
-                bg: "bg-yellow-100",
-                text: "text-yellow-800",
-                label: "Pendiente"
-            },
-            APROBADO: {
-                bg: "bg-green-100",
-                text: "text-green-800",
-                label: "Aprobado"
-            },
-            RECHAZADO: {
-                bg: "bg-red-100",
-                text: "text-red-800",
-                label: "Rechazado"
-            }
-        };
-        const variant = variants[status] || variants.PENDIENTE;
-        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Badge"], {
-            className: `${variant.bg} ${variant.text} border-0`,
-            children: variant.label
-        }, void 0, false, {
-            fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-            lineNumber: 88,
-            columnNumber: 12
-        }, this);
+        if (status === "PENDIENTE") {
+            return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Badge"], {
+                className: "bg-yellow-400 text-yellow-900 border-0 hover:bg-yellow-500 rounded-md font-bold px-3 shadow-sm",
+                children: "PENDIENTE"
+            }, void 0, false, {
+                fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                lineNumber: 173,
+                columnNumber: 14
+            }, this);
+        } else if (status === "APROBADO") {
+            return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Badge"], {
+                className: "bg-green-500 text-white border-0 hover:bg-green-600 rounded-md font-bold px-3 shadow-sm",
+                children: "APROBADO"
+            }, void 0, false, {
+                fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                lineNumber: 175,
+                columnNumber: 14
+            }, this);
+        } else {
+            return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Badge"], {
+                className: "bg-red-500 text-white border-0 hover:bg-red-600 rounded-md font-bold px-3 shadow-sm",
+                children: "RECHAZADO"
+            }, void 0, false, {
+                fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                lineNumber: 177,
+                columnNumber: 14
+            }, this);
+        }
     };
     if (reviewingId) {
         return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$review$2d$modal$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -4062,743 +4620,1019 @@ function ManagerPanel({ onLogout, currentView, onViewChange }) {
             }
         }, void 0, false, {
             fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-            lineNumber: 93,
+            lineNumber: 183,
             columnNumber: 7
         }, this);
     }
-    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "min-h-screen bg-slate-50",
-        children: [
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "bg-white border-b border-slate-200",
-                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center",
-                    children: [
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
-                                    className: "text-2xl font-bold text-slate-900",
-                                    children: "Panel de Acceso Gerencial"
-                                }, void 0, false, {
-                                    fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                    lineNumber: 118,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                    className: "text-sm text-slate-600 mt-1",
-                                    children: "Bienvenido, Gerente General"
-                                }, void 0, false, {
-                                    fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                    lineNumber: 119,
-                                    columnNumber: 13
-                                }, this)
-                            ]
-                        }, void 0, true, {
+    const requestsToPrint = requests.filter((r)=>selectedIds.has(r.id));
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$components$2f$LazyMotion$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["LazyMotion"], {
+        features: __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$dom$2f$features$2d$animation$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["domAnimation"],
+        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
+            children: [
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: "hidden print:block absolute top-0 left-0 w-full bg-white z-[9999]",
+                    children: requestsToPrint.length > 0 ? requestsToPrint.map((req)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(PrintablePermit, {
+                            request: req
+                        }, req.id, false, {
                             fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                            lineNumber: 117,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
-                            onClick: onLogout,
-                            variant: "ghost",
-                            className: "text-slate-600 hover:text-slate-900",
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$log$2d$out$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__LogOut$3e$__["LogOut"], {
-                                    className: "w-4 h-4 mr-2"
-                                }, void 0, false, {
-                                    fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                    lineNumber: 122,
-                                    columnNumber: 13
-                                }, this),
-                                "Salir"
-                            ]
-                        }, void 0, true, {
-                            fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                            lineNumber: 121,
-                            columnNumber: 11
-                        }, this)
-                    ]
-                }, void 0, true, {
+                            lineNumber: 211,
+                            columnNumber: 15
+                        }, this)) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "p-8 text-center text-xl",
+                        children: "Por favor, seleccione al menos una solicitud para imprimir."
+                    }, void 0, false, {
+                        fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                        lineNumber: 214,
+                        columnNumber: 13
+                    }, this)
+                }, void 0, false, {
                     fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                    lineNumber: 116,
+                    lineNumber: 208,
                     columnNumber: 9
-                }, this)
-            }, void 0, false, {
-                fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                lineNumber: 115,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8",
-                children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
-                        className: "shadow-md",
-                        children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardHeader"], {
-                                className: "bg-slate-100 border-b border-slate-200",
-                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardTitle"], {
-                                    className: "text-lg",
-                                    children: "Filtros de Búsqueda"
-                                }, void 0, false, {
-                                    fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                    lineNumber: 131,
-                                    columnNumber: 13
-                                }, this)
-                            }, void 0, false, {
-                                fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                lineNumber: 130,
-                                columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
-                                className: "pt-6",
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: "min-h-screen bg-slate-50 font-sans text-slate-900 print:hidden",
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("header", {
+                            className: "bg-white border-b border-slate-200 sticky top-0 z-30 shadow-sm",
+                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "max-w-7xl mx-auto px-6 py-4 flex justify-between items-center",
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "grid md:grid-cols-4 gap-4 mb-4",
+                                        className: "text-sm font-medium text-slate-500",
                                         children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                children: [
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-                                                        className: "block text-sm font-medium text-slate-700 mb-2",
-                                                        children: "Unidad Organizacional"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                        lineNumber: 136,
-                                                        columnNumber: 17
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Select"], {
-                                                        value: filterUnit,
-                                                        onValueChange: setFilterUnit,
-                                                        children: [
-                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectTrigger"], {
-                                                                className: "w-full",
-                                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectValue"], {}, void 0, false, {
-                                                                    fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                                    lineNumber: 139,
-                                                                    columnNumber: 21
-                                                                }, this)
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                                lineNumber: 138,
-                                                                columnNumber: 19
-                                                            }, this),
-                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectContent"], {
-                                                                children: [
-                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
-                                                                        value: "all",
-                                                                        children: "Todas las Unidades"
-                                                                    }, void 0, false, {
-                                                                        fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                                        lineNumber: 142,
-                                                                        columnNumber: 21
-                                                                    }, this),
-                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
-                                                                        value: "Logística",
-                                                                        children: "Logística"
-                                                                    }, void 0, false, {
-                                                                        fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                                        lineNumber: 143,
-                                                                        columnNumber: 21
-                                                                    }, this),
-                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
-                                                                        value: "Operaciones",
-                                                                        children: "Operaciones"
-                                                                    }, void 0, false, {
-                                                                        fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                                        lineNumber: 144,
-                                                                        columnNumber: 21
-                                                                    }, this),
-                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
-                                                                        value: "RRHH",
-                                                                        children: "RRHH"
-                                                                    }, void 0, false, {
-                                                                        fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                                        lineNumber: 145,
-                                                                        columnNumber: 21
-                                                                    }, this),
-                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
-                                                                        value: "Finanzas",
-                                                                        children: "Finanzas"
-                                                                    }, void 0, false, {
-                                                                        fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                                        lineNumber: 146,
-                                                                        columnNumber: 21
-                                                                    }, this),
-                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
-                                                                        value: "TI",
-                                                                        children: "TI"
-                                                                    }, void 0, false, {
-                                                                        fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                                        lineNumber: 147,
-                                                                        columnNumber: 21
-                                                                    }, this),
-                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
-                                                                        value: "Ventas",
-                                                                        children: "Ventas"
-                                                                    }, void 0, false, {
-                                                                        fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                                        lineNumber: 148,
-                                                                        columnNumber: 21
-                                                                    }, this)
-                                                                ]
-                                                            }, void 0, true, {
-                                                                fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                                lineNumber: 141,
-                                                                columnNumber: 19
-                                                            }, this)
-                                                        ]
-                                                    }, void 0, true, {
-                                                        fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                        lineNumber: 137,
-                                                        columnNumber: 17
-                                                    }, this)
-                                                ]
-                                            }, void 0, true, {
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                className: "text-slate-900 hover:text-slate-700 cursor-pointer transition-colors",
+                                                children: "Inicio"
+                                            }, void 0, false, {
                                                 fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                lineNumber: 135,
-                                                columnNumber: 15
+                                                lineNumber: 225,
+                                                columnNumber: 17
                                             }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                children: [
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-                                                        className: "block text-sm font-medium text-slate-700 mb-2",
-                                                        children: "Fecha de Inicio"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                        lineNumber: 154,
-                                                        columnNumber: 17
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                                        type: "date",
-                                                        value: startDate,
-                                                        onChange: (e)=>setStartDate(e.target.value),
-                                                        className: "w-full px-3 py-2 border border-slate-200 rounded-md text-sm"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                        lineNumber: 155,
-                                                        columnNumber: 17
-                                                    }, this)
-                                                ]
-                                            }, void 0, true, {
+                                            " > Gestión > ",
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                className: "text-slate-900 font-semibold",
+                                                children: "Panel Gerencial"
+                                            }, void 0, false, {
                                                 fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                lineNumber: 153,
-                                                columnNumber: 15
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                children: [
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-                                                        className: "block text-sm font-medium text-slate-700 mb-2",
-                                                        children: "Fecha de Fin"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                        lineNumber: 164,
-                                                        columnNumber: 17
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                                        type: "date",
-                                                        value: endDate,
-                                                        onChange: (e)=>setEndDate(e.target.value),
-                                                        className: "w-full px-3 py-2 border border-slate-200 rounded-md text-sm"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                        lineNumber: 165,
-                                                        columnNumber: 17
-                                                    }, this)
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                lineNumber: 163,
-                                                columnNumber: 15
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                children: [
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-                                                        className: "block text-sm font-medium text-slate-700 mb-2",
-                                                        children: "Estado"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                        lineNumber: 174,
-                                                        columnNumber: 17
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Select"], {
-                                                        value: filterStatus,
-                                                        onValueChange: setFilterStatus,
-                                                        children: [
-                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectTrigger"], {
-                                                                className: "w-full",
-                                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectValue"], {}, void 0, false, {
-                                                                    fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                                    lineNumber: 177,
-                                                                    columnNumber: 21
-                                                                }, this)
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                                lineNumber: 176,
-                                                                columnNumber: 19
-                                                            }, this),
-                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectContent"], {
-                                                                children: [
-                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
-                                                                        value: "all",
-                                                                        children: "Todos"
-                                                                    }, void 0, false, {
-                                                                        fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                                        lineNumber: 180,
-                                                                        columnNumber: 21
-                                                                    }, this),
-                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
-                                                                        value: "PENDIENTE",
-                                                                        children: "Pendiente"
-                                                                    }, void 0, false, {
-                                                                        fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                                        lineNumber: 181,
-                                                                        columnNumber: 21
-                                                                    }, this),
-                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
-                                                                        value: "APROBADO",
-                                                                        children: "Aprobado"
-                                                                    }, void 0, false, {
-                                                                        fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                                        lineNumber: 182,
-                                                                        columnNumber: 21
-                                                                    }, this),
-                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
-                                                                        value: "RECHAZADO",
-                                                                        children: "Rechazado"
-                                                                    }, void 0, false, {
-                                                                        fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                                        lineNumber: 183,
-                                                                        columnNumber: 21
-                                                                    }, this)
-                                                                ]
-                                                            }, void 0, true, {
-                                                                fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                                lineNumber: 179,
-                                                                columnNumber: 19
-                                                            }, this)
-                                                        ]
-                                                    }, void 0, true, {
-                                                        fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                        lineNumber: 175,
-                                                        columnNumber: 17
-                                                    }, this)
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                lineNumber: 173,
-                                                columnNumber: 15
+                                                lineNumber: 225,
+                                                columnNumber: 136
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                        lineNumber: 134,
-                                        columnNumber: 13
+                                        lineNumber: 224,
+                                        columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "flex gap-2",
+                                        className: "flex items-center gap-4",
                                         children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
-                                                onClick: ()=>{},
-                                                className: "bg-blue-600 hover:bg-blue-700 text-white",
-                                                children: "Aplicar Filtros"
-                                            }, void 0, false, {
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: "text-sm text-right hidden sm:block",
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                        className: "font-bold text-slate-800 block",
+                                                        children: "Gerente General"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                        lineNumber: 229,
+                                                        columnNumber: 19
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                        className: "text-xs text-slate-500 uppercase tracking-wider",
+                                                        children: "Administrador"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                        lineNumber: 230,
+                                                        columnNumber: 19
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
                                                 fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                lineNumber: 190,
-                                                columnNumber: 15
+                                                lineNumber: 228,
+                                                columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
-                                                variant: "outline",
+                                                onClick: onLogout,
+                                                variant: "ghost",
+                                                size: "sm",
+                                                className: "text-slate-400 hover:text-red-500 hover:bg-red-50 rounded-full transition-all",
+                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$log$2d$out$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__LogOut$3e$__["LogOut"], {
+                                                    className: "w-4 h-4"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                    lineNumber: 233,
+                                                    columnNumber: 19
+                                                }, this)
+                                            }, void 0, false, {
+                                                fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                lineNumber: 232,
+                                                columnNumber: 17
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                        lineNumber: 227,
+                                        columnNumber: 15
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                lineNumber: 223,
+                                columnNumber: 13
+                            }, this)
+                        }, void 0, false, {
+                            fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                            lineNumber: 222,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("main", {
+                            className: "max-w-7xl mx-auto px-6 py-8 space-y-8",
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$m$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["m"].div, {
+                                    initial: {
+                                        opacity: 0,
+                                        y: -10
+                                    },
+                                    animate: {
+                                        opacity: 1,
+                                        y: 0
+                                    },
+                                    className: "flex flex-col md:flex-row justify-between items-end gap-4",
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
+                                                    className: "text-3xl font-extrabold text-slate-900 tracking-tight",
+                                                    children: "Solicitudes de Equipo"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                    lineNumber: 248,
+                                                    columnNumber: 17
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                    className: "text-slate-500 mt-1",
+                                                    children: "Gestione y audite las solicitudes de licencias pendientes."
+                                                }, void 0, false, {
+                                                    fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                    lineNumber: 249,
+                                                    columnNumber: 17
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                            lineNumber: 247,
+                                            columnNumber: 15
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: "flex gap-2",
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    className: "bg-white px-4 py-2 rounded-lg border border-slate-200 shadow-sm flex items-center gap-2 text-sm text-slate-600",
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                            className: "w-2 h-2 rounded-full bg-yellow-400"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                            lineNumber: 253,
+                                                            columnNumber: 19
+                                                        }, this),
+                                                        "Pendientes: ",
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                            className: "font-bold text-slate-900",
+                                                            children: requests.filter((r)=>r.status === 'PENDIENTE' && r.employeeId !== 'emp001').length
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                            lineNumber: 254,
+                                                            columnNumber: 31
+                                                        }, this)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                    lineNumber: 252,
+                                                    columnNumber: 17
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    className: "bg-white px-4 py-2 rounded-lg border border-slate-200 shadow-sm flex items-center gap-2 text-sm text-slate-600",
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                            className: "w-2 h-2 rounded-full bg-green-500"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                            lineNumber: 257,
+                                                            columnNumber: 19
+                                                        }, this),
+                                                        "Total: ",
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                            className: "font-bold text-slate-900",
+                                                            children: filteredRequests.length
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                            lineNumber: 258,
+                                                            columnNumber: 26
+                                                        }, this)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                    lineNumber: 256,
+                                                    columnNumber: 17
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                            lineNumber: 251,
+                                            columnNumber: 15
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                    lineNumber: 242,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$m$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["m"].div, {
+                                    initial: {
+                                        opacity: 0,
+                                        y: 10
+                                    },
+                                    animate: {
+                                        opacity: 1,
+                                        y: 0
+                                    },
+                                    transition: {
+                                        delay: 0.1
+                                    },
+                                    className: "bg-white p-5 rounded-2xl shadow-sm border border-slate-200 flex flex-col lg:flex-row gap-4 items-end lg:items-center",
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 w-full",
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    className: "space-y-1.5",
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
+                                                            className: "text-xs font-semibold text-slate-500 uppercase tracking-wider ml-1",
+                                                            children: "Unidad"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                            lineNumber: 272,
+                                                            columnNumber: 19
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Select"], {
+                                                            value: filterUnit,
+                                                            onValueChange: setFilterUnit,
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectTrigger"], {
+                                                                    className: "bg-slate-50 border-slate-200 h-10 rounded-lg focus:ring-2 focus:ring-blue-100",
+                                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectValue"], {
+                                                                        placeholder: "Todas"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                                        lineNumber: 274,
+                                                                        columnNumber: 126
+                                                                    }, this)
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                                    lineNumber: 274,
+                                                                    columnNumber: 21
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectContent"], {
+                                                                    children: [
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
+                                                                            value: "all",
+                                                                            children: "Todas las Unidades"
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                                            lineNumber: 276,
+                                                                            columnNumber: 23
+                                                                        }, this),
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
+                                                                            value: "Logística",
+                                                                            children: "Logística"
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                                            lineNumber: 277,
+                                                                            columnNumber: 23
+                                                                        }, this),
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
+                                                                            value: "Operaciones",
+                                                                            children: "Operaciones"
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                                            lineNumber: 278,
+                                                                            columnNumber: 23
+                                                                        }, this),
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
+                                                                            value: "RRHH",
+                                                                            children: "RRHH"
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                                            lineNumber: 279,
+                                                                            columnNumber: 23
+                                                                        }, this),
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
+                                                                            value: "Finanzas",
+                                                                            children: "Finanzas"
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                                            lineNumber: 280,
+                                                                            columnNumber: 23
+                                                                        }, this),
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
+                                                                            value: "TI",
+                                                                            children: "TI"
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                                            lineNumber: 281,
+                                                                            columnNumber: 23
+                                                                        }, this),
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
+                                                                            value: "Ventas",
+                                                                            children: "Ventas"
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                                            lineNumber: 282,
+                                                                            columnNumber: 23
+                                                                        }, this)
+                                                                    ]
+                                                                }, void 0, true, {
+                                                                    fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                                    lineNumber: 275,
+                                                                    columnNumber: 21
+                                                                }, this)
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                            lineNumber: 273,
+                                                            columnNumber: 19
+                                                        }, this)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                    lineNumber: 271,
+                                                    columnNumber: 17
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    className: "space-y-1.5",
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
+                                                            className: "text-xs font-semibold text-slate-500 uppercase tracking-wider ml-1",
+                                                            children: "Estado"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                            lineNumber: 288,
+                                                            columnNumber: 19
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Select"], {
+                                                            value: filterStatus,
+                                                            onValueChange: setFilterStatus,
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectTrigger"], {
+                                                                    className: "bg-slate-50 border-slate-200 h-10 rounded-lg focus:ring-2 focus:ring-blue-100",
+                                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectValue"], {
+                                                                        placeholder: "Todos"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                                        lineNumber: 290,
+                                                                        columnNumber: 126
+                                                                    }, this)
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                                    lineNumber: 290,
+                                                                    columnNumber: 21
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectContent"], {
+                                                                    children: [
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
+                                                                            value: "all",
+                                                                            children: "Todos"
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                                            lineNumber: 292,
+                                                                            columnNumber: 23
+                                                                        }, this),
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
+                                                                            value: "PENDIENTE",
+                                                                            children: "Pendiente"
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                                            lineNumber: 293,
+                                                                            columnNumber: 23
+                                                                        }, this),
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
+                                                                            value: "APROBADO",
+                                                                            children: "Aprobado"
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                                            lineNumber: 294,
+                                                                            columnNumber: 23
+                                                                        }, this),
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$select$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SelectItem"], {
+                                                                            value: "RECHAZADO",
+                                                                            children: "Rechazado"
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                                            lineNumber: 295,
+                                                                            columnNumber: 23
+                                                                        }, this)
+                                                                    ]
+                                                                }, void 0, true, {
+                                                                    fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                                    lineNumber: 291,
+                                                                    columnNumber: 21
+                                                                }, this)
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                            lineNumber: 289,
+                                                            columnNumber: 19
+                                                        }, this)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                    lineNumber: 287,
+                                                    columnNumber: 17
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    className: "space-y-1.5",
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
+                                                            className: "text-xs font-semibold text-slate-500 uppercase tracking-wider ml-1",
+                                                            children: "Desde"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                            lineNumber: 301,
+                                                            columnNumber: 19
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                            className: "relative",
+                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                                                type: "date",
+                                                                value: startDate,
+                                                                onChange: (e)=>setStartDate(e.target.value),
+                                                                className: "w-full bg-slate-50 border border-slate-200 text-slate-900 text-sm rounded-lg focus:ring-2 focus:ring-blue-100 focus:border-blue-500 block w-full p-2.5"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                                lineNumber: 303,
+                                                                columnNumber: 21
+                                                            }, this)
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                            lineNumber: 302,
+                                                            columnNumber: 19
+                                                        }, this)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                    lineNumber: 300,
+                                                    columnNumber: 17
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    className: "space-y-1.5",
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
+                                                            className: "text-xs font-semibold text-slate-500 uppercase tracking-wider ml-1",
+                                                            children: "Hasta"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                            lineNumber: 308,
+                                                            columnNumber: 19
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                            className: "relative",
+                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                                                type: "date",
+                                                                value: endDate,
+                                                                onChange: (e)=>setEndDate(e.target.value),
+                                                                className: "w-full bg-slate-50 border border-slate-200 text-slate-900 text-sm rounded-lg focus:ring-2 focus:ring-blue-100 focus:border-blue-500 block w-full p-2.5"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                                lineNumber: 310,
+                                                                columnNumber: 21
+                                                            }, this)
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                            lineNumber: 309,
+                                                            columnNumber: 19
+                                                        }, this)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                    lineNumber: 307,
+                                                    columnNumber: 17
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                            lineNumber: 270,
+                                            columnNumber: 15
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: "w-full lg:w-auto flex justify-end",
+                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
+                                                variant: "ghost",
                                                 onClick: ()=>{
                                                     setFilterUnit("all");
                                                     setFilterStatus("all");
                                                     setStartDate("");
                                                     setEndDate("");
                                                 },
-                                                children: "Limpiar Todo"
+                                                className: "text-slate-500 hover:text-red-500 hover:bg-red-50",
+                                                children: "Limpiar"
                                             }, void 0, false, {
                                                 fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                lineNumber: 196,
-                                                columnNumber: 15
+                                                lineNumber: 316,
+                                                columnNumber: 17
                                             }, this)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                        lineNumber: 189,
-                                        columnNumber: 13
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                lineNumber: 133,
-                                columnNumber: 11
-                            }, this)
-                        ]
-                    }, void 0, true, {
-                        fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                        lineNumber: 129,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
-                        className: "mt-8 shadow-md",
-                        children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardHeader"], {
-                                className: "bg-slate-100 border-b border-slate-200 flex flex-row justify-between items-center",
-                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardTitle"], {
-                                    className: "text-lg",
-                                    children: [
-                                        "Solicitudes (",
-                                        filteredRequests.length,
-                                        ")"
+                                        }, void 0, false, {
+                                            fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                            lineNumber: 315,
+                                            columnNumber: 15
+                                        }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                    lineNumber: 214,
+                                    lineNumber: 264,
                                     columnNumber: 13
-                                }, this)
-                            }, void 0, false, {
-                                fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                lineNumber: 213,
-                                columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
-                                className: "pt-6",
-                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "overflow-x-auto border border-slate-200 rounded-lg",
-                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Table"], {
-                                        children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableHeader"], {
-                                                className: "bg-slate-50",
-                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableRow"], {
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$m$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["m"].div, {
+                                    initial: {
+                                        opacity: 0,
+                                        y: 20
+                                    },
+                                    animate: {
+                                        opacity: 1,
+                                        y: 0
+                                    },
+                                    transition: {
+                                        delay: 0.2
+                                    },
+                                    className: "bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden ring-1 ring-black/5",
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: "p-4 border-b border-slate-100 bg-slate-50/30 flex justify-between items-center",
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                                                    className: "font-bold text-slate-700",
+                                                    children: "Listado de Solicitudes"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                    lineNumber: 334,
+                                                    columnNumber: 17
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                    className: "text-xs font-medium bg-slate-200 text-slate-600 px-2 py-1 rounded-md",
                                                     children: [
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableHead"], {
-                                                            className: "w-12",
-                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$checkbox$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Checkbox"], {
-                                                                checked: selectAll,
-                                                                onCheckedChange: handleSelectAll
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                                lineNumber: 224,
-                                                                columnNumber: 23
-                                                            }, this)
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                            lineNumber: 223,
-                                                            columnNumber: 21
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableHead"], {
-                                                            className: "text-slate-700 font-semibold",
-                                                            children: "Empleado"
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                            lineNumber: 226,
-                                                            columnNumber: 21
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableHead"], {
-                                                            className: "text-slate-700 font-semibold",
-                                                            children: "Área"
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                            lineNumber: 227,
-                                                            columnNumber: 21
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableHead"], {
-                                                            className: "text-slate-700 font-semibold",
-                                                            children: "Fechas"
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                            lineNumber: 228,
-                                                            columnNumber: 21
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableHead"], {
-                                                            className: "text-slate-700 font-semibold text-center",
-                                                            children: "Días"
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                            lineNumber: 229,
-                                                            columnNumber: 21
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableHead"], {
-                                                            className: "text-slate-700 font-semibold text-center",
-                                                            children: "Evidencia"
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                            lineNumber: 230,
-                                                            columnNumber: 21
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableHead"], {
-                                                            className: "text-slate-700 font-semibold",
-                                                            children: "Estado"
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                            lineNumber: 232,
-                                                            columnNumber: 21
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableHead"], {
-                                                            className: "text-slate-700 font-semibold",
-                                                            children: "Acciones"
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                            lineNumber: 233,
-                                                            columnNumber: 21
-                                                        }, this)
+                                                        filteredRequests.length,
+                                                        " registros"
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                    lineNumber: 222,
-                                                    columnNumber: 19
+                                                    lineNumber: 335,
+                                                    columnNumber: 17
                                                 }, this)
-                                            }, void 0, false, {
-                                                fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                lineNumber: 221,
-                                                columnNumber: 17
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableBody"], {
-                                                children: filteredRequests.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableRow"], {
-                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"], {
-                                                        colSpan: 8,
-                                                        className: "text-center py-8 text-slate-500",
-                                                        children: "No se encontraron solicitudes."
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                            lineNumber: 333,
+                                            columnNumber: 15
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: "overflow-x-auto",
+                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Table"], {
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableHeader"], {
+                                                        className: "bg-slate-50 border-b border-slate-100",
+                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableRow"], {
+                                                            className: "hover:bg-transparent",
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableHead"], {
+                                                                    className: "w-12 pl-4",
+                                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$checkbox$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Checkbox"], {
+                                                                        checked: selectAll,
+                                                                        onCheckedChange: handleSelectAll
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                                        lineNumber: 342,
+                                                                        columnNumber: 56
+                                                                    }, this)
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                                    lineNumber: 342,
+                                                                    columnNumber: 23
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableHead"], {
+                                                                    className: "font-bold text-slate-600 uppercase text-xs tracking-wider py-4 w-[100px]",
+                                                                    children: "ID"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                                    lineNumber: 343,
+                                                                    columnNumber: 23
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableHead"], {
+                                                                    className: "font-bold text-slate-600 uppercase text-xs tracking-wider py-4",
+                                                                    children: "Empleado"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                                    lineNumber: 344,
+                                                                    columnNumber: 23
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableHead"], {
+                                                                    className: "font-bold text-slate-600 uppercase text-xs tracking-wider py-4",
+                                                                    children: "Unidad"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                                    lineNumber: 345,
+                                                                    columnNumber: 23
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableHead"], {
+                                                                    className: "font-bold text-slate-600 uppercase text-xs tracking-wider py-4",
+                                                                    children: "Fechas"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                                    lineNumber: 346,
+                                                                    columnNumber: 23
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableHead"], {
+                                                                    className: "font-bold text-slate-600 uppercase text-xs tracking-wider text-center py-4",
+                                                                    children: "Días"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                                    lineNumber: 347,
+                                                                    columnNumber: 23
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableHead"], {
+                                                                    className: "font-bold text-slate-600 uppercase text-xs tracking-wider text-center py-4",
+                                                                    children: "Evidencia"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                                    lineNumber: 348,
+                                                                    columnNumber: 23
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableHead"], {
+                                                                    className: "font-bold text-slate-600 uppercase text-xs tracking-wider py-4",
+                                                                    children: "Estado"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                                    lineNumber: 349,
+                                                                    columnNumber: 23
+                                                                }, this),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableHead"], {
+                                                                    className: "font-bold text-slate-600 uppercase text-xs tracking-wider text-right pr-6 py-4",
+                                                                    children: "Acción"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                                    lineNumber: 350,
+                                                                    columnNumber: 23
+                                                                }, this)
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                            lineNumber: 341,
+                                                            columnNumber: 21
+                                                        }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                        lineNumber: 239,
-                                                        columnNumber: 23
-                                                    }, this)
-                                                }, void 0, false, {
-                                                    fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                    lineNumber: 238,
-                                                    columnNumber: 21
-                                                }, this) : filteredRequests.map((req)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableRow"], {
-                                                        className: "hover:bg-slate-50",
-                                                        children: [
-                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"], {
-                                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$checkbox$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Checkbox"], {
-                                                                    checked: selectedIds.has(req.id),
-                                                                    onCheckedChange: (checked)=>handleSelectId(req.id, checked)
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                                    lineNumber: 247,
-                                                                    columnNumber: 27
-                                                                }, this)
+                                                        lineNumber: 340,
+                                                        columnNumber: 19
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableBody"], {
+                                                        children: filteredRequests.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableRow"], {
+                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"], {
+                                                                colSpan: 9,
+                                                                className: "h-32 text-center text-slate-400",
+                                                                children: "No hay solicitudes que coincidan con los filtros."
                                                             }, void 0, false, {
                                                                 fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                                lineNumber: 246,
-                                                                columnNumber: 25
-                                                            }, this),
-                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"], {
-                                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                    className: "flex items-center gap-3",
-                                                                    children: [
-                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                            className: "flex h-10 w-10 items-center justify-center rounded-full bg-slate-200 text-slate-500 font-bold",
-                                                                            children: req.employeeName.charAt(0)
-                                                                        }, void 0, false, {
-                                                                            fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                                            lineNumber: 254,
-                                                                            columnNumber: 29
-                                                                        }, this),
-                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                            className: "font-medium text-slate-700",
-                                                                            children: req.employeeName
-                                                                        }, void 0, false, {
-                                                                            fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                                            lineNumber: 257,
-                                                                            columnNumber: 29
-                                                                        }, this)
-                                                                    ]
-                                                                }, void 0, true, {
-                                                                    fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                                    lineNumber: 253,
-                                                                    columnNumber: 27
-                                                                }, this)
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                                lineNumber: 252,
-                                                                columnNumber: 25
-                                                            }, this),
-                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"], {
-                                                                children: req.workSite
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                                lineNumber: 260,
-                                                                columnNumber: 25
-                                                            }, this),
-                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"], {
-                                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                    className: "text-sm",
-                                                                    children: [
-                                                                        req.startDate,
-                                                                        " ",
-                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
-                                                                            fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                                            lineNumber: 263,
-                                                                            columnNumber: 45
-                                                                        }, this),
-                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                            className: "text-slate-400",
-                                                                            children: "al"
-                                                                        }, void 0, false, {
-                                                                            fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                                            lineNumber: 263,
-                                                                            columnNumber: 51
-                                                                        }, this),
-                                                                        " ",
-                                                                        req.endDate
-                                                                    ]
-                                                                }, void 0, true, {
-                                                                    fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                                    lineNumber: 262,
-                                                                    columnNumber: 27
-                                                                }, this)
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                                lineNumber: 261,
-                                                                columnNumber: 25
-                                                            }, this),
-                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"], {
-                                                                className: "text-center font-medium",
-                                                                children: req.totalDays
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                                lineNumber: 266,
-                                                                columnNumber: 25
-                                                            }, this),
-                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"], {
-                                                                className: "text-center",
-                                                                children: req.evidence ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$check$2d$big$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__CheckCircle$3e$__["CheckCircle"], {
-                                                                    className: "w-5 h-5 text-green-500 mx-auto"
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                                    lineNumber: 269,
-                                                                    columnNumber: 29
-                                                                }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$x$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__XCircle$3e$__["XCircle"], {
-                                                                    className: "w-5 h-5 text-red-300 mx-auto"
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                                    lineNumber: 271,
-                                                                    columnNumber: 29
-                                                                }, this)
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                                lineNumber: 267,
-                                                                columnNumber: 25
-                                                            }, this),
-                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"], {
-                                                                children: getStatusBadge(req.status)
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                                lineNumber: 274,
-                                                                columnNumber: 25
-                                                            }, this),
-                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"], {
-                                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
-                                                                    onClick: ()=>setReviewingId(req.id),
-                                                                    size: "sm",
-                                                                    variant: "outline",
-                                                                    className: "border-blue-200 text-blue-600 hover:bg-blue-50",
-                                                                    children: "Revisar"
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                                    lineNumber: 276,
-                                                                    columnNumber: 27
-                                                                }, this)
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                                lineNumber: 275,
+                                                                lineNumber: 356,
                                                                 columnNumber: 25
                                                             }, this)
-                                                        ]
-                                                    }, req.id, true, {
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                            lineNumber: 355,
+                                                            columnNumber: 23
+                                                        }, this) : filteredRequests.map((req, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableRow"], {
+                                                                className: "border-b border-slate-50 hover:bg-slate-50/80 transition-colors h-[72px]",
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"], {
+                                                                        className: "pl-4",
+                                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$checkbox$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Checkbox"], {
+                                                                            checked: selectedIds.has(req.id),
+                                                                            onCheckedChange: (checked)=>handleSelectId(req.id, checked)
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                                            lineNumber: 364,
+                                                                            columnNumber: 29
+                                                                        }, this)
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                                        lineNumber: 363,
+                                                                        columnNumber: 27
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"], {
+                                                                        className: "text-xs font-bold text-slate-500",
+                                                                        children: req.id
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                                        lineNumber: 366,
+                                                                        columnNumber: 27
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"], {
+                                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                            className: "flex items-center gap-3",
+                                                                            children: [
+                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                                    className: "w-9 h-9 rounded-full bg-gradient-to-br from-blue-100 to-indigo-100 text-blue-700 flex items-center justify-center font-bold text-sm shadow-sm border border-white",
+                                                                                    children: req.employeeName.charAt(0)
+                                                                                }, void 0, false, {
+                                                                                    fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                                                    lineNumber: 371,
+                                                                                    columnNumber: 31
+                                                                                }, this),
+                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                                    className: "flex flex-col",
+                                                                                    children: [
+                                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                            className: "font-semibold text-slate-700 text-sm",
+                                                                                            children: req.employeeName
+                                                                                        }, void 0, false, {
+                                                                                            fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                                                            lineNumber: 375,
+                                                                                            columnNumber: 33
+                                                                                        }, this),
+                                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                            className: "text-[10px] text-slate-400 font-medium tracking-wide",
+                                                                                            children: [
+                                                                                                "ID: ",
+                                                                                                req.employeeId
+                                                                                            ]
+                                                                                        }, void 0, true, {
+                                                                                            fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                                                            lineNumber: 376,
+                                                                                            columnNumber: 33
+                                                                                        }, this)
+                                                                                    ]
+                                                                                }, void 0, true, {
+                                                                                    fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                                                    lineNumber: 374,
+                                                                                    columnNumber: 31
+                                                                                }, this)
+                                                                            ]
+                                                                        }, void 0, true, {
+                                                                            fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                                            lineNumber: 370,
+                                                                            columnNumber: 29
+                                                                        }, this)
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                                        lineNumber: 369,
+                                                                        columnNumber: 27
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"], {
+                                                                        className: "text-slate-600 font-medium text-sm",
+                                                                        children: req.workSite
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                                        lineNumber: 380,
+                                                                        columnNumber: 27
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"], {
+                                                                        className: "text-slate-500 font-medium text-xs",
+                                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                            className: "flex flex-col",
+                                                                            children: [
+                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                    children: req.startDate
+                                                                                }, void 0, false, {
+                                                                                    fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                                                    lineNumber: 383,
+                                                                                    columnNumber: 31
+                                                                                }, this),
+                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                    className: "text-slate-300",
+                                                                                    children: "a"
+                                                                                }, void 0, false, {
+                                                                                    fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                                                    lineNumber: 384,
+                                                                                    columnNumber: 31
+                                                                                }, this),
+                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                    children: req.endDate
+                                                                                }, void 0, false, {
+                                                                                    fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                                                    lineNumber: 385,
+                                                                                    columnNumber: 31
+                                                                                }, this)
+                                                                            ]
+                                                                        }, void 0, true, {
+                                                                            fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                                            lineNumber: 382,
+                                                                            columnNumber: 29
+                                                                        }, this)
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                                        lineNumber: 381,
+                                                                        columnNumber: 27
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"], {
+                                                                        className: "text-center",
+                                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                            className: "bg-slate-100 text-slate-700 font-bold px-2.5 py-1 rounded-md text-sm",
+                                                                            children: req.totalDays
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                                            lineNumber: 389,
+                                                                            columnNumber: 29
+                                                                        }, this)
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                                        lineNumber: 388,
+                                                                        columnNumber: 27
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"], {
+                                                                        className: "text-center",
+                                                                        children: req.evidence ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                            className: "flex justify-center",
+                                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$check$2d$big$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__CheckCircle$3e$__["CheckCircle"], {
+                                                                                className: "w-5 h-5 text-emerald-500 fill-emerald-50"
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                                                lineNumber: 393,
+                                                                                columnNumber: 68
+                                                                            }, this)
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                                            lineNumber: 393,
+                                                                            columnNumber: 31
+                                                                        }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                            className: "flex justify-center",
+                                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$x$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__XCircle$3e$__["XCircle"], {
+                                                                                className: "w-5 h-5 text-slate-300"
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                                                lineNumber: 395,
+                                                                                columnNumber: 68
+                                                                            }, this)
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                                            lineNumber: 395,
+                                                                            columnNumber: 31
+                                                                        }, this)
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                                        lineNumber: 391,
+                                                                        columnNumber: 27
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"], {
+                                                                        children: getStatusBadge(req.status)
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                                        lineNumber: 398,
+                                                                        columnNumber: 27
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$table$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TableCell"], {
+                                                                        className: "text-right pr-6",
+                                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
+                                                                            size: "sm",
+                                                                            variant: "outline",
+                                                                            onClick: ()=>setReviewingId(req.id),
+                                                                            className: "border-blue-200 text-blue-600 hover:bg-blue-50 hover:border-blue-300 font-medium",
+                                                                            children: "Revisar"
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                                            lineNumber: 400,
+                                                                            columnNumber: 29
+                                                                        }, this)
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                                        lineNumber: 399,
+                                                                        columnNumber: 27
+                                                                    }, this)
+                                                                ]
+                                                            }, req.id, true, {
+                                                                fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                                lineNumber: 362,
+                                                                columnNumber: 25
+                                                            }, this))
+                                                    }, void 0, false, {
                                                         fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                        lineNumber: 245,
-                                                        columnNumber: 23
-                                                    }, this))
-                                            }, void 0, false, {
+                                                        lineNumber: 353,
+                                                        columnNumber: 19
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
                                                 fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                                lineNumber: 236,
+                                                lineNumber: 339,
                                                 columnNumber: 17
                                             }, this)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                        lineNumber: 220,
-                                        columnNumber: 15
-                                    }, this)
-                                }, void 0, false, {
+                                        }, void 0, false, {
+                                            fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                            lineNumber: 338,
+                                            columnNumber: 15
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
                                     fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                    lineNumber: 219,
+                                    lineNumber: 327,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$m$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["m"].div, {
+                                    initial: {
+                                        y: 100,
+                                        opacity: 0
+                                    },
+                                    animate: {
+                                        y: 0,
+                                        opacity: 1
+                                    },
+                                    className: "sticky bottom-6 z-40 bg-white/90 backdrop-blur-md border border-slate-200 p-4 rounded-xl shadow-2xl flex flex-col sm:flex-row gap-4 items-center justify-between",
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: "text-sm font-medium text-slate-600 pl-2",
+                                            children: selectedIds.size > 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                className: "text-slate-900 font-bold",
+                                                children: [
+                                                    selectedIds.size,
+                                                    " solicitudes seleccionadas"
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                lineNumber: 425,
+                                                columnNumber: 19
+                                            }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                children: "Seleccione solicitudes para acciones masivas"
+                                            }, void 0, false, {
+                                                fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                lineNumber: 427,
+                                                columnNumber: 19
+                                            }, this)
+                                        }, void 0, false, {
+                                            fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                            lineNumber: 423,
+                                            columnNumber: 15
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: "flex gap-3 w-full sm:w-auto",
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
+                                                    onClick: ()=>handleBulkAction("approve"),
+                                                    disabled: selectedIds.size === 0,
+                                                    className: "flex-1 sm:flex-none bg-emerald-600 hover:bg-emerald-700 text-white shadow-lg shadow-emerald-500/20",
+                                                    children: "Aprobar Selección"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                    lineNumber: 431,
+                                                    columnNumber: 17
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
+                                                    onClick: ()=>handleBulkAction("reject"),
+                                                    disabled: selectedIds.size === 0,
+                                                    className: "flex-1 sm:flex-none bg-red-600 hover:bg-red-700 text-white shadow-lg shadow-red-500/20",
+                                                    children: "Rechazar Selección"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                    lineNumber: 434,
+                                                    columnNumber: 17
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
+                                                    onClick: handlePrintPermits,
+                                                    disabled: selectedIds.size === 0,
+                                                    variant: "outline",
+                                                    className: "flex-1 sm:flex-none border-slate-300 text-slate-700",
+                                                    children: "Imprimir"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                                    lineNumber: 437,
+                                                    columnNumber: 17
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                            lineNumber: 430,
+                                            columnNumber: 15
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                                    lineNumber: 418,
                                     columnNumber: 13
                                 }, this)
-                            }, void 0, false, {
-                                fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                lineNumber: 218,
-                                columnNumber: 11
-                            }, this)
-                        ]
-                    }, void 0, true, {
-                        fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                        lineNumber: 212,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "flex gap-4 mt-8 sticky bottom-8 p-4 bg-white/90 backdrop-blur-sm border rounded-lg shadow-lg",
-                        children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
-                                onClick: ()=>handleBulkAction("approve"),
-                                disabled: selectedIds.size === 0,
-                                className: "flex-1 bg-green-600 hover:bg-green-700 text-white disabled:opacity-50 disabled:cursor-not-allowed transition-colors shadow-sm",
-                                children: [
-                                    "Aprobar (",
-                                    selectedIds.size,
-                                    ")"
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                lineNumber: 296,
-                                columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
-                                onClick: ()=>handleBulkAction("reject"),
-                                disabled: selectedIds.size === 0,
-                                className: "flex-1 bg-red-600 hover:bg-red-700 text-white disabled:opacity-50 disabled:cursor-not-allowed transition-colors shadow-sm",
-                                children: [
-                                    "Rechazar (",
-                                    selectedIds.size,
-                                    ")"
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                lineNumber: 303,
-                                columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
-                                onClick: handlePrintPermits,
-                                disabled: selectedIds.size === 0,
-                                className: "flex-1 bg-slate-800 hover:bg-slate-900 text-white disabled:opacity-50 disabled:cursor-not-allowed transition-colors shadow-sm",
-                                children: [
-                                    "Imprimir Papeletas (",
-                                    selectedIds.size,
-                                    ")"
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                                lineNumber: 310,
-                                columnNumber: 11
-                            }, this)
-                        ]
-                    }, void 0, true, {
-                        fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                        lineNumber: 295,
-                        columnNumber: 9
-                    }, this)
-                ]
-            }, void 0, true, {
-                fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-                lineNumber: 128,
-                columnNumber: 7
-            }, this)
-        ]
-    }, void 0, true, {
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                            lineNumber: 239,
+                            columnNumber: 11
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
+                    lineNumber: 219,
+                    columnNumber: 9
+                }, this)
+            ]
+        }, void 0, true)
+    }, void 0, false, {
         fileName: "[project]/Documents/prototype/components/manager-panel.tsx",
-        lineNumber: 113,
+        lineNumber: 205,
         columnNumber: 5
     }, this);
 }
@@ -4807,9 +5641,10 @@ _s(ManagerPanel, "roIzRU5jcUcchiPSg3mv39tpboc=", false, function() {
         __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$prototype$2f$context$2f$app$2d$context$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useAppContext"]
     ];
 });
-_c = ManagerPanel;
-var _c;
-__turbopack_context__.k.register(_c, "ManagerPanel");
+_c1 = ManagerPanel;
+var _c, _c1;
+__turbopack_context__.k.register(_c, "PrintablePermit");
+__turbopack_context__.k.register(_c1, "ManagerPanel");
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
 }
