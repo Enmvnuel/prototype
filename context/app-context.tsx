@@ -37,8 +37,17 @@ interface AppContextType {
 const AppContext = createContext<AppContextType | undefined>(undefined)
 
 // Helper to generate mock requests
+// Helper to generate mock requests
 const generateMockRequests = (): RequestData[] => {
   const requests: RequestData[] = []
+
+  // Helper to add days to a date string and return YYYY-MM-DD
+  const addDays = (dateStr: string, days: number): string => {
+    const date = new Date(dateStr)
+    // Add days (days - 1 because inclusive: 1 day duration = same start/end)
+    date.setDate(date.getDate() + (days - 1))
+    return date.toISOString().split('T')[0]
+  }
 
   // 1. Employee Requests (Current User - emp001)
   // Requirement: Max 10 requests, changing year every 2 requests (2020-2025)
@@ -56,10 +65,14 @@ const generateMockRequests = (): RequestData[] => {
       if (currentYear < 2025) currentYear++
     }
 
+    // Generate random start date
     const month = Math.floor(Math.random() * 12) + 1
     const day = Math.floor(Math.random() * 20) + 1
     const dateStr = `${currentYear}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`
-    const endDateStr = `${currentYear}-${month.toString().padStart(2, '0')}-${(day + 3).toString().padStart(2, '0')}`
+
+    // Determine random duration
+    const duration = Math.floor(Math.random() * 3) + 1 // 1-3 days
+    const endDateStr = addDays(dateStr, duration)
 
     // NEW ID FORMAT: REQ001, REQ002...
     const idSuffix = (i + 1).toString().padStart(3, '0')
@@ -72,7 +85,7 @@ const generateMockRequests = (): RequestData[] => {
       type: types[i % 2], // Only non-vacation types
       startDate: dateStr,
       endDate: endDateStr,
-      totalDays: 3,
+      totalDays: duration,
       workSite: "Sede Central",
       status: statuses[i % 3],
       createdAt: dateStr,
@@ -99,8 +112,11 @@ const generateMockRequests = (): RequestData[] => {
     const status = Math.random() > 0.7 ? (Math.random() > 0.5 ? "APROBADO" : "RECHAZADO") : "PENDIENTE"
 
     const month = Math.floor(Math.random() * 3) + 10 // Oct-Dec 2025
-    const day = Math.floor(Math.random() * 28) + 1
+    const day = Math.floor(Math.random() * 25) + 1
     const dateStr = `2025-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`
+
+    const duration = Math.floor(Math.random() * 5) + 1 // 1-5 days
+    const endDateStr = addDays(dateStr, duration)
 
     // NEW ID FORMAT FOR MANAGER: REQ101...
     const idSuffix = (101 + i).toString().padStart(3, '0')
@@ -112,8 +128,8 @@ const generateMockRequests = (): RequestData[] => {
       employeeName: `${fName} ${lName}`,
       type: managerTypes[Math.floor(Math.random() * managerTypes.length)] as any,
       startDate: dateStr,
-      endDate: `2025-${month.toString().padStart(2, '0')}-${(day + 2).toString().padStart(2, '0')}`,
-      totalDays: Math.floor(Math.random() * 5) + 1,
+      endDate: endDateStr,
+      totalDays: duration,
       workSite: area,
       status: status as any,
       createdAt: dateStr,
@@ -135,13 +151,15 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   // Load from localStorage on mount
   useEffect(() => {
     // CLEANUP: Remove old v1 data to prevent conflicts
-    if (localStorage.getItem("elm-requests-v1")) {
-      console.log("🧹 Cleaning up old data (v1)...")
-      localStorage.removeItem("elm-requests-v1")
+    // CLEANUP: Remove old data to prevent conflicts
+    if (localStorage.getItem("elm-requests-v1")) localStorage.removeItem("elm-requests-v1")
+    if (localStorage.getItem("elm-requests-v2")) {
+      console.log("🧹 Cleaning up old data (v2)...")
+      localStorage.removeItem("elm-requests-v2")
     }
 
-    // UPDATED KEY TO V2 TO FORCE RESET FOR USER
-    const saved = localStorage.getItem("elm-requests-v2")
+    // UPDATED KEY TO V3 TO FORCE RESET FOR USER (Fix date logic)
+    const saved = localStorage.getItem("elm-requests-v3")
     if (saved) {
       try {
         setRequests(JSON.parse(saved))
@@ -150,7 +168,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         setRequests(generateMockRequests())
       }
     } else {
-      console.log("🔄 Initializing with fresh mock data (15 vacation days for emp001)...")
+      console.log("🔄 Initializing with fresh mock data (v3 fixed dates)...")
       setRequests(generateMockRequests())
     }
     setIsInitialized(true)
@@ -159,7 +177,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   // Save to localStorage whenever requests change
   useEffect(() => {
     if (isInitialized) {
-      localStorage.setItem("elm-requests-v2", JSON.stringify(requests))
+      localStorage.setItem("elm-requests-v3", JSON.stringify(requests))
     }
   }, [requests, isInitialized])
 
