@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Textarea } from "@/components/ui/textarea"
@@ -13,13 +13,20 @@ interface ReviewModalProps {
   request: RequestData
   onClose: () => void
   onApprove: () => void
-  onReject: () => void
+  onReject: (notes: string) => void
   onReturn: () => void
 }
 
 export default function ReviewModal({ request, onClose, onApprove, onReject, onReturn }: ReviewModalProps) {
   const [decision, setDecision] = useState("")
   const [notes, setNotes] = useState("")
+
+  // Cargar justificación existente si ya fue rechazada
+  useEffect(() => {
+    if (request.managerNotes && request.status === "RECHAZADO") {
+      // No modificar el textarea, solo mostrar en sección separada
+    }
+  }, [request])
 
   const handleSubmit = () => {
     if (decision === "approve") {
@@ -29,7 +36,27 @@ export default function ReviewModal({ request, onClose, onApprove, onReject, onR
         alert("Por favor complete la justificación para rechazar")
         return
       }
-      onReject()
+      // Guardar en localStorage
+      const storedRequests = localStorage.getItem("elm-requests-v4")
+      if (storedRequests) {
+        try {
+          const requests = JSON.parse(storedRequests)
+          const updatedRequests = requests.map((req: any) => {
+            if (req.id === request.id) {
+              return { 
+                ...req, 
+                managerNotes: notes, 
+                reviewedAt: new Date().toISOString().split('T')[0] 
+              }
+            }
+            return req
+          })
+          localStorage.setItem("elm-requests-v4", JSON.stringify(updatedRequests))
+        } catch (e) {
+          console.error("Error al guardar la justificación", e)
+        }
+      }
+      onReject(notes)
     } else if (decision === "return") {
       onReturn()
     }
@@ -231,6 +258,33 @@ export default function ReviewModal({ request, onClose, onApprove, onReject, onR
                 </div>
               </div>
             </div>
+
+            {/* Justificación de Rechazo Guardada - Nueva Sección */}
+            {request.managerNotes && request.status === "RECHAZADO" && (
+              <div className="pt-6 border-t border-slate-100">
+                <h4 className="flex items-center gap-2 font-bold text-red-600 text-sm uppercase tracking-wider mb-4">
+                  <AlertTriangle className="w-4 h-4" />
+                  Justificación del Rechazo Registrada
+                </h4>
+                <div className="bg-red-50/50 rounded-2xl border-2 border-red-200 p-6 relative overflow-hidden">
+                  <div className="absolute top-0 left-0 w-1.5 h-full bg-red-500 rounded-l-2xl"></div>
+                  <div className="relative z-10">
+                    <p className="text-red-900 font-semibold text-sm mb-2">Motivo del rechazo:</p>
+                    <p className="text-slate-700 leading-relaxed text-sm italic">
+                      "{request.managerNotes}"
+                    </p>
+                    {request.reviewedAt && (
+                      <p className="text-xs text-red-400 mt-4 uppercase font-bold tracking-wide">
+                        Rechazado el: {request.reviewedAt}
+                      </p>
+                    )}
+                  </div>
+                  <div className="absolute right-4 bottom-4 opacity-5">
+                    <FileText className="w-20 h-20 text-red-500" />
+                  </div>
+                </div>
+              </div>
+            )}
 
             {/* Audit History */}
             <div className="pt-6 border-t border-slate-100">

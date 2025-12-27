@@ -236,8 +236,12 @@ export default function ManagerPanel({ onLogout, currentView, onViewChange }: Ma
           updateRequest(reviewingId, { status: "APROBADO" })
           setReviewingId(null)
         }}
-        onReject={() => {
-          updateRequest(reviewingId, { status: "RECHAZADO" })
+        onReject={(notes: string) => {
+          updateRequest(reviewingId, { 
+            status: "RECHAZADO",
+            managerNotes: notes,
+            reviewedAt: new Date().toISOString().split('T')[0]
+          })
           setReviewingId(null)
         }}
         onReturn={() => {
