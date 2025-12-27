@@ -42,8 +42,18 @@ export default function EmployeeDashboard({ onCreateRequest, onLogout }: Employe
     return Array.from(months).sort().reverse()
   }, [employeeRequests])
 
+  const [sortConfig, setSortConfig] = useState<{ key: string; direction: 'asc' | 'desc' } | null>(null)
+
+  const handleSort = (key: string) => {
+    let direction: 'asc' | 'desc' = 'asc'
+    if (sortConfig && sortConfig.key === key && sortConfig.direction === 'asc') {
+      direction = 'desc'
+    }
+    setSortConfig({ key, direction })
+  }
+
   const filteredRequests = useMemo(() => {
-    return employeeRequests.filter((req) => {
+    let result = employeeRequests.filter((req) => {
       if (filterMonth !== "all") {
         const reqMonth = req.createdAt.substring(0, 7)
         if (reqMonth !== filterMonth) return false
@@ -61,7 +71,21 @@ export default function EmployeeDashboard({ onCreateRequest, onLogout }: Employe
 
       return true
     })
-  }, [employeeRequests, filterMonth, filterStatus, searchQuery])
+
+    if (sortConfig) {
+      result.sort((a: any, b: any) => {
+        if (a[sortConfig.key] < b[sortConfig.key]) {
+          return sortConfig.direction === 'asc' ? -1 : 1
+        }
+        if (a[sortConfig.key] > b[sortConfig.key]) {
+          return sortConfig.direction === 'asc' ? 1 : -1
+        }
+        return 0
+      })
+    }
+
+    return result
+  }, [employeeRequests, filterMonth, filterStatus, searchQuery, sortConfig])
 
   const totalPages = Math.ceil(filteredRequests.length / itemsPerPage)
   const paginatedRequests = filteredRequests.slice(
@@ -82,6 +106,11 @@ export default function EmployeeDashboard({ onCreateRequest, onLogout }: Employe
     } else {
       return <Badge className="bg-red-500 text-white border-0 hover:bg-red-600 rounded-md font-bold px-3 shadow-sm">RECHAZADO</Badge>
     }
+  }
+
+  const SortIcon = ({ column }: { column: string }) => {
+    if (sortConfig?.key !== column) return <span className="ml-1 text-slate-300">↕</span>
+    return sortConfig.direction === 'asc' ? <span className="ml-1 text-blue-600">↑</span> : <span className="ml-1 text-blue-600">↓</span>
   }
 
   return (
@@ -242,13 +271,27 @@ export default function EmployeeDashboard({ onCreateRequest, onLogout }: Employe
             <Table>
               <TableHeader className="bg-slate-50 border-b border-slate-100">
                 <TableRow className="hover:bg-transparent">
-                  <TableHead className="font-bold text-slate-600 uppercase text-xs tracking-wider w-[140px] pl-6 py-4">ID Solicitud</TableHead>
-                  <TableHead className="font-bold text-slate-600 uppercase text-xs tracking-wider py-4">Fecha de Envío</TableHead>
-                  <TableHead className="font-bold text-slate-600 uppercase text-xs tracking-wider py-4">Tipo de Licencia</TableHead>
-                  <TableHead className="font-bold text-slate-600 uppercase text-xs tracking-wider py-4">Fechas Solicitadas</TableHead>
-                  <TableHead className="font-bold text-slate-600 uppercase text-xs tracking-wider w-[100px] text-center py-4">Días</TableHead>
-                  <TableHead className="font-bold text-slate-600 uppercase text-xs tracking-wider py-4">Sede Asignada</TableHead>
-                  <TableHead className="font-bold text-slate-600 uppercase text-xs tracking-wider w-[140px] py-4">Estado</TableHead>
+                  <TableHead className="font-bold text-slate-600 uppercase text-xs tracking-wider w-[140px] pl-6 py-4 cursor-pointer hover:bg-slate-100 hover:text-blue-600 transition-colors" onClick={() => handleSort('id')}>
+                    <div className="flex items-center">ID Solicitud <SortIcon column="id" /></div>
+                  </TableHead>
+                  <TableHead className="font-bold text-slate-600 uppercase text-xs tracking-wider py-4 cursor-pointer hover:bg-slate-100 hover:text-blue-600 transition-colors" onClick={() => handleSort('createdAt')}>
+                    <div className="flex items-center">Fecha de Envío <SortIcon column="createdAt" /></div>
+                  </TableHead>
+                  <TableHead className="font-bold text-slate-600 uppercase text-xs tracking-wider py-4 cursor-pointer hover:bg-slate-100 hover:text-blue-600 transition-colors" onClick={() => handleSort('type')}>
+                    <div className="flex items-center">Tipo de Licencia <SortIcon column="type" /></div>
+                  </TableHead>
+                  <TableHead className="font-bold text-slate-600 uppercase text-xs tracking-wider py-4 cursor-pointer hover:bg-slate-100 hover:text-blue-600 transition-colors" onClick={() => handleSort('startDate')}>
+                    <div className="flex items-center">Fechas Solicitadas <SortIcon column="startDate" /></div>
+                  </TableHead>
+                  <TableHead className="font-bold text-slate-600 uppercase text-xs tracking-wider w-[100px] text-center py-4 cursor-pointer hover:bg-slate-100 hover:text-blue-600 transition-colors" onClick={() => handleSort('totalDays')}>
+                    <div className="flex items-center justify-center">Días <SortIcon column="totalDays" /></div>
+                  </TableHead>
+                  <TableHead className="font-bold text-slate-600 uppercase text-xs tracking-wider py-4 cursor-pointer hover:bg-slate-100 hover:text-blue-600 transition-colors" onClick={() => handleSort('workSite')}>
+                    <div className="flex items-center">Sede Asignada <SortIcon column="workSite" /></div>
+                  </TableHead>
+                  <TableHead className="font-bold text-slate-600 uppercase text-xs tracking-wider w-[140px] py-4 cursor-pointer hover:bg-slate-100 hover:text-blue-600 transition-colors" onClick={() => handleSort('status')}>
+                    <div className="flex items-center">Estado <SortIcon column="status" /></div>
+                  </TableHead>
                   <TableHead className="font-bold text-slate-600 uppercase text-xs tracking-wider text-right pr-6 py-4">Acciones</TableHead>
                 </TableRow>
               </TableHeader>

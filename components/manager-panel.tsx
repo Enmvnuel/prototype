@@ -9,7 +9,7 @@ import { Checkbox } from "@/components/ui/checkbox"
 import { Badge } from "@/components/ui/badge"
 import { useAppContext } from "@/context/app-context"
 import ReviewModal from "./review-modal"
-import { LogOut, Eye, CheckCircle, XCircle, Search, Calendar, ChevronDown } from "lucide-react"
+import { LogOut, Eye, CheckCircle, XCircle, Search, Calendar, ChevronDown, Filter } from "lucide-react"
 import { m, LazyMotion, domAnimation } from "framer-motion"
 import RequestStatusChart from "./request-status-chart"
 
@@ -20,95 +20,105 @@ interface ManagerPanelProps {
 }
 
 // Printable Permit Component
+// Printable Permit Component
 function PrintablePermit({ request }: { request: any }) {
-  const serialNumber = `SN-2025-${request.id.replace('REQ', '')}`
-  const currentDate = new Date().toLocaleDateString('es-PE', { year: 'numeric', month: '2-digit', day: '2-digit' })
-  // Use createdAt or current date for approval if status is approved. 
-  // Since we don't store approval date separately in mock data, 'currentDate' of printing 
-  // usually implies the date the document is issued/validated.
-  const approvalDate = request.status === 'APROBADO' ? currentDate : 'PENDIENTE DE FIRMA'
+  // Helpers for text formatting
+  const formatDateLong = (dateStr: string) => {
+    if (!dateStr) return "..."
+    const date = new Date(dateStr)
+    // Adjust for timezone offset
+    const [y, m, d] = dateStr.split('-').map(Number)
+    const localDate = new Date(y, m - 1, d)
+
+    return localDate.toLocaleDateString('es-PE', { day: 'numeric', month: 'long', year: 'numeric' })
+  }
+
+  const startDateText = formatDateLong(request.startDate)
+  const endDateText = formatDateLong(request.endDate)
+  const currentYear = new Date().getFullYear()
+
+  // Mock DNI and Position
+  const mockDNI = "4" + Math.floor(Math.random() * 10000000).toString().padStart(7, '0')
+  const position = "Colaborador(a)"
 
   return (
-    <div className="p-8 font-sans max-w-[800px] mx-auto border border-black mb-8 page-break" style={{ pageBreakAfter: 'always' }}>
-      {/* Header */}
-      <div className="flex justify-between items-start mb-6 border-b-2 border-slate-800 pb-4">
-        <div className="w-32 h-20 border border-slate-400 flex items-center justify-center bg-slate-50 text-xs text-slate-400">
-          LOGO EMPRESA
+    <div className="p-8 font-sans max-w-[800px] mx-auto bg-white mb-4 page-break text-slate-900 flex flex-col h-auto min-h-[900px] relative" style={{ pageBreakAfter: 'always' }}>
+      {/* Header with 3 Logos */}
+      <div className="flex justify-between items-start mb-6 gap-4 px-2">
+        {/* Left Logo Placeholder */}
+        <div className="w-28 h-20 border border-slate-200 flex items-center justify-center p-2">
+          <span className="text-[9px] text-center text-slate-300 uppercase">Logo Institucional</span>
         </div>
-        <div className="flex-1 px-4 text-center">
-          <h1 className="text-2xl font-extrabold text-slate-900 leading-tight">DOCUMENTO DE SALIDA</h1>
-          <h2 className="text-lg font-bold text-slate-700">LICENCIA Y PERMISOS</h2>
+
+        {/* Center Logo */}
+        <div className="w-40 h-24 border-2 border-slate-800 flex flex-col items-center justify-center bg-white">
+          <span className="font-bold text-slate-900 text-xs tracking-widest">LOGO</span>
+          <span className="font-bold text-slate-900 text-xs tracking-widest">EMPRESA</span>
         </div>
-        <div className="w-32 h-20 border border-slate-400 flex items-center justify-center bg-slate-50 text-xs text-slate-400">
-          LOGO/QR
+
+        {/* Right Logo Placeholder */}
+        <div className="w-28 h-20 border border-slate-200 flex items-center justify-center p-2">
+          <span className="text-[9px] text-center text-slate-300 uppercase">Logo Regional</span>
         </div>
       </div>
 
-      {/* Metadata Section */}
-      <div className="mb-8 text-sm space-y-1 bg-slate-50/50 p-4 rounded-lg border border-slate-100">
-        <p><strong className="text-slate-800">Número de Serie:</strong> {serialNumber}</p>
-        <p><strong className="text-slate-800">Fecha de Emisión:</strong> {currentDate}</p>
-        <div className="h-2"></div>
-        <p><strong className="text-slate-800">Lugar de Trabajo Asignado:</strong> Sede Central - Piso 4</p>
-        <p><strong className="text-slate-800">Dirección Física:</strong> Av. Javier Prado 1234, San Isidro, Lima</p>
-      </div>
+      {/* Main Content Container */}
+      <div className="flex-1 px-4 flex flex-col">
+        {/* Title */}
+        <h1 className="text-xl font-black text-center mb-8 tracking-wide uppercase mt-2">
+          AUTORIZACIÓN DE VACACIONES
+        </h1>
 
-      {/* Main Table */}
-      <div className="border border-slate-300 rounded-sm mb-16 overflow-hidden">
-        <div className="flex border-b border-slate-300">
-          <div className="w-1/3 p-3 bg-slate-100 font-bold text-slate-800 border-r border-slate-300 text-sm flex items-center">
-            Nombre del Empleado:
-          </div>
-          <div className="w-2/3 p-3 text-sm text-slate-700 font-medium">
-            {request.employeeName}
-          </div>
+        {/* Authorization Paragraph */}
+        <div className="text-justify leading-relaxed text-sm mb-6">
+          <p>
+            El <span className="font-bold underline decoration-slate-900 decoration-2">Director ejecutivo de la Empire Electronics</span> autoriza a <span className="font-bold">{request.employeeName}</span>,
+            identificado con DNI N° <span className="font-bold underline decoration-slate-900 decoration-2">{mockDNI}</span>, Servidor ({position})
+            jurisdicción de la Empire Electronics, hacer uso de <span className="font-bold underline decoration-slate-900 decoration-2">vacaciones correspondiente</span> al
+            año {currentYear - 1} a partir del {startDateText} al {endDateText} del año {currentYear} debiendo quedar en su lugar.
+          </p>
         </div>
-        <div className="flex border-b border-slate-300">
-          <div className="w-1/3 p-3 bg-slate-100 font-bold text-slate-800 border-r border-slate-300 text-sm flex items-center">
-            Unidad de Origen:
-          </div>
-          <div className="w-2/3 p-3 text-sm text-slate-700 font-medium">
-            {request.workSite}
-          </div>
-        </div>
-        <div className="flex border-b border-slate-300">
-          <div className="w-1/3 p-3 bg-slate-100 font-bold text-slate-800 border-r border-slate-300 text-sm flex items-center">
-            Fecha de Aprobación:
-          </div>
-          <div className="w-2/3 p-3 text-sm text-slate-700 font-medium">
-            {approvalDate}
-          </div>
-        </div>
-        <div className="flex">
-          <div className="w-1/3 p-3 bg-slate-100 font-bold text-slate-800 border-r border-slate-300 text-sm flex items-center">
-            Duración de la Licencia:
-          </div>
-          <div className="w-2/3 p-3 text-sm text-slate-700 font-medium">
-            {request.totalDays} días <span className="text-slate-500 ml-1">(Del {request.startDate} al {request.endDate})</span>
-          </div>
-        </div>
-      </div>
 
-      {/* Signatures */}
-      <div className="flex justify-between mt-32 px-8 gap-12">
-        <div className="text-center w-1/2">
-          <div className="border-t-2 border-slate-800 pt-2 mb-1"></div>
-          <p className="text-sm font-bold text-slate-900">Firma del Supervisor</p>
-          <p className="text-xs text-slate-500 mt-1">Autorizado por Gerencia</p>
+        {/* Employee Name Section - No Parentheses */}
+        <div className="mb-6 pl-2">
+          <p className="font-bold text-base mb-2">Sr(a) {request.employeeName}</p>
         </div>
-        <div className="text-center w-1/2">
-          <div className="border-t-2 border-slate-800 pt-2 mb-1"></div>
-          <p className="text-sm font-bold text-slate-900">Firma del Empleado</p>
-          <p className="text-xs text-slate-500 mt-1">Conformidad de Recepción</p>
-        </div>
-      </div>
 
-      {/* Footer */}
-      <div className="mt-24 text-center">
-        <p className="text-[10px] text-slate-400">
-          Este documento es válido solo con las firmas correspondientes. Cualquier alteración anula su validez.<br />
-          Sistema de Gestión de Licencias v1.0 | Generado el {currentDate}
-        </p>
+        {/* Observations */}
+        <div className="mb-4">
+          <p className="font-bold mb-2 text-sm uppercase">Observaciones:</p>
+          <div className="space-y-3">
+            <div className="border-b border-black w-full min-h-[24px] text-sm pb-1">
+              {request.observations || "Sin observaciones adicionales."}
+            </div>
+            <div className="border-b border-black h-6 w-full"></div>
+            <div className="border-b border-black h-6 w-full"></div>
+            <div className="border-b border-black h-6 w-full"></div>
+          </div>
+        </div>
+
+        {/* Spacer to push signatures down properly */}
+        <div className="flex-grow min-h-[40px]"></div>
+
+        {/* Signatures */}
+        <div className="flex justify-between items-end mb-8 px-4 gap-12 mt-8">
+          <div className="text-center flex-1">
+            <div className="border-t border-black w-full mb-2"></div>
+            <p className="text-[10px] uppercase font-bold tracking-wide">FIRMA DEL INTERESADO</p>
+          </div>
+          <div className="text-center flex-1">
+            <div className="border-t border-black w-full mb-2"></div>
+            <p className="text-[10px] uppercase font-bold tracking-wide">FIRMA DEL JEFE DE AREA</p>
+          </div>
+        </div>
+
+        {/* Footer Note */}
+        <div className="text-[10px] leading-relaxed text-slate-800 border-t pt-2 border-transparent">
+          <p>
+            Nota: De acuerdo de las Directivas específicas de la <span className="underline decoration-wavy decoration-red-500">R.M.Nº</span> 0132-92-SA-P(30-09-92),
+            Establecer que el periodo vacacional se inicia indefectiblemente el primer día de cada mes y <span className="underline decoration-blue-500">de forma</span> continua.
+          </p>
+        </div>
       </div>
     </div>
   )
@@ -123,10 +133,19 @@ export default function ManagerPanel({ onLogout, currentView, onViewChange }: Ma
   const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set())
   const [reviewingId, setReviewingId] = useState<string | null>(null)
   const [selectAll, setSelectAll] = useState(false)
+  const [sortConfig, setSortConfig] = useState<{ key: string; direction: 'asc' | 'desc' } | null>(null)
+
+  const handleSort = (key: string) => {
+    let direction: 'asc' | 'desc' = 'asc'
+    if (sortConfig && sortConfig.key === key && sortConfig.direction === 'asc') {
+      direction = 'desc'
+    }
+    setSortConfig({ key, direction })
+  }
 
   // Filter requests - Only show Manager requests (exclude current user's own requests if desired, or all)
   const filteredRequests = useMemo(() => {
-    return requests.filter((req) => {
+    let result = requests.filter((req) => {
       if (filterUnit !== "all" && req.workSite !== filterUnit) return false
       if (filterStatus !== "all" && req.status !== filterStatus) return false
       if (startDate && req.createdAt < startDate) return false
@@ -134,7 +153,32 @@ export default function ManagerPanel({ onLogout, currentView, onViewChange }: Ma
       if (req.employeeId === "emp001") return false // Filter out own requests
       return true
     })
-  }, [requests, filterUnit, filterStatus, startDate, endDate])
+
+    if (sortConfig) {
+      result.sort((a: any, b: any) => {
+        const aValue = a[sortConfig.key];
+        const bValue = b[sortConfig.key];
+
+        if (typeof aValue === 'string' && typeof bValue === 'string') {
+          return sortConfig.direction === 'asc' ? aValue.localeCompare(bValue) : bValue.localeCompare(aValue);
+        }
+        if (aValue < bValue) {
+          return sortConfig.direction === 'asc' ? -1 : 1
+        }
+        if (aValue > bValue) {
+          return sortConfig.direction === 'asc' ? 1 : -1
+        }
+        return 0
+      })
+    }
+
+    return result
+  }, [requests, filterUnit, filterStatus, startDate, endDate, sortConfig])
+
+  const SortIcon = ({ column }: { column: string }) => {
+    if (sortConfig?.key !== column) return <span className="ml-1 text-slate-300">↕</span>
+    return sortConfig.direction === 'asc' ? <span className="ml-1 text-blue-600">↑</span> : <span className="ml-1 text-blue-600">↓</span>
+  }
 
   const handleSelectAll = (checked: boolean) => {
     setSelectAll(checked)
@@ -154,6 +198,7 @@ export default function ManagerPanel({ onLogout, currentView, onViewChange }: Ma
       setSelectAll(false)
     }
     setSelectedIds(newSelected)
+    setSelectAll(newSelected.size === filteredRequests.length && filteredRequests.length > 0)
   }
 
   const handleBulkAction = (action: "approve" | "reject") => {
@@ -170,12 +215,15 @@ export default function ManagerPanel({ onLogout, currentView, onViewChange }: Ma
   }
 
   const getStatusBadge = (status: string) => {
-    if (status === "PENDIENTE") {
-      return <Badge className="bg-yellow-400 text-yellow-900 border-0 hover:bg-yellow-500 rounded-md font-bold px-3 shadow-sm">PENDIENTE</Badge>
-    } else if (status === "APROBADO") {
-      return <Badge className="bg-green-500 text-white border-0 hover:bg-green-600 rounded-md font-bold px-3 shadow-sm">APROBADO</Badge>
-    } else {
-      return <Badge className="bg-red-500 text-white border-0 hover:bg-red-600 rounded-md font-bold px-3 shadow-sm">RECHAZADO</Badge>
+    switch (status) {
+      case "PENDIENTE":
+        return <Badge className="bg-yellow-400 text-yellow-900 border-0 hover:bg-yellow-500 rounded-md font-bold px-3 shadow-sm">PENDIENTE</Badge>
+      case "APROBADO":
+        return <Badge className="bg-green-500 text-white border-0 hover:bg-green-600 rounded-md font-bold px-3 shadow-sm">APROBADO</Badge>
+      case "RECHAZADO":
+        return <Badge className="bg-red-500 text-white border-0 hover:bg-red-600 rounded-md font-bold px-3 shadow-sm">RECHAZADO</Badge>
+      default:
+        return <Badge className="bg-slate-500 text-white border-0">{status}</Badge>
     }
   }
 
@@ -266,9 +314,9 @@ export default function ManagerPanel({ onLogout, currentView, onViewChange }: Ma
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="bg-white p-5 rounded-2xl shadow-sm border border-slate-200 flex flex-col lg:flex-row gap-4 items-end lg:items-center"
+              className="bg-white p-5 rounded-2xl shadow-sm border border-slate-200"
             >
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 w-full">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 w-full items-end">
                 <div className="space-y-1.5">
                   <label className="text-xs font-semibold text-slate-500 uppercase tracking-wider ml-1">Unidad</label>
                   <Select value={filterUnit} onValueChange={setFilterUnit}>
@@ -311,15 +359,13 @@ export default function ManagerPanel({ onLogout, currentView, onViewChange }: Ma
                     <input type="date" value={endDate} onChange={(e) => setEndDate(e.target.value)} className="w-full bg-slate-50 border border-slate-200 text-slate-900 text-sm rounded-lg focus:ring-2 focus:ring-blue-100 focus:border-blue-500 block w-full p-2.5" />
                   </div>
                 </div>
-              </div>
 
-              <div className="w-full lg:w-auto flex justify-end">
                 <Button
-                  variant="ghost"
                   onClick={() => { setFilterUnit("all"); setFilterStatus("all"); setStartDate(""); setEndDate(""); }}
-                  className="text-slate-500 hover:text-red-500 hover:bg-red-50"
+                  className="bg-slate-100 text-slate-600 hover:bg-red-50 hover:text-red-600 hover:border-red-200 border border-slate-200 w-full h-10 font-medium transition-colors"
                 >
-                  Limpiar
+                  <Filter className="w-4 h-4 mr-2" />
+                  Limpiar Filtros
                 </Button>
               </div>
             </m.div>
@@ -412,13 +458,25 @@ export default function ManagerPanel({ onLogout, currentView, onViewChange }: Ma
                   <TableHeader className="bg-slate-50 border-b border-slate-100">
                     <TableRow className="hover:bg-transparent">
                       <TableHead className="w-12 pl-4"><Checkbox checked={selectAll} onCheckedChange={handleSelectAll} /></TableHead>
-                      <TableHead className="font-bold text-slate-600 uppercase text-xs tracking-wider py-4 w-[100px]">ID</TableHead>
-                      <TableHead className="font-bold text-slate-600 uppercase text-xs tracking-wider py-4">Empleado</TableHead>
-                      <TableHead className="font-bold text-slate-600 uppercase text-xs tracking-wider py-4">Unidad</TableHead>
-                      <TableHead className="font-bold text-slate-600 uppercase text-xs tracking-wider py-4">Fechas</TableHead>
-                      <TableHead className="font-bold text-slate-600 uppercase text-xs tracking-wider text-center py-4">Días</TableHead>
+                      <TableHead className="font-bold text-slate-600 uppercase text-xs tracking-wider py-4 w-[100px] cursor-pointer hover:bg-slate-100 hover:text-blue-600 transition-colors" onClick={() => handleSort('id')}>
+                        <div className="flex items-center">ID <SortIcon column="id" /></div>
+                      </TableHead>
+                      <TableHead className="font-bold text-slate-600 uppercase text-xs tracking-wider py-4 cursor-pointer hover:bg-slate-100 hover:text-blue-600 transition-colors" onClick={() => handleSort('employeeName')}>
+                        <div className="flex items-center">Empleado <SortIcon column="employeeName" /></div>
+                      </TableHead>
+                      <TableHead className="font-bold text-slate-600 uppercase text-xs tracking-wider py-4 cursor-pointer hover:bg-slate-100 hover:text-blue-600 transition-colors" onClick={() => handleSort('workSite')}>
+                        <div className="flex items-center">Unidad <SortIcon column="workSite" /></div>
+                      </TableHead>
+                      <TableHead className="font-bold text-slate-600 uppercase text-xs tracking-wider py-4 cursor-pointer hover:bg-slate-100 hover:text-blue-600 transition-colors" onClick={() => handleSort('startDate')}>
+                        <div className="flex items-center">Fechas <SortIcon column="startDate" /></div>
+                      </TableHead>
+                      <TableHead className="font-bold text-slate-600 uppercase text-xs tracking-wider text-center py-4 cursor-pointer hover:bg-slate-100 hover:text-blue-600 transition-colors" onClick={() => handleSort('totalDays')}>
+                        <div className="flex items-center justify-center">Días <SortIcon column="totalDays" /></div>
+                      </TableHead>
                       <TableHead className="font-bold text-slate-600 uppercase text-xs tracking-wider text-center py-4">Evidencia</TableHead>
-                      <TableHead className="font-bold text-slate-600 uppercase text-xs tracking-wider py-4">Estado</TableHead>
+                      <TableHead className="font-bold text-slate-600 uppercase text-xs tracking-wider py-4 cursor-pointer hover:bg-slate-100 hover:text-blue-600 transition-colors" onClick={() => handleSort('status')}>
+                        <div className="flex items-center">Estado <SortIcon column="status" /></div>
+                      </TableHead>
                       <TableHead className="font-bold text-slate-600 uppercase text-xs tracking-wider text-right pr-6 py-4">Acción</TableHead>
                     </TableRow>
                   </TableHeader>

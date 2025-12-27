@@ -36,179 +36,245 @@ export default function ReviewModal({ request, onClose, onApprove, onReject, onR
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-      {/* Backdrop */}
-      <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={onClose} />
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 transition-all duration-300">
+      {/* Modern Blurry Backdrop with dark gradient overlay */}
+      <div
+        className="absolute inset-0 bg-slate-900/40 backdrop-blur-md transition-opacity duration-300"
+        onClick={onClose}
+      />
 
-      {/* Modal */}
-      <Card className="w-full max-w-3xl max-h-[90vh] overflow-y-auto shadow-2xl relative z-60 bg-white/95 border-0 ring-1 ring-white/20 rounded-2xl animate-in zoom-in-95 duration-200">
-        {/* Header */}
-        <div className="sticky top-0 z-10 bg-white/95 backdrop-blur-md border-b border-slate-100 flex flex-row items-center justify-between p-6">
-          <div>
-            <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">AUDITORÍA DE SOLICITUDES</p>
-            <CardTitle className="text-xl text-slate-900">Referencia: #{request.id}</CardTitle>
+      {/* Glassmorphism Modal */}
+      <Card className="w-full max-w-4xl max-h-[90vh] overflow-hidden shadow-2xl relative z-[110] bg-white/95 backdrop-blur-xl border-white/20 ring-1 ring-black/5 rounded-3xl animate-in zoom-in-95 fade-in duration-300 flex flex-col">
+
+        {/* Modern Header with subtle gradient */}
+        <div className="relative sticky top-0 z-20 bg-white/80 backdrop-blur-lg border-b border-slate-100/80 flex items-center justify-between px-8 py-5">
+          <div className="flex flex-col gap-1">
+            <div className="flex items-center gap-2">
+              <span className="flex h-2 w-2 rounded-full bg-blue-500 animate-pulse"></span>
+              <p className="text-[10px] font-bold text-blue-600 uppercase tracking-widest">Auditoría de Solicitudes</p>
+            </div>
+            <CardTitle className="text-xl font-bold text-slate-900 flex items-center gap-2">
+              Solicitud <span className="font-mono text-slate-400">#{request.id}</span>
+            </CardTitle>
           </div>
-          <Button onClick={onClose} variant="ghost" size="icon" className="rounded-full hover:bg-slate-100 text-slate-500">
+          <Button
+            onClick={onClose}
+            variant="ghost"
+            size="icon"
+            className="rounded-full hover:bg-slate-100/80 text-slate-400 transition-colors h-10 w-10"
+          >
             <X className="w-5 h-5" />
           </Button>
         </div>
 
-        <CardContent className="p-8 space-y-8">
-          {/* Employee Info Header */}
-          <div className="flex items-start gap-5 p-5 bg-slate-50 rounded-2xl border border-slate-100">
-            <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-600 flex items-center justify-center text-white text-2xl font-bold shadow-lg shadow-blue-200">
-              {request.employeeName.charAt(0)}
-            </div>
-            <div className="flex-1">
-              <h3 className="text-xl font-bold text-slate-900">{request.employeeName}</h3>
-              <p className="text-slate-500 mb-2">{request.workSite} • Solicitante</p>
-              <div className="flex gap-2 mt-2">
-                <Badge variant="secondary" className="bg-white border border-slate-200 text-slate-600 font-normal shadow-sm">
-                  <User className="w-3 h-3 mr-1" /> Perfil Verificado
-                </Badge>
-                <Badge className="bg-blue-50 text-blue-700 hover:bg-blue-50 border-blue-100 shadow-sm">
-                  {request.type}
-                </Badge>
-              </div>
-            </div>
-            <div className="text-right">
-              <p className="text-sm text-slate-500">Estado Actual</p>
-              <Badge className={`mt-1 text-base px-3 py-1 ${request.status === 'APROBADO' ? 'bg-green-100 text-green-700' : request.status === 'RECHAZADO' ? 'bg-red-100 text-red-700' : 'bg-yellow-100 text-yellow-700'}`}>
-                {request.status === "PENDIENTE" ? "En Revisión" : request.status}
-              </Badge>
-            </div>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* Details Column */}
-            <div className="space-y-6">
-              <h4 className="flex items-center gap-2 font-semibold text-slate-900 border-b border-slate-100 pb-2">
-                <FileText className="w-4 h-4 text-blue-500" />
-                Detalles de la Licencia
-              </h4>
-
-              <div className="grid grid-cols-2 gap-4 text-sm">
-                <div className="p-3 bg-slate-50 rounded-lg">
-                  <p className="text-slate-500 text-xs uppercase mb-1">Inicio</p>
-                  <p className="font-semibold text-slate-800">{request.startDate}</p>
-                </div>
-                <div className="p-3 bg-slate-50 rounded-lg">
-                  <p className="text-slate-500 text-xs uppercase mb-1">Fin</p>
-                  <p className="font-semibold text-slate-800">{request.endDate}</p>
-                </div>
-                <div className="col-span-2 p-3 bg-blue-50/50 rounded-lg border border-blue-100/50">
-                  <p className="text-blue-500 text-xs uppercase mb-1">Duración Total</p>
-                  <p className="font-bold text-blue-900 text-lg">{request.totalDays} Días Hábiles</p>
-                </div>
+        {/* Scrollable Content Area */}
+        <div className="overflow-y-auto flex-1 p-8 custom-scrollbar">
+          <div className="space-y-8">
+            {/* Employee Profile Card - Modern Floating Style */}
+            <div className="relative overflow-hidden bg-gradient-to-br from-slate-50 to-white p-6 rounded-3xl border border-slate-100 shadow-sm group hover:shadow-md transition-all duration-300">
+              <div className="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition-opacity">
+                <User className="w-32 h-32 -mr-8 -mt-8" />
               </div>
 
-              <div>
-                <h4 className="font-semibold text-slate-900 text-sm mb-2">Motivo de la Solicitud</h4>
-                <div className="p-4 bg-slate-50 rounded-lg border border-slate-100 text-sm text-slate-700 italic leading-relaxed">
-                  "{request.observations || "Sin observaciones adicionales proporcionadas."}"
+              <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 relative z-10">
+                <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-600 shadow-lg shadow-blue-500/30 flex items-center justify-center text-white text-3xl font-bold ring-4 ring-white">
+                  {request.employeeName.charAt(0)}
+                </div>
+                <div className="flex-1 text-center sm:text-left">
+                  <h3 className="text-2xl font-bold text-slate-900 tracking-tight mb-1">{request.employeeName}</h3>
+                  <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3 text-slate-500 mb-4">
+                    <span className="font-medium">{request.workSite}</span>
+                    <span className="w-1 h-1 rounded-full bg-slate-300"></span>
+                    <span>Solicitante</span>
+                  </div>
+                  <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2">
+                    <Badge variant="secondary" className="bg-white/80 backdrop-blur border border-slate-200 text-slate-600 font-medium px-3 py-1 shadow-sm">
+                      <CheckCircle className="w-3 h-3 mr-1.5 text-emerald-500" />
+                      Perfil Verificado
+                    </Badge>
+                    <Badge className="bg-blue-50 text-blue-700 hover:bg-blue-100 border border-blue-100 px-3 py-1 shadow-sm transition-colors">
+                      {request.type}
+                    </Badge>
+                    <Badge className={`px-3 py-1 shadow-sm transition-colors ${request.status === 'APROBADO' ? 'bg-emerald-50 text-emerald-700 border-emerald-100' :
+                        request.status === 'RECHAZADO' ? 'bg-red-50 text-red-700 border-red-100' :
+                          'bg-amber-50 text-amber-700 border-amber-100'
+                      }`}>
+                      {request.status === 'PENDIENTE' ? 'En Revisión Gerencial' : request.status}
+                    </Badge>
+                  </div>
                 </div>
               </div>
+            </div>
 
-              <div>
-                <h4 className="font-semibold text-slate-900 text-sm mb-2">Evidencia Adjunta</h4>
-                {request.evidence ? (
-                  <div className="border border-slate-200 rounded-lg p-2 bg-slate-50 flex items-center gap-3">
-                    <div className="h-10 w-10 bg-red-100 rounded flex items-center justify-center text-red-500 text-xs font-bold">PDF</div>
-                    <div className="flex-1 overflow-hidden">
-                      <p className="text-sm font-medium truncate">certificado_medico_001.pdf</p>
-                      <p className="text-xs text-slate-400">1.2 MB</p>
+            <div className="grid lg:grid-cols-2 gap-8">
+              {/* Left Column: Details */}
+              <div className="space-y-8">
+                <div>
+                  <h4 className="flex items-center gap-2 font-bold text-slate-900 text-sm uppercase tracking-wider mb-4 text-slate-400">
+                    <FileText className="w-4 h-4" />
+                    Detalles de la Licencia
+                  </h4>
+
+                  <div className="bg-slate-50/50 rounded-2xl border border-slate-100 p-1">
+                    <div className="grid grid-cols-2 gap-px bg-slate-100 rounded-xl overflow-hidden">
+                      <div className="bg-white p-4 hover:bg-slate-50/80 transition-colors">
+                        <p className="text-slate-400 text-[10px] uppercase tracking-widest font-bold mb-1">Inicio</p>
+                        <p className="font-semibold text-slate-900 text-lg">{request.startDate}</p>
+                      </div>
+                      <div className="bg-white p-4 hover:bg-slate-50/80 transition-colors">
+                        <p className="text-slate-400 text-[10px] uppercase tracking-widest font-bold mb-1">Fin</p>
+                        <p className="font-semibold text-slate-900 text-lg">{request.endDate}</p>
+                      </div>
+                      <div className="col-span-2 bg-gradient-to-r from-blue-50/50 to-indigo-50/50 p-4 flex items-center justify-between group cursor-default">
+                        <div>
+                          <p className="text-blue-500 text-[10px] uppercase tracking-widest font-bold mb-1">Duración Total</p>
+                          <p className="font-bold text-blue-900 text-lg group-hover:scale-105 transition-transform origin-left">{request.totalDays} Días Hábiles</p>
+                        </div>
+                        <div className="h-10 w-10 rounded-full bg-white flex items-center justify-center shadow-sm text-blue-500">
+                          <CheckCircle className="w-5 h-5" />
+                        </div>
+                      </div>
                     </div>
-                    <Button variant="ghost" size="sm" className="text-blue-600">Ver</Button>
                   </div>
-                ) : (
-                  <div className="border border-dashed border-slate-200 rounded-lg p-4 text-center text-slate-400 text-sm italic">
-                    No se requiere evidencia para este tipo de solicitud
+                </div>
+
+                <div>
+                  <h4 className="font-bold text-slate-400 text-sm uppercase tracking-wider mb-4">Motivo y Justificación</h4>
+                  <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm relative overflow-hidden group">
+                    <div className="absolute top-0 left-0 w-1 h-full bg-blue-500 rounded-l-2xl"></div>
+                    <p className="text-slate-600 italic leading-relaxed text-base relative z-10">
+                      "{request.observations || "Sin observaciones adicionales proporcionadas."}"
+                    </p>
+                    <div className="absolute right-4 bottom-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                      <FileText className="w-16 h-16 text-slate-400" />
+                    </div>
                   </div>
-                )}
+                </div>
+
+                <div>
+                  <h4 className="font-bold text-slate-400 text-sm uppercase tracking-wider mb-4">Evidencia Adjunta</h4>
+                  {request.evidence ? (
+                    <div className="group border border-slate-200 hover:border-blue-300 hover:ring-4 hover:ring-blue-50 bg-white rounded-xl p-3 flex items-center gap-4 transition-all cursor-pointer shadow-sm">
+                      <div className="h-12 w-12 bg-rose-50 rounded-lg flex items-center justify-center text-rose-500 shadow-sm group-hover:scale-110 transition-transform">
+                        <FileText className="w-6 h-6" />
+                      </div>
+                      <div className="flex-1 overflow-hidden">
+                        <p className="font-semibold text-slate-900 truncate group-hover:text-blue-600 transition-colors">constancia_medica_001.pdf</p>
+                        <p className="text-xs text-slate-400">1.2 MB • PDF Document</p>
+                      </div>
+                      <Button variant="ghost" size="sm" className="text-blue-600 font-semibold hover:bg-blue-50 hover:text-blue-700">
+                        Ver Archivo
+                      </Button>
+                    </div>
+                  ) : (
+                    <div className="border border-dashed border-slate-200 bg-slate-50/50 rounded-xl p-6 flex flex-col items-center justify-center text-center gap-2">
+                      <div className="h-10 w-10 rounded-full bg-slate-100 flex items-center justify-center">
+                        <FileText className="w-5 h-5 text-slate-300" />
+                      </div>
+                      <p className="text-sm text-slate-400 font-medium">No se requiere evidencia</p>
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {/* Right Column: Decision */}
+              <div className="flex flex-col h-full">
+                <h4 className="flex items-center gap-2 font-bold text-slate-900 text-sm uppercase tracking-wider mb-4 text-slate-400">
+                  <CheckCircle className="w-4 h-4" />
+                  Dictamen Gerencial
+                </h4>
+
+                <div className="flex-1 bg-gradient-to-b from-slate-50 to-white p-6 rounded-3xl border border-slate-200 shadow-sm flex flex-col gap-4">
+                  <RadioGroup value={decision} onValueChange={setDecision} className="space-y-4">
+                    <label className={`relative flex items-start gap-4 p-4 rounded-xl border-2 cursor-pointer transition-all duration-200 ${decision === 'approve' ? 'bg-emerald-50/50 border-emerald-500 shadow-md shadow-emerald-100' : 'bg-white border-slate-100 hover:border-emerald-200 hover:bg-emerald-50/30'}`}>
+                      <RadioGroupItem value="approve" id="approve" className="mt-1 text-emerald-600 border-emerald-600" />
+                      <div className="flex-1">
+                        <span className={`block font-bold mb-1 ${decision === 'approve' ? 'text-emerald-900' : 'text-slate-700'}`}>Aprobar Solicitud</span>
+                        <span className="text-xs text-slate-500 leading-relaxed block">
+                          La solicitud cumple con las políticas. Se descontará del saldo correspondiente.
+                        </span>
+                      </div>
+                    </label>
+
+                    <label className={`relative flex items-start gap-4 p-4 rounded-xl border-2 cursor-pointer transition-all duration-200 ${decision === 'reject' ? 'bg-red-50/50 border-red-500 shadow-md shadow-red-100' : 'bg-white border-slate-100 hover:border-red-200 hover:bg-red-50/30'}`}>
+                      <RadioGroupItem value="reject" id="reject" className="mt-1 text-red-600 border-red-600" />
+                      <div className="flex-1">
+                        <span className={`block font-bold mb-1 ${decision === 'reject' ? 'text-red-900' : 'text-slate-700'}`}>Rechazar Definitivamente</span>
+                        <span className="text-xs text-slate-500 leading-relaxed block">
+                          No procede. Se notificará al empleado el motivo del rechazo.
+                        </span>
+                      </div>
+                    </label>
+
+                    <label className={`relative flex items-start gap-4 p-4 rounded-xl border-2 cursor-pointer transition-all duration-200 ${decision === 'return' ? 'bg-amber-50/50 border-amber-500 shadow-md shadow-amber-100' : 'bg-white border-slate-100 hover:border-amber-200 hover:bg-amber-50/30'}`}>
+                      <RadioGroupItem value="return" id="return" className="mt-1 text-amber-600 border-amber-600" />
+                      <div className="flex-1">
+                        <span className={`block font-bold mb-1 ${decision === 'return' ? 'text-amber-900' : 'text-slate-700'}`}>Devolver para Subsanación</span>
+                        <span className="text-xs text-slate-500 leading-relaxed block">
+                          Requiere correcciones o más información por parte del empleado.
+                        </span>
+                      </div>
+                    </label>
+                  </RadioGroup>
+
+                  {decision === "reject" && (
+                    <div className="mt-2 animate-in fade-in slide-in-from-top-2">
+                      <label className="text-xs font-bold text-red-600 uppercase tracking-wider mb-2 block">Justificación Requerida</label>
+                      <Textarea
+                        value={notes}
+                        onChange={(e) => setNotes(e.target.value)}
+                        placeholder="Escriba aquí el motivo del rechazo para notificar al colaborador..."
+                        className="min-h-[120px] bg-red-50/30 border-red-200 focus:border-red-400 focus:ring-red-200 text-sm resize-none rounded-xl"
+                      />
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
 
-            {/* Action Column */}
-            <div className="space-y-6">
-              <h4 className="flex items-center gap-2 font-semibold text-slate-900 border-b border-slate-100 pb-2">
-                <CheckCircle className="w-4 h-4 text-emerald-500" />
-                Dictamen Gerencial
+            {/* Audit History */}
+            <div className="pt-6 border-t border-slate-100">
+              <h4 className="flex items-center gap-2 font-bold text-slate-400 text-xs uppercase tracking-wider mb-4">
+                <AlertTriangle className="w-3 h-3" />
+                Auditoría del Sistema
               </h4>
-
-              <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100">
-                <RadioGroup value={decision} onValueChange={setDecision} className="space-y-3">
-                  <div className={`flex items-center space-x-3 p-3 rounded-lg transition-all ${decision === 'approve' ? 'bg-emerald-50 border border-emerald-100' : 'hover:bg-white border border-transparent'}`}>
-                    <RadioGroupItem value="approve" id="approve" className="text-emerald-600 border-emerald-600" />
-                    <label htmlFor="approve" className="text-sm font-medium text-slate-700 cursor-pointer flex-1">
-                      Aprobar Solicitud
-                    </label>
+              <div className="grid sm:grid-cols-2 gap-4">
+                <div className="bg-slate-50 rounded-xl p-4 border border-slate-100 flex items-start gap-3">
+                  <div className="w-2 h-2 mt-2 rounded-full bg-slate-300 shadow-sm shadow-slate-300"></div>
+                  <div>
+                    <p className="font-semibold text-slate-900 text-sm">Solicitud Creada</p>
+                    <p className="text-xs text-slate-500 mt-0.5">Por <strong>{request.employeeName}</strong></p>
+                    <p className="text-[10px] text-slate-400 mt-1 uppercase tracking-wide">{request.createdAt} • 09:41 AM</p>
                   </div>
-
-                  <div className={`flex items-center space-x-3 p-3 rounded-lg transition-all ${decision === 'reject' ? 'bg-red-50 border border-red-100' : 'hover:bg-white border border-transparent'}`}>
-                    <RadioGroupItem value="reject" id="reject" className="text-red-600 border-red-600" />
-                    <label htmlFor="reject" className="text-sm font-medium text-slate-700 cursor-pointer flex-1">
-                      Rechazar Definitivamente
-                    </label>
-                  </div>
-
-                  <div className={`flex items-center space-x-3 p-3 rounded-lg transition-all ${decision === 'return' ? 'bg-yellow-50 border border-yellow-100' : 'hover:bg-white border border-transparent'}`}>
-                    <RadioGroupItem value="return" id="return" className="text-yellow-600 border-yellow-600" />
-                    <label htmlFor="return" className="text-sm font-medium text-slate-700 cursor-pointer flex-1">
-                      Devolver para Subsanación
-                    </label>
-                  </div>
-                </RadioGroup>
-
-                {decision === "reject" && (
-                  <div className="mt-4 animate-in fade-in slide-in-from-top-2">
-                    <label className="text-xs font-semibold text-slate-700 mb-1 block">Justificación Requerida</label>
-                    <Textarea
-                      value={notes}
-                      onChange={(e) => setNotes(e.target.value)}
-                      placeholder="Explique el motivo del rechazo..."
-                      className="min-h-[100px] bg-white text-sm"
-                    />
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
-
-          {/* Audit History (As requested to be kept here) */}
-          <div className="pt-4 border-t border-slate-100">
-            <h4 className="font-semibold text-slate-900 text-xs uppercase tracking-wider mb-4 flex items-center gap-2">
-              <AlertTriangle className="w-3 h-3" />
-              Historial de Auditoría
-            </h4>
-            <div className="bg-slate-50 rounded-lg p-4 space-y-3 text-sm border border-slate-100">
-              <div className="flex gap-3">
-                <div className="w-2 h-2 mt-1.5 rounded-full bg-slate-300 flex-shrink-0" />
-                <div>
-                  <p className="text-slate-900 font-medium">Solicitud Creada</p>
-                  <p className="text-slate-500 text-xs">Por {request.employeeName} • {request.createdAt} 09:41 AM</p>
                 </div>
-              </div>
-              <div className="flex gap-3">
-                <div className="w-2 h-2 mt-1.5 rounded-full bg-blue-300 flex-shrink-0" />
-                <div>
-                  <p className="text-slate-900 font-medium">Validación Automática</p>
-                  <p className="text-slate-500 text-xs">Sistema • {request.createdAt} 09:42 AM • Saldo verificado</p>
+                <div className="bg-blue-50/50 rounded-xl p-4 border border-blue-100/50 flex items-start gap-3">
+                  <div className="w-2 h-2 mt-2 rounded-full bg-blue-500 shadow-sm shadow-blue-500"></div>
+                  <div>
+                    <p className="font-semibold text-blue-900 text-sm">Pre-validación Exitosa</p>
+                    <p className="text-xs text-blue-600/80 mt-0.5">Saldo verificado automáticamente</p>
+                    <p className="text-[10px] text-blue-400 mt-1 uppercase tracking-wide">{request.createdAt} • 09:42 AM</p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </CardContent>
+        </div>
 
-        <div className="p-6 border-t border-slate-100 bg-slate-50/50 rounded-b-2xl flex justify-end gap-3">
-          <Button onClick={onClose} variant="outline" className="px-6 rounded-xl border-slate-200 text-slate-600 hover:bg-white hover:text-slate-900">
+        {/* Action Footer */}
+        <div className="p-6 border-t border-slate-100 bg-white/80 backdrop-blur-md flex justify-end gap-4 rounded-b-3xl">
+          <Button
+            onClick={onClose}
+            variant="ghost"
+            className="px-6 rounded-xl text-slate-500 hover:text-slate-900 hover:bg-slate-100 font-medium transition-all"
+          >
             Cancelar
           </Button>
           <Button
             onClick={handleSubmit}
             disabled={!decision}
-            className={`px-8 rounded-xl text-white shadow-lg transition-all ${decision === 'reject' ? 'bg-red-600 hover:bg-red-700 shadow-red-200' :
-              decision === 'return' ? 'bg-yellow-600 hover:bg-yellow-700 shadow-yellow-200' :
-                'bg-slate-900 hover:bg-slate-800 shadow-slate-200'
+            className={`px-8 h-11 rounded-xl text-white font-semibold shadow-lg transition-all transform active:scale-95 ${decision === 'reject' ? 'bg-red-600 hover:bg-red-700 shadow-red-500/30' :
+                decision === 'return' ? 'bg-amber-500 hover:bg-amber-600 shadow-amber-500/30' :
+                  'bg-gradient-to-r from-slate-900 to-slate-800 hover:from-slate-800 hover:to-slate-700 shadow-slate-900/20'
               }`}
           >
             Confirmar Decisión
