@@ -86,7 +86,7 @@ function PrintablePermit({ request }: { request: any }) {
 
         {/* Observations */}
         <div className="mb-4">
-          <p className="font-bold mb-2 text-sm uppercase">Observaciones:</p>
+          <p className="font-bold mb-2 text-sm uppercase">MOTIVOS:</p>
           <div className="space-y-3">
             <div className="border-b border-black w-full min-h-[24px] text-sm pb-1">
               {request.observations || "Sin observaciones adicionales."}
