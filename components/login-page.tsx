@@ -35,8 +35,8 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
             </div>
 
             <h1 className="text-5xl md:text-7xl font-serif text-slate-800 tracking-tight leading-[1.1]">
-              Work mindfully, <br />
-              <span className="text-primary italic">Achieve effortlessly.</span>
+              Trabaja con propósito, <br />
+              <span className="text-primary italic">Logra con facilidad.</span>
             </h1>
 
             <p className="text-xl text-slate-500 font-light max-w-lg leading-relaxed font-sans">
@@ -111,7 +111,7 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
         </div>
 
         <div className="absolute bottom-8 text-center w-full text-slate-400 text-[10px] font-bold tracking-[0.2em] uppercase">
-          Enterprise System &copy; 2025
+          Sistema Corporativo &copy; 2025
         </div>
 
       </div>

@@ -123,7 +123,7 @@ export default function EmployeeDashboard({ onCreateRequest, onLogout }: Employe
               <div className="w-8 h-8 rounded-full bg-slate-900 flex items-center justify-center text-white">
                 <span className="font-serif">E</span>
               </div>
-              <span className="font-serif text-xl font-bold text-slate-800">Employee Panel</span>
+              <span className="font-serif text-xl font-bold text-slate-800">Panel del Empleado</span>
             </div>
             <div className="flex items-center gap-4">
               <div className="text-sm text-right hidden sm:block">
@@ -142,8 +142,8 @@ export default function EmployeeDashboard({ onCreateRequest, onLogout }: Employe
           {/* Intro Section */}
           <div className="flex flex-col md:flex-row justify-between items-end gap-6">
             <div>
-              <h1 className="font-serif text-4xl md:text-5xl text-slate-800 mb-2">My Dashboard</h1>
-              <p className="text-slate-400 font-light text-lg">Manage your time off efficiently and stress-free.</p>
+              <h1 className="font-serif text-4xl md:text-5xl text-slate-800 mb-2">Mi Panel</h1>
+              <p className="text-slate-400 font-light text-lg">Gestiona tus permisos de manera eficiente y sin estrés.</p>
             </div>
             <Button onClick={onCreateRequest} className="rounded-full h-14 px-8 bg-primary hover:bg-primary/90 text-white shadow-xl shadow-primary/20 text-lg font-medium transition-all hover:scale-105 active:scale-95">
               <Plus className="w-5 h-5 mr-2" /> Nueva Solicitud
@@ -164,7 +164,7 @@ export default function EmployeeDashboard({ onCreateRequest, onLogout }: Employe
                   <div className="p-3 bg-purple-100 text-purple-600 rounded-2xl">
                     <Calendar className="w-6 h-6" />
                   </div>
-                  <span className="font-bold text-slate-400 uppercase text-xs tracking-widest">Balance</span>
+                  <span className="font-bold text-slate-400 uppercase text-xs tracking-widest">Saldo</span>
                 </div>
 
                 <h2 className="font-serif text-7xl text-slate-800">{balance.vacation}</h2>
@@ -191,7 +191,7 @@ export default function EmployeeDashboard({ onCreateRequest, onLogout }: Employe
                   <div className="p-3 bg-teal-100 text-teal-600 rounded-2xl">
                     <Clock className="w-6 h-6" />
                   </div>
-                  <span className="font-bold text-slate-400 uppercase text-xs tracking-widest">Extra</span>
+                  <span className="font-bold text-slate-400 uppercase text-xs tracking-widest">Extras</span>
                 </div>
 
                 <h2 className="font-serif text-7xl text-slate-800">{balance.compensatory}</h2>

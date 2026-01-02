@@ -136,7 +136,7 @@ export default function RequestFormPage({ onBack, onLogout }: RequestFormPagePro
                     onClick={onBack}
                     className="w-full py-7 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-full shadow-lg transition-transform active:scale-95"
                   >
-                    Regresar al Dashboard
+                    Regresar al Inicio
                   </Button>
                 </div>
               </CardContent>

@@ -293,8 +293,8 @@
     },
     "distDirRoot": ".next"
   },
-  "appDir": "/Users/cristopherarias/Documents/prototype",
-  "relativeAppDir": "Documents/prototype",
+  "appDir": "/Users/cristopherarias/Documents/Analisis y Diseño de Sistemas 1/prototype",
+  "relativeAppDir": "Documents/Analisis y Diseño de Sistemas 1/prototype",
   "files": [
     ".next/routes-manifest.json",
     ".next/server/pages-manifest.json",

@@ -49,7 +49,7 @@ function PrintablePermit({ request }: { request: any }) {
 
         <div className="flex flex-col items-center justify-center">
           <h1 className="text-2xl font-bold tracking-widest text-slate-900 uppercase">CalmSpace</h1>
-          <p className="text-[10px] text-slate-400 uppercase tracking-[0.3em]">Enterprise System</p>
+          <p className="text-[10px] text-slate-400 uppercase tracking-[0.3em]">Sistema Corporativo</p>
         </div>
 
         <div className="w-32 h-20 border border-slate-100 flex items-center justify-center p-2 bg-slate-50">
@@ -263,7 +263,7 @@ export default function ManagerPanel({ onLogout, currentView, onViewChange }: Ma
                 <div className="w-8 h-8 rounded-full bg-slate-900 flex items-center justify-center text-white">
                   <span className="font-serif">M</span>
                 </div>
-                <span className="font-serif text-xl font-bold text-slate-800">Manager Panel</span>
+                <span className="font-serif text-xl font-bold text-slate-800">Panel de Gerencia</span>
               </div>
               <div className="flex items-center gap-4">
                 <div className="text-sm text-right hidden sm:block">
