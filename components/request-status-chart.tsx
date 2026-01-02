@@ -30,9 +30,9 @@ export default function RequestStatusChart({ requests, title = "Resumen de Solic
         // Order: Aprobado (green), Pendiente (yellow), Rechazado (red)
         // This ensures the chart segments appear in the same order as the legend
         return [
-            { name: "Aprobado", value: counts.APROBADO, color: "#10b981" }, // emerald-500
-            { name: "Pendiente", value: counts.PENDIENTE, color: "#facc15" }, // yellow-400
-            { name: "Rechazado", value: counts.RECHAZADO, color: "#ef4444" }, // red-500
+            { name: "Aprobado", value: counts.APROBADO, color: "#14b8a6" }, // Teal-500
+            { name: "Pendiente", value: counts.PENDIENTE, color: "#facc15" }, // Yellow-400
+            { name: "Rechazado", value: counts.RECHAZADO, color: "#ec4899" }, // Pink-500
         ].filter((item) => item.value > 0)
     }, [requests])
 

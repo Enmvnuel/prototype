@@ -1,16 +1,19 @@
 import type { Metadata } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
+import { Playfair_Display, Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
-const _geist = Geist({
+const playfair = Playfair_Display({
   subsets: ["latin"],
-  variable: "--font-geist-sans",
-});
-const _geistMono = Geist_Mono({
+  variable: "--font-serif",
+  display: "swap",
+})
+
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-geist-mono",
-});
+  variable: "--font-sans",
+  display: "swap",
+})
 
 export const metadata: Metadata = {
   title: 'Sistema de Gestión de Licencias',
@@ -25,7 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${_geist.variable} ${_geistMono.variable} font-sans antialiased`} suppressHydrationWarning>
+      <body className={`${playfair.variable} ${inter.variable} font-sans antialiased bg-background text-foreground`} suppressHydrationWarning>
         {children}
         <Analytics />
       </body>

@@ -2,12 +2,11 @@
 
 import { useState, useMemo } from "react"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Badge } from "@/components/ui/badge"
 import { useAppContext } from "@/context/app-context"
-import { LogOut, Search, Eye } from "lucide-react"
+import { LogOut, Search, Eye, Plus, Calendar, Clock } from "lucide-react"
 import { m, LazyMotion, domAnimation, AnimatePresence } from "framer-motion"
 import ViewRequestModal from "./view-request-modal"
 import RequestStatusChart from "./request-status-chart"
@@ -29,7 +28,7 @@ export default function EmployeeDashboard({ onCreateRequest, onLogout }: Employe
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   const employeeId = "emp001"
-  const employeeName = "Nombre del Empleado"
+  // const employeeName = "Bryan Lopez" // Hardcoded for demo
   const balance = getEmployeeBalance(employeeId)
   const employeeRequests = requests.filter((r) => r.employeeId === employeeId)
 
@@ -100,280 +99,225 @@ export default function EmployeeDashboard({ onCreateRequest, onLogout }: Employe
 
   const getStatusBadge = (status: string) => {
     if (status === "PENDIENTE") {
-      return <Badge className="bg-yellow-400 text-yellow-900 border-0 hover:bg-yellow-500 rounded-md font-bold px-3 shadow-sm">PENDIENTE</Badge>
+      return <Badge className="bg-yellow-100 text-yellow-700 border-0 rounded-full font-medium px-4 shadow-none">Pendiente</Badge>
     } else if (status === "APROBADO") {
-      return <Badge className="bg-green-500 text-white border-0 hover:bg-green-600 rounded-md font-bold px-3 shadow-sm">APROBADO</Badge>
+      return <Badge className="bg-teal-100 text-teal-700 border-0 rounded-full font-medium px-4 shadow-none">Aprobado</Badge>
     } else {
-      return <Badge className="bg-red-500 text-white border-0 hover:bg-red-600 rounded-md font-bold px-3 shadow-sm">RECHAZADO</Badge>
+      return <Badge className="bg-pink-100 text-pink-700 border-0 rounded-full font-medium px-4 shadow-none">Rechazado</Badge>
     }
   }
 
   const SortIcon = ({ column }: { column: string }) => {
-    if (sortConfig?.key !== column) return <span className="ml-1 text-slate-300">↕</span>
-    return sortConfig.direction === 'asc' ? <span className="ml-1 text-blue-600">↑</span> : <span className="ml-1 text-blue-600">↓</span>
+    if (sortConfig?.key !== column) return <span className="ml-1 text-slate-300 opacity-50">↕</span>
+    return sortConfig.direction === 'asc' ? <span className="ml-1 text-primary">↑</span> : <span className="ml-1 text-primary">↓</span>
   }
 
   return (
     <LazyMotion features={domAnimation}>
-      <div className="min-h-screen bg-slate-50 font-sans text-slate-900">
+      <div className="min-h-screen bg-[#FDFDFC] font-sans text-slate-600 pb-20">
 
-        {/* Top Navigation / Breadcrumb */}
-        <header className="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-sm">
+        {/* Header */}
+        <header className="bg-white/80 backdrop-blur-md border-b border-slate-100 sticky top-0 z-30">
           <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div className="text-sm font-medium text-slate-500">
-              <span className="text-slate-900 hover:text-slate-700 cursor-pointer transition-colors">Inicio</span> &gt; Mis Solicitudes &gt; <span className="text-slate-900 font-semibold">Historial</span>
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 rounded-full bg-slate-900 flex items-center justify-center text-white">
+                <span className="font-serif">E</span>
+              </div>
+              <span className="font-serif text-xl font-bold text-slate-800">Employee Panel</span>
             </div>
             <div className="flex items-center gap-4">
               <div className="text-sm text-right hidden sm:block">
                 <span className="font-bold text-slate-800 block">Bryan Lopez</span>
-                <span className="text-xs text-slate-500 uppercase tracking-wider">EMPLEADO</span>
+                <span className="text-xs text-slate-500 uppercase tracking-wider">Empleado</span>
               </div>
-              <Button onClick={onLogout} variant="ghost" size="sm" className="text-slate-400 hover:text-red-500 hover:bg-red-50 rounded-full transition-all">
-                <LogOut className="w-4 h-4" />
+              <Button onClick={onLogout} variant="ghost" size="icon" className="text-slate-400 hover:text-red-500 hover:bg-red-50 rounded-full transition-all">
+                <LogOut className="w-5 h-5" />
               </Button>
             </div>
           </div>
         </header>
 
-        <main className="max-w-7xl mx-auto px-6 py-8 space-y-8">
+        <main className="max-w-7xl mx-auto px-6 py-12 space-y-12">
 
-          {/* Section Title */}
-          <h2 className="text-xl font-bold text-slate-800 tracking-tight">Dashboard de Saldo Personal</h2>
-
-          {/* Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Green Card - Vacation */}
-            <m.div
-              initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}
-              whileHover={{ y: -5 }}
-              className="bg-white rounded-2xl p-8 shadow-xl shadow-slate-200/50 border border-slate-100 relative overflow-hidden group flex flex-col justify-between min-h-[400px]"
-            >
-              <div className="relative z-10 font-sans h-full flex flex-col">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-10 h-10 rounded-xl bg-emerald-100 flex items-center justify-center text-emerald-600">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  </div>
-                  <p className="font-bold text-slate-500 uppercase text-xs tracking-wider">Vacaciones</p>
-                </div>
-
-                <div className="flex-1 flex flex-col justify-center">
-                  <h3 className="text-6xl font-extrabold tracking-tight text-slate-800">{balance.vacation}</h3>
-                  <span className="text-xl font-medium text-slate-400 -mt-1">días disponibles</span>
-                </div>
-
-                <div className="mt-4 pt-4 border-t border-slate-100 flex items-center gap-2">
-                  <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
-                  <p className="text-xs text-slate-400 font-medium">Estado: Activo y acumulando</p>
-                </div>
-              </div>
-
-              {/* Decorative gradient blob */}
-              <div className="absolute -right-16 -top-16 w-64 h-64 bg-emerald-50/50 rounded-full blur-3xl group-hover:bg-emerald-100/50 transition-colors duration-500"></div>
-            </m.div>
-
-            {/* Blue Card - Compensatory */}
-            <m.div
-              initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.1 }}
-              whileHover={{ y: -5 }}
-              className="bg-white rounded-2xl p-8 shadow-xl shadow-slate-200/50 border border-slate-100 relative overflow-hidden group flex flex-col justify-between min-h-[400px]"
-            >
-              <div className="relative z-10 font-sans h-full flex flex-col">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-center text-blue-600">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  </div>
-                  <p className="font-bold text-slate-500 uppercase text-xs tracking-wider">Compensatorio</p>
-                </div>
-
-                <div className="flex-1 flex flex-col justify-center">
-                  <h3 className="text-6xl font-extrabold tracking-tight text-slate-800">{balance.compensatory}</h3>
-                  <span className="text-xl font-medium text-slate-400 -mt-1">horas/días</span>
-                </div>
-
-                <div className="mt-4 pt-4 border-t border-slate-100 flex items-center gap-2">
-                  <div className="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></div>
-                  <p className="text-xs text-slate-400 font-medium">Caduca: Diciembre 2025</p>
-                </div>
-              </div>
-
-              {/* Decorative gradient blob */}
-              <div className="absolute -right-16 -top-16 w-64 h-64 bg-blue-50/50 rounded-full blur-3xl group-hover:bg-blue-100/50 transition-colors duration-500"></div>
-            </m.div>
-
-            {/* Chart Card */}
-            <m.div
-              initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.2 }}
-              className="min-h-[400px]"
-            >
-              <RequestStatusChart
-                requests={employeeRequests}
-                title="Estado de Mis Solicitudes"
-                className="rounded-2xl border-none shadow-xl shadow-slate-200/50"
-              />
-            </m.div>
-          </div>
-
-          {/* Filter Bar */}
-          <div className="bg-slate-100 rounded-xl p-4 flex flex-col md:flex-row items-center gap-4 border border-slate-200 shadow-sm">
-            <div className="flex-1 w-full flex items-center gap-4">
-              <h3 className="text-slate-700 font-bold text-sm whitespace-nowrap bg-slate-200/50 px-3 py-1.5 rounded-lg">Filtros de Historial</h3>
-              <div className="relative flex-1 group">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-blue-500 transition-colors" />
-                <input
-                  type="text"
-                  placeholder="Búsqueda por Palabra Clave (ID, Tipo, Sede)"
-                  className="w-full pl-10 pr-4 py-2.5 text-sm rounded-lg border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-100 outline-none transition-all text-slate-700 bg-white placeholder:text-slate-400 shadow-sm"
-                  value={searchQuery}
-                  onChange={(e) => {
-                    setSearchQuery(e.target.value)
-                    setCurrentPage(1)
-                  }}
-                />
-              </div>
+          {/* Intro Section */}
+          <div className="flex flex-col md:flex-row justify-between items-end gap-6">
+            <div>
+              <h1 className="font-serif text-4xl md:text-5xl text-slate-800 mb-2">My Dashboard</h1>
+              <p className="text-slate-400 font-light text-lg">Manage your time off efficiently and stress-free.</p>
             </div>
-
-            <div className="flex gap-3 w-full md:w-auto">
-              <Select value={filterMonth} onValueChange={setFilterMonth}>
-                <SelectTrigger className="w-[160px] bg-white border-slate-200 shadow-sm font-medium text-slate-600 h-10 rounded-lg focus:ring-2 focus:ring-blue-100">
-                  <SelectValue placeholder="Mes/Año" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="all">Todo</SelectItem>
-                  {uniqueMonths.map(month => (
-                    <SelectItem key={month} value={month}>{month}</SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-
-              <Select value={filterStatus} onValueChange={setFilterStatus}>
-                <SelectTrigger className="w-[160px] bg-white border-slate-200 shadow-sm font-medium text-slate-600 h-10 rounded-lg focus:ring-2 focus:ring-blue-100">
-                  <SelectValue placeholder="Estado" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="all">Todos</SelectItem>
-                  <SelectItem value="PENDIENTE">PENDIENTE</SelectItem>
-                  <SelectItem value="APROBADO">APROBADO</SelectItem>
-                  <SelectItem value="RECHAZADO">RECHAZADO</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-          </div>
-
-          {/* Data Grid Title */}
-          <h2 className="text-xl font-bold text-slate-800 tracking-tight">Cuadrícula de Datos del Historial de Solicitudes</h2>
-
-          {/* Table Container */}
-          <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden ring-1 ring-black/5">
-            <Table>
-              <TableHeader className="bg-slate-50 border-b border-slate-100">
-                <TableRow className="hover:bg-transparent">
-                  <TableHead className="font-bold text-slate-600 uppercase text-xs tracking-wider w-[140px] pl-6 py-4 cursor-pointer hover:bg-slate-100 hover:text-blue-600 transition-colors" onClick={() => handleSort('id')}>
-                    <div className="flex items-center">ID Solicitud <SortIcon column="id" /></div>
-                  </TableHead>
-                  <TableHead className="font-bold text-slate-600 uppercase text-xs tracking-wider py-4 cursor-pointer hover:bg-slate-100 hover:text-blue-600 transition-colors" onClick={() => handleSort('createdAt')}>
-                    <div className="flex items-center">Fecha de Envío <SortIcon column="createdAt" /></div>
-                  </TableHead>
-                  <TableHead className="font-bold text-slate-600 uppercase text-xs tracking-wider py-4 cursor-pointer hover:bg-slate-100 hover:text-blue-600 transition-colors" onClick={() => handleSort('type')}>
-                    <div className="flex items-center">Tipo de Licencia <SortIcon column="type" /></div>
-                  </TableHead>
-                  <TableHead className="font-bold text-slate-600 uppercase text-xs tracking-wider py-4 cursor-pointer hover:bg-slate-100 hover:text-blue-600 transition-colors" onClick={() => handleSort('startDate')}>
-                    <div className="flex items-center">Fechas Solicitadas <SortIcon column="startDate" /></div>
-                  </TableHead>
-                  <TableHead className="font-bold text-slate-600 uppercase text-xs tracking-wider w-[100px] text-center py-4 cursor-pointer hover:bg-slate-100 hover:text-blue-600 transition-colors" onClick={() => handleSort('totalDays')}>
-                    <div className="flex items-center justify-center">Días <SortIcon column="totalDays" /></div>
-                  </TableHead>
-                  <TableHead className="font-bold text-slate-600 uppercase text-xs tracking-wider py-4 cursor-pointer hover:bg-slate-100 hover:text-blue-600 transition-colors" onClick={() => handleSort('workSite')}>
-                    <div className="flex items-center">Sede Asignada <SortIcon column="workSite" /></div>
-                  </TableHead>
-                  <TableHead className="font-bold text-slate-600 uppercase text-xs tracking-wider w-[140px] py-4 cursor-pointer hover:bg-slate-100 hover:text-blue-600 transition-colors" onClick={() => handleSort('status')}>
-                    <div className="flex items-center">Estado <SortIcon column="status" /></div>
-                  </TableHead>
-                  <TableHead className="font-bold text-slate-600 uppercase text-xs tracking-wider text-right pr-6 py-4">Acciones</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {paginatedRequests.length === 0 ? (
-                  <TableRow>
-                    <TableCell colSpan={8} className="h-48 text-center text-slate-400">
-                      No se encontraron registros que coincidan con los filtros.
-                    </TableCell>
-                  </TableRow>
-                ) : (
-                  paginatedRequests.map((req, index) => (
-                    <m.tr
-                      key={req.id}
-                      initial={{ opacity: 0, x: -10 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.03 }}
-                      className="border-b border-slate-50 hover:bg-slate-50/80 transition-colors h-[72px] group"
-                    >
-                      <TableCell className="font-semibold text-slate-700 pl-6 group-hover:text-blue-600 transition-colors">{req.id}</TableCell>
-                      <TableCell className="text-slate-500 font-medium text-sm">{req.createdAt}</TableCell>
-                      <TableCell className="text-slate-700 font-medium">{req.type}</TableCell>
-                      <TableCell className="text-slate-500 font-medium text-sm">{req.startDate} <span className="text-slate-300 mx-1">/</span> {req.endDate}</TableCell>
-                      <TableCell className="text-slate-700 font-bold text-center bg-slate-50/50 m-1 rounded-lg">{req.totalDays}</TableCell>
-                      <TableCell className="text-slate-600 font-medium">{req.workSite}</TableCell>
-                      <TableCell>{getStatusBadge(req.status)}</TableCell>
-                      <TableCell className="text-right pr-6">
-                        <div className="flex justify-end gap-2 text-slate-400">
-                          <button
-                            onClick={() => handleOpenModal(req)}
-                            className="hover:text-blue-600 hover:bg-blue-50 transition-all p-2 rounded-lg group/btn hover:shadow-sm ring-1 ring-transparent hover:ring-blue-100"
-                          >
-                            <Eye className="w-5 h-5" />
-                          </button>
-                        </div>
-                      </TableCell>
-                    </m.tr>
-                  ))
-                )}
-              </TableBody>
-            </Table>
-          </div>
-
-          {/* Footer / Pagination Actions */}
-          <div className="flex flex-col md:flex-row justify-between items-center py-4 gap-6 border-t border-slate-200/60 mt-8">
-            <div className="flex items-center gap-6 text-sm font-bold text-slate-400 select-none">
-              <button
-                onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
-                disabled={currentPage === 1}
-                className="hover:text-blue-600 hover:bg-blue-50 px-3 py-1.5 rounded-md transition-all flex items-center disabled:opacity-30 disabled:cursor-not-allowed"
-              >
-                &lt; Anterior
-              </button>
-              <div className="flex gap-2">
-                {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
-                  <span
-                    key={page}
-                    onClick={() => setCurrentPage(page)}
-                    className={`w-8 h-8 flex items-center justify-center rounded-lg cursor-pointer transition-all ${currentPage === page
-                      ? "bg-blue-600 text-white shadow-md shadow-blue-200"
-                      : "hover:bg-slate-100 hover:text-blue-600"
-                      }`}
-                  >
-                    {page}
-                  </span>
-                ))}
-              </div>
-              <button
-                onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
-                disabled={currentPage === totalPages || totalPages === 0}
-                className="hover:text-blue-600 hover:bg-blue-50 px-3 py-1.5 rounded-md transition-all flex items-center disabled:opacity-30 disabled:cursor-not-allowed"
-              >
-                Siguiente &gt;
-              </button>
-              <span className="text-slate-400 font-medium ml-4 text-xs tracking-wide uppercase border-l pl-6 border-slate-200">
-                Mostrando {paginatedRequests.length} de {filteredRequests.length} registros
-              </span>
-            </div>
-
-            <Button onClick={onCreateRequest} className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 py-7 rounded-xl shadow-xl shadow-blue-500/30 transition-all hover:scale-[1.02] active:scale-95 text-base shine-effect overflow-hidden relative">
-              <span className="relative z-10 flex items-center gap-2">[ + ] NUEVA SOLICITUD</span>
+            <Button onClick={onCreateRequest} className="rounded-full h-14 px-8 bg-primary hover:bg-primary/90 text-white shadow-xl shadow-primary/20 text-lg font-medium transition-all hover:scale-105 active:scale-95">
+              <Plus className="w-5 h-5 mr-2" /> Nueva Solicitud
             </Button>
+          </div>
+
+          {/* Info Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Vacation Balance */}
+            <m.div
+              initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
+              className="bg-white rounded-[2rem] p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-50 flex flex-col justify-between h-[340px] relative overflow-hidden group"
+            >
+              <div className="absolute top-0 right-0 w-32 h-32 bg-purple-50 rounded-bl-[4rem] -mr-4 -mt-4 transition-all group-hover:bg-purple-100" />
+
+              <div className="relative z-10">
+                <div className="flex items-center gap-3 mb-8">
+                  <div className="p-3 bg-purple-100 text-purple-600 rounded-2xl">
+                    <Calendar className="w-6 h-6" />
+                  </div>
+                  <span className="font-bold text-slate-400 uppercase text-xs tracking-widest">Balance</span>
+                </div>
+
+                <h2 className="font-serif text-7xl text-slate-800">{balance.vacation}</h2>
+                <p className="text-lg text-slate-500 font-medium">Días de Vacaciones</p>
+              </div>
+
+              <div className="relative z-10 mt-auto pt-6 border-t border-slate-100">
+                <p className="text-sm text-slate-400 flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-green-400"></span>
+                  Disponible ahora
+                </p>
+              </div>
+            </m.div>
+
+            {/* Compensatory Balance */}
+            <m.div
+              initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.1 }}
+              className="bg-white rounded-[2rem] p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-50 flex flex-col justify-between h-[340px] relative overflow-hidden group"
+            >
+              <div className="absolute top-0 right-0 w-32 h-32 bg-teal-50 rounded-bl-[4rem] -mr-4 -mt-4 transition-all group-hover:bg-teal-100" />
+
+              <div className="relative z-10">
+                <div className="flex items-center gap-3 mb-8">
+                  <div className="p-3 bg-teal-100 text-teal-600 rounded-2xl">
+                    <Clock className="w-6 h-6" />
+                  </div>
+                  <span className="font-bold text-slate-400 uppercase text-xs tracking-widest">Extra</span>
+                </div>
+
+                <h2 className="font-serif text-7xl text-slate-800">{balance.compensatory}</h2>
+                <p className="text-lg text-slate-500 font-medium">Horas Compensatorias</p>
+              </div>
+
+              <div className="relative z-10 mt-auto pt-6 border-t border-slate-100">
+                <p className="text-sm text-slate-400 flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-yellow-400"></span>
+                  Expira en Dic 2025
+                </p>
+              </div>
+            </m.div>
+
+            {/* Chart */}
+            <m.div
+              initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.2 }}
+              className="bg-white rounded-[2rem] p-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-50 h-[340px]"
+            >
+              <RequestStatusChart requests={employeeRequests} title="Resumen" />
+            </m.div>
+          </div>
+
+          {/* Recent History Section */}
+          <div className="space-y-6">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+              <h3 className="font-serif text-2xl text-slate-800">Historial Reciente</h3>
+
+              {/* Search & Filters */}
+              <div className="flex flex-wrap gap-3">
+                <div className="relative">
+                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                  <input
+                    type="text"
+                    placeholder="Buscar..."
+                    value={searchQuery}
+                    onChange={e => setSearchQuery(e.target.value)}
+                    className="pl-10 pr-4 h-10 rounded-full border border-slate-200 bg-white text-sm focus:ring-2 focus:ring-purple-100 outline-none w-[200px]"
+                  />
+                </div>
+
+                <Select value={filterStatus} onValueChange={setFilterStatus}>
+                  <SelectTrigger className="w-[140px] rounded-full border-slate-200 h-10">
+                    <SelectValue placeholder="Estado" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">Todos</SelectItem>
+                    <SelectItem value="PENDIENTE">Pendiente</SelectItem>
+                    <SelectItem value="APROBADO">Aprobado</SelectItem>
+                    <SelectItem value="RECHAZADO">Rechazado</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+            </div>
+
+            {/* Table */}
+            <div className="bg-white rounded-[2rem] border border-slate-100 shadow-xl shadow-slate-200/20 overflow-hidden">
+              <Table>
+                <TableHeader className="bg-slate-50/50">
+                  <TableRow className="border-b-slate-100 hover:bg-transparent">
+                    <TableHead className="py-5 pl-8 font-medium text-slate-400 text-xs uppercase tracking-wider cursor-pointer" onClick={() => handleSort('createdAt')}>Fecha <SortIcon column="createdAt" /></TableHead>
+                    <TableHead className="py-5 font-medium text-slate-400 text-xs uppercase tracking-wider cursor-pointer" onClick={() => handleSort('type')}>Tipo <SortIcon column="type" /></TableHead>
+                    <TableHead className="py-5 font-medium text-slate-400 text-xs uppercase tracking-wider">Duración</TableHead>
+                    <TableHead className="py-5 font-medium text-slate-400 text-xs uppercase tracking-wider cursor-pointer" onClick={() => handleSort('status')}>Estado <SortIcon column="status" /></TableHead>
+                    <TableHead className="py-5 pr-8 text-right font-medium text-slate-400 text-xs uppercase tracking-wider">Detalle</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {paginatedRequests.length === 0 ? (
+                    <TableRow>
+                      <TableCell colSpan={5} className="h-40 text-center text-slate-400">
+                        Sin resultados encontrados.
+                      </TableCell>
+                    </TableRow>
+                  ) : (
+                    paginatedRequests.map((req, index) => (
+                      <m.tr
+                        key={req.id}
+                        initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: index * 0.05 }}
+                        className="border-b border-slate-50 hover:bg-purple-50/30 transition-colors cursor-pointer group"
+                      >
+                        <TableCell className="pl-8 py-4 font-medium text-slate-700">{req.createdAt}</TableCell>
+                        <TableCell className="py-4 text-slate-600">{req.type}</TableCell>
+                        <TableCell className="py-4">
+                          <div className="flex flex-col">
+                            <span className="text-sm font-medium text-slate-700">{req.totalDays} Días</span>
+                            <span className="text-xs text-slate-400">{req.startDate} - {req.endDate}</span>
+                          </div>
+                        </TableCell>
+                        <TableCell className="py-4">{getStatusBadge(req.status)}</TableCell>
+                        <TableCell className="pr-8 py-4 text-right">
+                          <Button onClick={() => handleOpenModal(req)} variant="ghost" size="icon" className="rounded-full hover:bg-white hover:shadow-md text-slate-400 hover:text-primary transition-all">
+                            <Eye className="w-5 h-5" />
+                          </Button>
+                        </TableCell>
+                      </m.tr>
+                    ))
+                  )}
+                </TableBody>
+              </Table>
+
+              {/* Pagination Footer */}
+              {totalPages > 1 && (
+                <div className="p-4 border-t border-slate-100 flex justify-center gap-2">
+                  <Button
+                    variant="ghost"
+                    disabled={currentPage === 1}
+                    onClick={() => setCurrentPage(c => c - 1)}
+                    className="rounded-full text-slate-400 hover:text-slate-800"
+                  >
+                    Anterior
+                  </Button>
+                  <span className="flex items-center text-slate-400 text-sm px-4">
+                    Página {currentPage} de {totalPages}
+                  </span>
+                  <Button
+                    variant="ghost"
+                    disabled={currentPage === totalPages}
+                    onClick={() => setCurrentPage(c => c + 1)}
+                    className="rounded-full text-slate-400 hover:text-slate-800"
+                  >
+                    Siguiente
+                  </Button>
+                </div>
+              )}
+            </div>
           </div>
 
         </main>
